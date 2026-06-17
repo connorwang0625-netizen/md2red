@@ -48,8 +48,8 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 .v-grid .floor{position:absolute;left:-30%;right:-30%;bottom:-6%;height:58%;z-index:0;background-image:repeating-linear-gradient(to right,rgba(22,224,255,.55) 0 2px,transparent 2px 82px),repeating-linear-gradient(to bottom,rgba(255,45,155,.55) 0 2px,transparent 2px 82px);transform:perspective(620px) rotateX(70deg);transform-origin:bottom center;-webkit-mask-image:linear-gradient(to top,#000 6%,transparent 86%);mask-image:linear-gradient(to top,#000 6%,transparent 86%);}
 .v-grid .horizon{position:absolute;left:0;right:0;bottom:38%;height:2px;z-index:1;background:linear-gradient(90deg,transparent,rgba(22,224,255,.9),transparent);filter:drop-shadow(0 0 16px rgba(22,224,255,.8));}
 
-/* 03 巨型幽灵数字 Ghost 6 （右下角出血；line-height:1 使渐变盒包住整字形，顶部不被削平；加大负偏移让字形真正切出画布右下角） */
-.v-ghost .ghost{position:absolute;z-index:1;right:-120px;bottom:-300px;font-family:var(--font-mono);font-weight:700;font-size:1060px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.20;filter:drop-shadow(0 0 70px rgba(22,224,255,.30));}
+/* 03 巨型幽灵数字 Ghost 6 （右下角出血；line-height:1 使渐变盒包住整字形，顶部不被削平；加大字号与负偏移，字形右下角出血、整体上提） */
+.v-ghost .ghost{position:absolute;z-index:1;right:-150px;bottom:-285px;font-family:var(--font-mono);font-weight:700;font-size:1220px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.20;filter:drop-shadow(0 0 70px rgba(22,224,255,.30));}
 
 /* 06 组合：光晕 + 幽灵 6（红光晕已左移，避开幽灵 6） */
 .v-combo .aura{position:absolute;inset:-12%;z-index:0;background:radial-gradient(36% 30% at 14% 20%,rgba(198,255,58,.46),transparent 70%),radial-gradient(40% 36% at 26% 86%,rgba(255,45,155,.48),transparent 70%),radial-gradient(34% 30% at 90% 28%,rgba(22,224,255,.26),transparent 70%);filter:blur(42px);}
