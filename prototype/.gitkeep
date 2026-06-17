@@ -1,0 +1,2 @@
+# 保留此目录（git 不跟踪空文件夹）
+# 原型展示文件已并入 templates/card-base.html，此目录留作后续试验用。
