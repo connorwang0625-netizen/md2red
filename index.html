@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>md2red · 查看器</title>
+<link rel="stylesheet" href="theme/swiss.css">
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+<style>
+  body{margin:0;background:#dfe4e7;font-family:'Inter','Noto Sans SC',sans-serif}
+  .toolbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #ccd3d7;padding:14px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .toolbar h1{font-size:16px;margin:0;font-weight:700;color:#1C2226;letter-spacing:.02em}
+  .toolbar .sp{flex:1}
+  .btn{font:500 14px/1 inherit;padding:10px 14px;border:1px solid #1C2226;background:#1C2226;color:#fff;cursor:pointer}
+  .btn.ghost{background:#fff;color:#1C2226}
+  .hint{font-size:12px;color:#5A6670}
+  .warnings{max-width:1040px;margin:14px auto 0;padding:0 20px}
+  .warn{background:#fff3cd;border-left:3px solid #e0a800;padding:8px 12px;font-size:13px;color:#5a4b00;margin-bottom:6px}
+  .deck{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;padding:28px 20px 80px}
+  .stage{width:486px;height:648px;overflow:hidden;background:#fff;box-shadow:0 12px 34px rgba(0,0,0,.16);flex:0 0 auto}
+  .stage .tonic{transform:scale(.45);transform-origin:top left}
+  body.drag{outline:3px dashed #2D7FF9;outline-offset:-6px}
+  @media print{
+    @page{size:1080px 1440px;margin:0}
+    body{background:#fff}
+    .toolbar,.warnings{display:none!important}
+    .deck{display:block;gap:0;padding:0}
+    .stage{width:1080px;height:auto;overflow:visible;box-shadow:none}
+    .stage .tonic{transform:none;page-break-after:always}
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <h1>md2red</h1>
+    <label class="btn ghost">选择 .md<input id="file" type="file" accept=".md,.markdown,text/markdown" hidden></label>
+    <button class="btn" id="export">导出 PNG（⌘P）</button>
+    <span class="hint">或把 .md 拖进来 · 改完 MD 重新选一次即可刷新</span>
+    <span class="sp"></span>
+    <span class="hint" id="status"></span>
+  </div>
+  <div class="warnings" id="warnings"></div>
+  <div class="deck" id="deck"></div>
+  <script src="src/render.js"></script>
+</body>
+</html>
