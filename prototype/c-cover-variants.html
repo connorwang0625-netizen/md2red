@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>md2red · HE-0001 · C 霓虹 · 无图多巴胺封面集</title>
+<style>
+:root{
+  --c-page:#0A0A0C; --c-card:#141418; --c-card-2:#1E1E26;
+  --c-ink:#F5F5F7; --c-ink-2:#9A9AA8; --c-ink-3:#62626E;
+  --c-neon-1:#C6FF3A; --c-neon-2:#FF2D9B; --c-neon-3:#16E0FF;
+  --c-anchor:#FF2D9B; --c-hair:#2C2C36;
+  --grad:linear-gradient(100deg,#C6FF3A 0%,#16E0FF 46%,#FF2D9B 100%);
+  --t-eyebrow:25px; --t-lead:36px; --t-cap:26px; --t-source:22px;
+  --s2:16px; --s3:24px; --s4:32px; --s5:48px;
+  --canvas-w:1080px; --canvas-h:1440px; --margin:88px; --hair-w:2px;
+  --s:0.42;
+  --font-mono:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--c-page);}
+body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto Sans SC",Arial,sans-serif;color:var(--c-ink);-webkit-font-smoothing:antialiased;padding:48px 32px 110px;}
+.toolbar{max-width:1400px;margin:0 auto 44px;}
+.toolbar .kicker{font-size:13px;letter-spacing:.22em;font-weight:600;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.toolbar h1{font-size:30px;font-weight:300;margin:10px 0 6px;}
+.toolbar p{font-size:15px;color:var(--c-ink-2);line-height:1.6;max-width:840px;}
+.gallery{max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:54px 36px;}
+.frame{width:calc(var(--canvas-w) * var(--s));height:calc(var(--canvas-h) * var(--s));position:relative;flex:0 0 auto;}
+.frame .label{position:absolute;top:calc(100% + 10px);left:0;font-size:13px;color:var(--c-ink-2);letter-spacing:.04em;}
+.canvas{width:var(--canvas-w);height:var(--canvas-h);transform:scale(var(--s));transform-origin:top left;background:var(--c-page);overflow:hidden;position:relative;display:flex;flex-direction:column;}
+.pad{padding:var(--margin);flex:1;display:flex;flex-direction:column;position:relative;z-index:3;}
+.header{display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--s3);margin-bottom:var(--s5);border-bottom:var(--hair-w) solid var(--c-hair);}
+.h-left{font-size:var(--t-eyebrow);letter-spacing:.2em;font-weight:600;color:var(--c-neon-2);text-transform:uppercase;}
+.h-right{font-size:var(--t-source);letter-spacing:.12em;color:var(--c-ink-3);}
+.brandfoot{margin-top:auto;text-align:right;padding-top:var(--s3);border-top:var(--hair-w) solid var(--c-hair);font-size:var(--t-cap);font-weight:500;color:var(--c-ink-2);letter-spacing:.04em;}
+.cover{position:relative;}
+.cover .content{flex:1;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:var(--s5);}
+.cover .topic{font-size:var(--t-cap);color:var(--c-ink);letter-spacing:.04em;margin-bottom:var(--s4);}
+.cover .title{font-size:128px;font-weight:250;line-height:1.24;letter-spacing:-.015em;margin-bottom:var(--s5);}
+.cover .title .d{font-family:var(--font-mono);font-weight:500;font-size:1.8em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 34px rgba(22,224,255,.55));margin-right:.08em;position:relative;top:.05em;}
+.cover .sub{font-size:var(--t-lead);color:var(--c-ink);font-weight:300;line-height:1.55;max-width:760px;padding-top:var(--s4);border-top:var(--hair-w) solid rgba(245,245,247,.28);}
+
+/* 01 流体光晕 Glow */
+.v-glow .aura{position:absolute;inset:-12%;z-index:0;background:radial-gradient(38% 32% at 18% 22%,rgba(198,255,58,.50),transparent 70%),radial-gradient(42% 38% at 88% 26%,rgba(22,224,255,.46),transparent 70%),radial-gradient(48% 44% at 60% 90%,rgba(255,45,155,.48),transparent 70%);filter:blur(40px);}
+
+/* 02 合成波网格 Grid */
+.v-grid{background:radial-gradient(60% 38% at 50% 104%,rgba(22,224,255,.24),transparent 70%),linear-gradient(180deg,#0A0A0C 0%,#120A1C 60%,#0A0A0C 100%);}
+.v-grid .floor{position:absolute;left:-30%;right:-30%;bottom:-6%;height:58%;z-index:0;background-image:repeating-linear-gradient(to right,rgba(22,224,255,.55) 0 2px,transparent 2px 82px),repeating-linear-gradient(to bottom,rgba(255,45,155,.55) 0 2px,transparent 2px 82px);transform:perspective(620px) rotateX(70deg);transform-origin:bottom center;-webkit-mask-image:linear-gradient(to top,#000 6%,transparent 86%);mask-image:linear-gradient(to top,#000 6%,transparent 86%);}
+.v-grid .horizon{position:absolute;left:0;right:0;bottom:38%;height:2px;z-index:1;background:linear-gradient(90deg,transparent,rgba(22,224,255,.9),transparent);filter:drop-shadow(0 0 16px rgba(22,224,255,.8));}
+
+/* 03 巨型幽灵数字 Ghost 6 */
+.v-ghost .ghost{position:absolute;z-index:0;right:-40px;bottom:-90px;font-family:var(--font-mono);font-weight:700;font-size:1060px;line-height:.78;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.18;filter:drop-shadow(0 0 70px rgba(22,224,255,.35));}
+
+/* 04 霓虹灯管描边 Tube */
+.v-tube .title{color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:1.6px var(--c-neon-3);text-shadow:0 0 8px rgba(22,224,255,.9),0 0 22px rgba(22,224,255,.55),0 0 44px rgba(22,224,255,.35);}
+.v-tube .title .d{background:none;-webkit-text-fill-color:transparent;-webkit-text-stroke:1.8px var(--c-neon-2);filter:none;text-shadow:0 0 8px rgba(255,45,155,.9),0 0 24px rgba(255,45,155,.6),0 0 46px rgba(255,45,155,.4);}
+
+/* 05 颗粒扫描 Grain */
+.v-grain{background:radial-gradient(70% 50% at 30% 82%,rgba(255,45,155,.16),transparent 72%),radial-gradient(60% 45% at 85% 24%,rgba(22,224,255,.14),transparent 72%),#0A0A0C;}
+.v-grain .grain{position:absolute;inset:0;z-index:2;background-image:radial-gradient(rgba(255,255,255,.14) .5px,transparent .5px);background-size:3px 3px;pointer-events:none;}
+.v-grain .scan{position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.045) 0 1px,transparent 1px 4px);pointer-events:none;}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="kicker">md2red · Prototype · C · 封面变体</div>
+  <h1>HE-0001 · C 霓虹 · 无图多巴胺封面集</h1>
+  <p>放弃实拍图，纯 CSS 的五种「多巴胺」封面方案，内容与版式完全一致，只换视觉触发手法，方便横向比较挑选。选定后我把它落成 C 的正式封面，并把规则写进文档。</p>
+</div>
+
+<div class="gallery">
+
+  <div class="frame"><div class="canvas cover v-glow"><div class="aura"></div><div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
+    <div class="content">
+      <div class="topic">健康饮食与生活方式</div>
+      <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+      <div class="sub">不靠意志力，靠系统。把早晨的前 60 分钟交给固定动作，让一整天自动进入正轨。</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">01 · 流体光晕 Glow</div></div>
+
+  <div class="frame"><div class="canvas cover v-grid"><div class="floor"></div><div class="horizon"></div><div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
+    <div class="content">
+      <div class="topic">健康饮食与生活方式</div>
+      <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+      <div class="sub">不靠意志力，靠系统。把早晨的前 60 分钟交给固定动作，让一整天自动进入正轨。</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">02 · 合成波网格 Grid</div></div>
+
+  <div class="frame"><div class="canvas cover v-ghost"><div class="ghost">6</div><div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
+    <div class="content">
+      <div class="topic">健康饮食与生活方式</div>
+      <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+      <div class="sub">不靠意志力，靠系统。把早晨的前 60 分钟交给固定动作，让一整天自动进入正轨。</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">03 · 巨型幽灵数字 Ghost 6</div></div>
+
+  <div class="frame"><div class="canvas cover v-tube"><div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
+    <div class="content">
+      <div class="topic">健康饮食与生活方式</div>
+      <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+      <div class="sub">不靠意志力，靠系统。把早晨的前 60 分钟交给固定动作，让一整天自动进入正轨。</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">04 · 霓虹灯管描边 Tube</div></div>
+
+  <div class="frame"><div class="canvas cover v-grain"><div class="grain"></div><div class="scan"></div><div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
+    <div class="content">
+      <div class="topic">健康饮食与生活方式</div>
+      <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+      <div class="sub">不靠意志力，靠系统。把早晨的前 60 分钟交给固定动作，让一整天自动进入正轨。</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">05 · 颗粒扫描 Grain</div></div>
+
+</div>
+
+</body>
+</html>
