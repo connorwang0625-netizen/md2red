@@ -5,22 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>md2red · HE-0001 试色 · D 美拉德×莫兰迪</title>
 <style>
-/* =========================================================
-   md2red — D 美拉德×莫兰迪  (暖奶油底 + 赤陶/鼠尾草锚点)
-   结构系统与 Swiss 基线一致；色调柔和、去饱和
-   ========================================================= */
 :root{
-  --c-page:#E3DACB;        /* 展厅底 · 暖米 */
-  --c-card:#F3ECDF;        /* 卡片底 · 奶油 */
-  --c-card-2:#EADFCC;      /* 次级面 */
-  --c-ink:#2F2820;         /* 主墨 · 暖棕 */
-  --c-ink-2:#6E6253;       /* 次级 · 棕灰 */
-  --c-ink-3:#9C907E;       /* 弱化 · 出处 */
-  --c-anchor:#B05E3B;      /* 锚点 · 赤陶 */
-  --c-anchor-2:#7E8C6A;    /* 次锚点 · 鼠尾草 */
-  --c-hair:#D6C9B4;        /* 衡线 */
-  --c-hair-2:#E0D5C2;      /* 浅衡线 */
-
+  --c-page:#E3DACB; --c-card:#F3ECDF; --c-card-2:#EADFCC;
+  --c-ink:#2F2820; --c-ink-2:#6E6253; --c-ink-3:#9C907E;
+  --c-anchor:#B05E3B; --c-anchor-2:#7E8C6A; --c-hair:#D6C9B4; --c-hair-2:#E0D5C2;
   --t-eyebrow:25px; --t-display:104px; --t-h1:60px; --t-lead:36px; --t-body:30px;
   --t-index:128px; --t-num:150px; --t-cap:26px; --t-source:22px;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px; --s8:120px;
@@ -30,45 +18,38 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{background:var(--c-page);}
 body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto Sans SC",Arial,sans-serif;color:var(--c-ink);-webkit-font-smoothing:antialiased;padding:48px 32px 96px;}
-
 .toolbar{max-width:1200px;margin:0 auto 40px;}
 .toolbar .kicker{font-size:13px;letter-spacing:.22em;color:var(--c-anchor);font-weight:600;text-transform:uppercase;}
 .toolbar h1{font-size:30px;font-weight:300;margin:10px 0 6px;}
 .toolbar p{font-size:15px;color:var(--c-ink-2);line-height:1.6;max-width:760px;}
 .toolbar .meta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
 .toolbar .tag{font-size:12px;border:1.5px solid var(--c-hair);padding:5px 12px;color:var(--c-ink-2);letter-spacing:.04em;}
-
 .gallery{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:36px;}
 .frame{width:calc(var(--canvas-w) * var(--s));height:calc(var(--canvas-h) * var(--s));position:relative;flex:0 0 auto;}
 .frame .label{position:absolute;top:calc(100% + 8px);left:0;font-size:12px;color:var(--c-ink-2);letter-spacing:.06em;}
 .canvas{width:var(--canvas-w);height:var(--canvas-h);transform:scale(var(--s));transform-origin:top left;background:var(--c-card);overflow:hidden;position:relative;display:flex;flex-direction:column;}
 .pad{padding:var(--margin);flex:1;display:flex;flex-direction:column;}
-
-.header{display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--s3);margin-bottom:var(--s6);border-bottom:var(--hair-w) solid var(--c-hair);}
+.header{display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--s3);margin-bottom:var(--s5);border-bottom:var(--hair-w) solid var(--c-hair);}
 .h-left{font-size:var(--t-eyebrow);letter-spacing:.2em;font-weight:600;color:var(--c-anchor);text-transform:uppercase;}
 .h-right{font-size:var(--t-source);letter-spacing:.12em;color:var(--c-ink-3);display:flex;align-items:center;gap:14px;}
 .dots{display:flex;gap:10px;align-items:center;}
 .dots i{width:10px;height:10px;border-radius:50%;background:var(--c-hair);display:block;}
 .dots i.on{background:var(--c-anchor);width:30px;border-radius:0;}
-
 .brandfoot{margin-top:auto;text-align:right;padding-top:var(--s3);border-top:var(--hair-w) solid var(--c-hair);font-size:var(--t-cap);font-weight:500;color:var(--c-ink-2);letter-spacing:.04em;}
 .spacer{flex:1;}
-
-.cover .content{flex:1;display:flex;flex-direction:column;justify-content:flex-end;}
+.cover .content{flex:1;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:var(--s5);}
 .cover .topic{font-size:var(--t-cap);color:var(--c-ink-2);letter-spacing:.04em;margin-bottom:var(--s4);}
 .cover .title{font-size:var(--t-display);font-weight:250;line-height:1.06;letter-spacing:-.01em;margin-bottom:var(--s5);}
 .cover .title b{font-weight:500;color:var(--c-anchor);}
 .cover .sub{font-size:var(--t-lead);color:var(--c-ink-2);font-weight:300;line-height:1.55;max-width:760px;padding-top:var(--s4);border-top:var(--hair-w) solid var(--c-hair);}
-
 .body .index{font-size:var(--t-index);font-weight:250;line-height:.9;color:var(--c-anchor);letter-spacing:-.02em;margin-bottom:var(--s4);}
 .body h2{font-size:var(--t-h1);font-weight:500;line-height:1.18;letter-spacing:.005em;margin-bottom:var(--s4);}
 .body .point{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.55;max-width:860px;}
-.stat{background:var(--c-card-2);padding:var(--s5) var(--s5) var(--s4);display:flex;flex-direction:column;gap:var(--s2);border-left:4px solid var(--c-anchor-2);}
+.stat{background:var(--c-card-2);padding:var(--s5) var(--s5) var(--s4);margin-bottom:var(--s5);display:flex;flex-direction:column;gap:var(--s2);border-left:4px solid var(--c-anchor-2);}
 .stat .num{font-size:var(--t-num);font-weight:250;line-height:.9;color:var(--c-ink);letter-spacing:-.02em;display:flex;align-items:baseline;gap:14px;}
 .stat .num em{font-size:46px;font-style:normal;font-weight:500;color:var(--c-anchor);}
 .stat .cap{font-size:var(--t-cap);color:var(--c-ink-2);line-height:1.5;max-width:820px;}
 .stat .src{font-size:var(--t-source);color:var(--c-ink-3);letter-spacing:.03em;}
-
 .end .h{font-size:72px;font-weight:250;line-height:1.1;letter-spacing:-.01em;}
 .end .recap{display:flex;flex-direction:column;margin-top:var(--s5);}
 .end .recap .it{display:flex;align-items:center;gap:var(--s4);padding:var(--s3) 0;border-top:var(--hair-w) solid var(--c-hair-2);font-size:32px;font-weight:400;}
@@ -76,7 +57,6 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 .end .recap .n{font-size:26px;color:var(--c-anchor);font-weight:600;width:46px;letter-spacing:.06em;}
 .end .cta{margin-top:var(--s5);font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);display:flex;align-items:center;gap:16px;}
 .end .cta b{color:var(--c-anchor);font-weight:500;}
-
 .spec{max-width:1200px;margin:80px auto 0;border-top:2px solid var(--c-hair);padding-top:40px;}
 .spec h2{font-size:22px;font-weight:300;margin-bottom:6px;}
 .spec .hint{font-size:14px;color:var(--c-ink-2);margin-bottom:28px;}
@@ -94,7 +74,7 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 <div class="toolbar">
   <div class="kicker">md2red · Prototype · D</div>
   <h1>HE-0001 试色 · D 美拉德×莫兰迪</h1>
-  <p>暖奶油底 + 赤陶/鼠尾草锚点，色调去饱和、柔和静谧。结构与 Swiss 基线完全一致：统一页眉 + 封面/弹性正文/尾页 + @津玉不良言右下。数据为占位示例，待核。</p>
+  <p>暖奶油底 + 赤陶/鼠尾草锢点，色调去饱和、柔和静谧。结构与 Swiss 基线完全一致：统一页眉 + 封面/弹性正文/尾页 + @津玉不良言右下。数据为占位示例，待核。</p>
   <div class="meta">
     <span class="tag">暖奶油底 #F3ECDF</span>
     <span class="tag">赤陶 #B05E3B</span>
@@ -140,7 +120,7 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
     <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right"><span class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></span></div>
     <div class="index">03</div>
     <h2>早餐吃够<br>25g 蛋白质</h2>
-    <div class="point">高蛋白早餐稳定血糖、延长饱腹感，把上午的「饿到烦躁」直接摁掉。</div>
+    <div class="point">高蛋白早餐稳定血糖、延长饱腹感，把上午的「饿到烦躁」直接揁掉。</div>
     <div class="spacer"></div>
     <div class="stat"><div class="num">13<em>% ↓</em></div><div class="cap">高蛋白早餐可降低全天总热量摄入约 13%。</div><div class="src">示例数据 · 待核 / Am. J. Clinical Nutrition</div></div>
     <div class="brandfoot">@津玉不良言</div>
@@ -191,37 +171,6 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
     <div class="brandfoot">@津玉不良言</div>
   </div></div><div class="label">08 · 尾页 End</div></div>
 
-</div>
-
-<div class="spec">
-  <h2>D · Token 速览</h2>
-  <div class="hint">暖奶油底 + 赤陶/鼠尾草。去饱和、低对比，保持 Swiss 纪律，仅色调转暖。</div>
-  <div class="spec-grid">
-    <div class="spec-block">
-      <h3>配色 · Color</h3>
-      <div class="swatch"><i style="background:#B05E3B"></i>赤陶锚点 #B05E3B</div>
-      <div class="swatch"><i style="background:#7E8C6A"></i>鼠尾草 #7E8C6A</div>
-      <div class="swatch"><i style="background:#2F2820"></i>主墨 #2F2820</div>
-      <div class="swatch"><i style="background:#6E6253"></i>次级 #6E6253</div>
-      <div class="swatch"><i style="background:#F3ECDF;border-color:#D6C9B4"></i>奶油底 #F3ECDF</div>
-      <div class="swatch"><i style="background:#EADFCC;border-color:#D6C9B4"></i>次面 #EADFCC</div>
-    </div>
-    <div class="spec-block">
-      <h3>字阶 · Type（越大越细）</h3>
-      <div class="scale-row"><span style="font-size:30px;font-weight:250">Display</span><span>104 / 250</span></div>
-      <div class="scale-row"><span style="font-size:24px;font-weight:500">标题 H1</span><span>60 / 500</span></div>
-      <div class="scale-row"><span style="font-size:19px;font-weight:300">导读 Lead</span><span>36 / 300</span></div>
-      <div class="scale-row"><span style="font-size:16px;font-weight:400">正文 Body</span><span>30 / 400</span></div>
-      <div class="scale-row"><span style="font-size:13px;letter-spacing:.2em;font-weight:600;color:#B05E3B">EYEBROW</span><span>25 / 600</span></div>
-    </div>
-    <div class="spec-block">
-      <h3>质感 · Texture</h3>
-      <div class="scale-row"><span>对比</span><span>低 · 去饱和</span></div>
-      <div class="scale-row"><span>数据块</span><span>左缘 4px 鼠尾草</span></div>
-      <div class="scale-row"><span>锚点</span><span>赤陶主 / 鼠尾草次</span></div>
-      <div class="scale-row"><span>纪律</span><span>无圆角 · 无阴影</span></div>
-    </div>
-  </div>
 </div>
 
 </body>
