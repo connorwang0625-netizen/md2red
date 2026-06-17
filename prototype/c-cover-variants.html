@@ -48,8 +48,11 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 .v-grid .floor{position:absolute;left:-30%;right:-30%;bottom:-6%;height:58%;z-index:0;background-image:repeating-linear-gradient(to right,rgba(22,224,255,.55) 0 2px,transparent 2px 82px),repeating-linear-gradient(to bottom,rgba(255,45,155,.55) 0 2px,transparent 2px 82px);transform:perspective(620px) rotateX(70deg);transform-origin:bottom center;-webkit-mask-image:linear-gradient(to top,#000 6%,transparent 86%);mask-image:linear-gradient(to top,#000 6%,transparent 86%);}
 .v-grid .horizon{position:absolute;left:0;right:0;bottom:38%;height:2px;z-index:1;background:linear-gradient(90deg,transparent,rgba(22,224,255,.9),transparent);filter:drop-shadow(0 0 16px rgba(22,224,255,.8));}
 
-/* 03 巨型幽灵数字 Ghost 6 */
-.v-ghost .ghost{position:absolute;z-index:0;right:-40px;bottom:-90px;font-family:var(--font-mono);font-weight:700;font-size:1060px;line-height:.78;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.18;filter:drop-shadow(0 0 70px rgba(22,224,255,.35));}
+/* 03 巨型幽灵数字 Ghost 6 （垂直居中，顶部不被裁切） */
+.v-ghost .ghost{position:absolute;z-index:1;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-weight:700;font-size:920px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.20;filter:drop-shadow(0 0 70px rgba(22,224,255,.30));}
+
+/* 06 组合：光晕 + 幽灵 6（红光晕已左移，避开幽灵 6） */
+.v-combo .aura{position:absolute;inset:-12%;z-index:0;background:radial-gradient(36% 30% at 14% 20%,rgba(198,255,58,.46),transparent 70%),radial-gradient(40% 36% at 26% 86%,rgba(255,45,155,.48),transparent 70%),radial-gradient(34% 30% at 90% 28%,rgba(22,224,255,.26),transparent 70%);filter:blur(42px);}
 
 /* 04 霓虹灯管描边 Tube */
 .v-tube .title{color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:1.6px var(--c-neon-3);text-shadow:0 0 8px rgba(22,224,255,.9),0 0 22px rgba(22,224,255,.55),0 0 44px rgba(22,224,255,.35);}
@@ -66,7 +69,7 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 <div class="toolbar">
   <div class="kicker">md2red · Prototype · C · 封面变体</div>
   <h1>HE-0001 · C 霓虹 · 无图多巴胺封面集</h1>
-  <p>放弃实拍图，纯 CSS 的五种「多巴胺」封面方案，内容与版式完全一致，只换视觉触发手法，方便横向比较挑选。选定后我把它落成 C 的正式封面，并把规则写进文档。</p>
+  <p>纯 CSS 的多巴胺封面方案，内容与版式完全一致，只换视觉触发手法。最后一帧（06）是你选定的 01 光晕 + 03 幽灵 6 组合（红光晕已左移、幽灵 6 顶部不再被削平）。选定后我把它落成 C 的正式封面，并把规则写进文档。</p>
 </div>
 
 <div class="gallery">
@@ -120,6 +123,16 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
     </div>
     <div class="brandfoot">@津玉不良言</div>
   </div></div><div class="label">05 · 颗粒扫描 Grain</div></div>
+
+  <div class="frame"><div class="canvas cover v-ghost v-combo"><div class="aura"></div><div class="ghost">6</div><div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
+    <div class="content">
+      <div class="topic">健康饮食与生活方式</div>
+      <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+      <div class="sub">不靠意志力，靠系统。把早晨的前 60 分钟交给固定动作，让一整天自动进入正轨。</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">06 · 光晕 + 幽灵 6（01+03 组合）</div></div>
 
 </div>
 
