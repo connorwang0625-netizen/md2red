@@ -15,6 +15,7 @@
   --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px; --s8:120px;
   --canvas-w:1080px; --canvas-h:1440px; --margin:88px; --hair-w:2px;
   --s:0.42;
+  --font-mono:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono",Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{background:var(--c-page);}
@@ -41,8 +42,8 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 .cover .content{flex:1;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:var(--s5);}
 .cover .topic{font-size:var(--t-cap);color:var(--c-ink-2);letter-spacing:.04em;margin-bottom:var(--s5);}
 .cover .title{font-size:128px;font-weight:250;line-height:1.08;letter-spacing:-.015em;margin-bottom:var(--s5);}
-.cover .title b{font-weight:500;color:var(--c-anchor);}
-.cover .title b .d{margin-right:.06em;}
+.cover .title b{font-weight:250;color:var(--c-anchor);}
+.cover .title b .d{font-family:var(--font-mono);font-weight:500;margin-right:.08em;}
 .cover .sub{font-size:var(--t-lead);color:var(--c-ink-2);font-weight:300;line-height:1.55;max-width:760px;padding-top:var(--s4);border-top:var(--hair-w) solid var(--c-hair);}
 .body .index{font-size:var(--t-index);font-weight:250;line-height:.9;color:var(--c-anchor);letter-spacing:-.02em;margin-bottom:var(--s4);}
 .body h2{font-size:var(--t-h1);font-weight:500;line-height:1.18;letter-spacing:.005em;margin-bottom:var(--s4);}
@@ -78,12 +79,12 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 <div class="toolbar">
   <div class="kicker">md2red · Prototype</div>
   <h1>HE-0001「改变人生的 6 个晨间仪式」</h1>
-  <p>Swiss 国际主义版式 · B 清新薄荷配色 · 3:4 竖版（1080×1440）。封面不加图、不用色块，走「放大标题」：标题整体放大，「6个」与标题同字号、中等字重、锚点蓝点睛（去空格、降字重避免发腻），保持安静克制。每张卡片统一页眉，@津玉不良言置于右下。数据与出处为版面占位示例，待替换为 Eat This 资料库真实数据。</p>
+  <p>Swiss 国际主义版式 · B 清新薄荷配色 · 3:4 竖版（1080×1440）。封面不加图、不用色块，走「放大标题」：「6」改用等宽字体（monospace）求几何稳定，「个」回到标题细体、只保留锚点蓝，对比更克制。每张卡片统一页眉，@津玉不良言置于右下。数据与出处为版面占位示例，待替换为 Eat This 资料库真实数据。</p>
   <div class="meta">
     <span class="tag">画布 1080×1440</span>
     <span class="tag">统一页眉</span>
     <span class="tag">单一锚点色 #2D7FF9</span>
-    <span class="tag">无圆角 · 无阴影</span>
+    <span class="tag">数字等宽字体</span>
     <span class="tag">8px 间距栅格</span>
   </div>
 </div>
