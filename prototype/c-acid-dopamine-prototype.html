@@ -41,11 +41,15 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 .brandfoot{margin-top:auto;text-align:right;padding-top:var(--s3);border-top:var(--hair-w) solid var(--c-hair);font-size:var(--t-cap);font-weight:500;color:var(--c-ink-2);letter-spacing:.04em;}
 .spacer{flex:1;}
 .neon{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(255,45,155,.25));}
+.cover{position:relative;}
+.cover .bleed{position:absolute;inset:0;z-index:0;background:#0A0A0C url("https://picsum.photos/id/1018/1080/1440") center/cover no-repeat;}
+.cover .bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.30) 0%,rgba(10,10,12,.55) 45%,rgba(10,10,12,.94) 100%);}
+.cover .pad{position:relative;z-index:1;}
 .cover .content{flex:1;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:var(--s5);}
-.cover .topic{font-size:var(--t-cap);color:var(--c-ink-2);letter-spacing:.04em;margin-bottom:var(--s4);}
-.cover .title{font-size:128px;font-weight:250;line-height:1.24;letter-spacing:-.015em;margin-bottom:var(--s5);}
-.cover .title .d{font-family:var(--font-mono);font-weight:500;font-size:1.8em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(22,224,255,.3));margin-right:.08em;position:relative;top:.05em;}
-.cover .sub{font-size:var(--t-lead);color:var(--c-ink-2);font-weight:300;line-height:1.55;max-width:760px;padding-top:var(--s4);border-top:var(--hair-w) solid var(--c-hair);}
+.cover .topic{font-size:var(--t-cap);color:var(--c-ink);letter-spacing:.04em;margin-bottom:var(--s4);}
+.cover .title{font-size:128px;font-weight:250;line-height:1.24;letter-spacing:-.015em;margin-bottom:var(--s5);text-shadow:0 2px 30px rgba(0,0,0,.55);}
+.cover .title .d{font-family:var(--font-mono);font-weight:500;font-size:1.8em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 34px rgba(22,224,255,.55));margin-right:.08em;position:relative;top:.05em;}
+.cover .sub{font-size:var(--t-lead);color:var(--c-ink);font-weight:300;line-height:1.55;max-width:760px;padding-top:var(--s4);border-top:var(--hair-w) solid rgba(245,245,247,.28);}
 .body .index{font-size:var(--t-index);font-weight:600;line-height:.9;letter-spacing:-.02em;margin-bottom:var(--s4);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(198,255,58,.25));}
 .body h2{font-size:var(--t-h1);font-weight:500;line-height:1.18;letter-spacing:.005em;margin-bottom:var(--s4);}
 .body .point{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.55;max-width:860px;}
@@ -78,18 +82,18 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 <div class="toolbar">
   <div class="kicker">md2red · Prototype · C</div>
   <h1>HE-0001 试色 · C 酸性·多巴胺霋虹</h1>
-  <p>炭黑底 + 多色霋虹锚点（酸性绿 / 电青 / 多巴胺粉渐变）。结构与 Swiss 基线完全一致：统一页眉 + 封面/弹性正文/尾页 + @津玉不良言右下。封面只把数字「6」以等宽字体放大、保留霋虹渐变发光，「个」与其余文字同为正文白字。数据为占位示例，待核。</p>
+  <p>炭黑底 + 多色霋虹锚点。封面走另一条路：黑底满版出血图（当前为占位实验图 Picsum #1018，之后替换真图）+ 自上而下加深的暗渐变遮罩 + 霋虹标题压图，戳剧性强。正文与尾页仍为干净卡片版式。数据为占位示例，待核。</p>
   <div class="meta">
     <span class="tag">炭黑底 #141418</span>
-    <span class="tag">霋虹渐变锚点</span>
+    <span class="tag">满版出血图·占位实验</span>
+    <span class="tag">霋虹标题压图</span>
     <span class="tag">数字等宽·1.8em·基线对齐</span>
-    <span class="tag">8px 间距栅格</span>
   </div>
 </div>
 
 <div class="gallery">
 
-  <div class="frame"><div class="canvas cover"><div class="pad">
+  <div class="frame"><div class="canvas cover"><div class="bleed"></div><div class="pad">
     <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
     <div class="content">
       <div class="topic">健康饮食与生活方式</div>
@@ -97,7 +101,7 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
       <div class="sub">不靠意志力，靠系统。把早晨的前 60 分钟交给固定动作，让一整天自动进入正轨。</div>
     </div>
     <div class="brandfoot">@津玉不良言</div>
-  </div></div><div class="label">01 · 封面 Cover</div></div>
+  </div></div><div class="label">01 · 封面 Cover（满版出血图）</div></div>
 
   <div class="frame"><div class="canvas body"><div class="pad">
     <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
