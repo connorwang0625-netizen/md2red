@@ -42,14 +42,15 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 .spacer{flex:1;}
 .neon{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(255,45,155,.25));}
 .cover{position:relative;}
-.cover .bleed{position:absolute;inset:0;z-index:0;background:#0A0A0C url("https://picsum.photos/id/1018/1080/1440") center/cover no-repeat;}
-.cover .bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.30) 0%,rgba(10,10,12,.55) 45%,rgba(10,10,12,.94) 100%);}
+.cover .bleed{position:absolute;inset:0;z-index:0;background:#0A0A0C url("https://images.unsplash.com/photo-1502904550040-7534597429ae?w=1080&h=1440&fit=crop&q=80") center/cover no-repeat;}
+.cover .bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.66) 0%,rgba(10,10,12,.44) 30%,rgba(10,10,12,.60) 55%,rgba(10,10,12,.96) 100%);}
 .cover .pad{position:relative;z-index:1;}
+.cover .header{text-shadow:0 1px 14px rgba(0,0,0,.6);}
 .cover .content{flex:1;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:var(--s5);}
-.cover .topic{font-size:var(--t-cap);color:var(--c-ink);letter-spacing:.04em;margin-bottom:var(--s4);}
+.cover .topic{font-size:var(--t-cap);color:var(--c-ink);letter-spacing:.04em;margin-bottom:var(--s4);text-shadow:0 1px 14px rgba(0,0,0,.5);}
 .cover .title{font-size:128px;font-weight:250;line-height:1.24;letter-spacing:-.015em;margin-bottom:var(--s5);text-shadow:0 2px 30px rgba(0,0,0,.55);}
 .cover .title .d{font-family:var(--font-mono);font-weight:500;font-size:1.8em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 34px rgba(22,224,255,.55));margin-right:.08em;position:relative;top:.05em;}
-.cover .sub{font-size:var(--t-lead);color:var(--c-ink);font-weight:300;line-height:1.55;max-width:760px;padding-top:var(--s4);border-top:var(--hair-w) solid rgba(245,245,247,.28);}
+.cover .sub{font-size:var(--t-lead);color:var(--c-ink);font-weight:300;line-height:1.55;max-width:760px;padding-top:var(--s4);border-top:var(--hair-w) solid rgba(245,245,247,.28);text-shadow:0 1px 16px rgba(0,0,0,.55);}
 .body .index{font-size:var(--t-index);font-weight:600;line-height:.9;letter-spacing:-.02em;margin-bottom:var(--s4);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(198,255,58,.25));}
 .body h2{font-size:var(--t-h1);font-weight:500;line-height:1.18;letter-spacing:.005em;margin-bottom:var(--s4);}
 .body .point{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.55;max-width:860px;}
@@ -82,10 +83,10 @@ body{font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto S
 <div class="toolbar">
   <div class="kicker">md2red · Prototype · C</div>
   <h1>HE-0001 试色 · C 酸性·多巴胺霋虹</h1>
-  <p>炭黑底 + 多色霋虹锚点。封面走另一条路：黑底满版出血图（当前为占位实验图 Picsum #1018，之后替换真图）+ 自上而下加深的暗渐变遮罩 + 霋虹标题压图，戳剧性强。正文与尾页仍为干净卡片版式。数据为占位示例，待核。</p>
+  <p>炭黑底 + 多色霋虹锚点。封面走另一条路：黑底满版出血图（当前为占位实验图·运动主题，之后替换正式图）+ 自上而下加深的暗渐变遮罩（顶部加重以压住页眉）+ 霋虹标题压图，戳剧性强。正文与尾页仍为干净卡片版式。数据为占位示例，待核。</p>
   <div class="meta">
     <span class="tag">炭黑底 #141418</span>
-    <span class="tag">满版出血图·占位实验</span>
+    <span class="tag">满版出血图·运动·占位实验</span>
     <span class="tag">霋虹标题压图</span>
     <span class="tag">数字等宽·1.8em·基线对齐</span>
   </div>
