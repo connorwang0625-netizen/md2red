@@ -1,11 +1,21 @@
-/* md2red · Swiss 主题 · 卡片视觉类（与查看器布局解耦） */
+/* md2red · Swiss 主题 · 卡片视觉 + 间距 token（与查看器布局解耦） */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@200;300;400;500;700&display=swap');
 
 .tonic{
+  /* 调色板（系列色：只换颜色、不换布局） */
   --paper:#F4F7F8; --ink:#1C2226; --g3:#5A6670;
   --line:rgba(28,34,38,.18); --accent:#2D7FF9;
   --mono:'IBM Plex Mono',monospace; --sans:'Inter','Noto Sans SC',sans-serif;
-  width:1080px; height:1440px; padding:96px; box-sizing:border-box;
+
+  /* 间距 token（1080×1440 画布，单位 px；改这里全局生效） */
+  --pad:96px;         /* 页面四周留白 */
+  --rule-gap:24px;    /* 页眉/页脚文字 ↔ 其 hairline 的距离 */
+  --lead-gap:48px;    /* 页眉 ↔ 首行标题（“首行离页眉”） */
+  --section-gap:48px; /* 主区块之间（标题↔数据锚↔正文） */
+  --block-gap:40px;   /* 正文块之间（为什么 ↔ 怎么做） */
+  --label-gap:16px;   /* 小标签 ↔ 其下正文 */
+
+  width:1080px; height:1440px; padding:var(--pad); box-sizing:border-box;
   background:var(--paper); color:var(--ink); font-family:var(--sans);
   display:flex; flex-direction:column; overflow:hidden;
   -webkit-print-color-adjust:exact; print-color-adjust:exact;
@@ -14,35 +24,40 @@
 .tonic[data-palette="C"]{ --paper:#17181A; --ink:#F5F1E8; --g3:#9A958A; --line:rgba(245,241,232,.16); --accent:#FF6A00 }
 .tonic[data-palette="D"]{ --paper:#FBF4EA; --ink:#3A2E26; --g3:#8A7A6A; --line:rgba(58,46,38,.18); --accent:#C9744A }
 
-/* shared */
-.tonic .locator{font:500 21px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--g3);display:flex;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--line)}
-.tonic .foot{margin-top:auto;border-top:1px solid var(--line);padding-top:24px;font:500 20px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--g3);display:flex;justify-content:space-between}
+/* 页眉 locator：贴顶，下方一条 hairline */
+.tonic .locator{font:500 21px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--g3);display:flex;justify-content:space-between;padding-bottom:var(--rule-gap);border-bottom:1px solid var(--line)}
+/* 页脚 foot：margin-top:auto 顶到底，上方一条 hairline */
+.tonic .foot{margin-top:auto;border-top:1px solid var(--line);padding-top:var(--rule-gap);font:500 20px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--g3);display:flex;justify-content:space-between}
+
+/* 首行标题：距页眉 = --lead-gap */
 .tonic .h-xl{font-weight:300;font-size:90px;line-height:1.1;letter-spacing:.02em;color:var(--ink)}
+.tonic .body-title{margin-top:var(--lead-gap)}
 
-/* cover */
-.tonic.cover{justify-content:space-between}
-.tonic .statement{font-weight:300;font-size:94px;line-height:1.12;letter-spacing:.02em;color:var(--ink)}
-.tonic .cover-num{font-weight:200;font-size:540px;line-height:.74;letter-spacing:-.03em;color:var(--accent)}
-.tonic .cover-num-zh{font-weight:400;font-size:62px;color:var(--ink);margin-top:6px;letter-spacing:.02em}
-.tonic .cover-lead{font-weight:400;font-size:34px;line-height:1.5;color:var(--g3);margin-bottom:30px}
-.tonic .cover-meta{border-top:1px solid var(--line);padding-top:24px;font:500 21px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--g3)}
-
-/* body */
-.tonic .body-title{margin-top:46px}
-.tonic .stat{margin-top:50px;padding-bottom:40px;border-bottom:1px solid var(--line)}
+/* 数据锚 stat */
+.tonic .stat{margin-top:var(--section-gap);padding-bottom:40px;border-bottom:1px solid var(--line)}
 .tonic .num-mega{font-weight:200;font-size:212px;line-height:.84;letter-spacing:-.02em;color:var(--accent)}
 .tonic .num-mega .u{font-weight:300;font-size:62px;margin-left:14px;letter-spacing:0}
 .tonic .stat-label{margin-top:12px;font-weight:600;font-size:28px;color:var(--g3)}
-.tonic .block{margin-top:40px}
-.tonic .block.sep{border-top:1px solid var(--line);padding-top:38px}
-.tonic .b-lbl{font:500 21px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+
+/* 正文块 Why/How */
+.tonic .block{margin-top:var(--block-gap)}
+.tonic .block.sep{border-top:1px solid var(--line);padding-top:var(--block-gap)}
+.tonic .b-lbl{font:500 21px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--label-gap)}
 .tonic .b-txt{font-weight:400;font-size:31px;line-height:1.5;color:var(--ink)}
 
-/* tail */
-.tonic .ledger{margin-top:46px}
-.tonic .led-row{display:flex;align-items:baseline;gap:28px;padding:30px 0;border-bottom:1px solid var(--line)}
+/* 封面 cover */
+.tonic.cover{justify-content:space-between}
+.tonic .statement{font-weight:300;font-size:94px;line-height:1.12;letter-spacing:.02em;color:var(--ink)}
+.tonic .cover-num{font-weight:200;font-size:540px;line-height:.74;letter-spacing:-.03em;color:var(--accent)}
+.tonic .cover-num-zh{font-weight:400;font-size:62px;color:var(--ink);margin-top:12px;letter-spacing:.02em}
+.tonic .cover-lead{font-weight:400;font-size:34px;line-height:1.5;color:var(--g3);margin-bottom:var(--section-gap)}
+.tonic .cover-meta{border-top:1px solid var(--line);padding-top:var(--rule-gap);font:500 21px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--g3)}
+
+/* 尾页 tail */
+.tonic .ledger{margin-top:var(--lead-gap)}
+.tonic .led-row{display:flex;align-items:baseline;gap:28px;padding:32px 0;border-bottom:1px solid var(--line)}
 .tonic .led-no{font:500 24px var(--mono);color:var(--accent);width:52px;flex:0 0 auto}
 .tonic .led-key{font-weight:400;font-size:40px;flex:1}
 .tonic .led-val{font-weight:300;font-size:40px;color:var(--accent)}
-.tonic .closing{margin-top:46px;font-weight:300;font-size:52px;line-height:1.3;color:var(--ink)}
+.tonic .closing{margin-top:var(--lead-gap);font-weight:300;font-size:52px;line-height:1.3;color:var(--ink)}
 .tonic .closing .ac{color:var(--accent)}
