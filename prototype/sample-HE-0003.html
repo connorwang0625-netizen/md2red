@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HE-0003 · 11 种立刻治愈坏心情的食物 · 版式层规则样例</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+--s:0.5;--cw:1080px;--ch:1440px;--margin:88px;
+--s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:64px;--s7:96px;--s8:120px;
+--hair-w:2px;
+--font:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto Sans SC",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono",Menlo,Consolas,monospace;
+--c-page:#D7E1EC;--c-card:#F4F8FC;--c-card-2:#EAF1F9;
+--c-ink:#161B22;--c-ink-2:#5A6675;--c-ink-3:#8B97A6;
+--c-anchor:#2D7FF9;--c-anchor-ink:#1F6FE5;--c-anchor-2:#2D7FF9;
+--c-hair:#C9D5E3;--c-hair-2:#DCE5EF;--c-dot-on:#2D7FF9;--big-weight:250;
+}
+body{background:#9aa6b4;font-family:var(--font);color:var(--c-ink);padding:40px;}
+.banner{max-width:1180px;margin:0 auto 32px;background:#11161d;color:#e7eef6;font-family:var(--mono);font-size:14px;line-height:1.8;padding:20px 24px;border-radius:4px;letter-spacing:.03em;}
+.banner b{color:#7fb2ff;font-weight:600;}
+.gallery{display:flex;flex-wrap:wrap;gap:44px;justify-content:center;}
+.frame{display:flex;flex-direction:column;gap:10px;}
+.label{font-family:var(--mono);font-size:13px;color:#1f2833;letter-spacing:.1em;}
+.shell{width:calc(var(--cw)*var(--s));height:calc(var(--ch)*var(--s));overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.18);}
+.canvas{width:var(--cw);height:var(--ch);transform:scale(var(--s));transform-origin:top left;background:var(--c-card);padding:var(--margin);display:flex;flex-direction:column;position:relative;}
+.header{display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--s3);border-bottom:var(--hair-w) solid var(--c-hair);}
+.h-left{font-family:var(--mono);font-size:25px;font-weight:600;letter-spacing:.14em;color:var(--c-anchor-ink);}
+.h-right{font-family:var(--mono);font-size:22px;color:var(--c-ink-3);letter-spacing:.06em;}
+.dots{display:flex;gap:8px;align-items:center;}
+.dots i{width:24px;height:7px;background:var(--c-hair);display:block;}
+.dots i.on{background:var(--c-dot-on);}
+.body{display:flex;flex-direction:column;}
+.index{font-size:128px;font-weight:var(--big-weight);line-height:1;color:var(--c-anchor);letter-spacing:.02em;margin-top:var(--s6);}
+.body h2{font-size:60px;font-weight:500;line-height:1.22;color:var(--c-ink);margin-top:var(--s3);letter-spacing:.01em;}
+.point{font-size:36px;font-weight:300;line-height:1.62;color:var(--c-ink-2);margin-top:var(--s4);max-width:18em;}
+.body.light .point{font-size:42px;color:var(--c-ink);max-width:16em;}
+.stat{margin-top:var(--s5);padding-top:var(--s4);border-top:var(--hair-w) solid var(--c-hair-2);}
+.stat .num{font-size:150px;font-weight:var(--big-weight);line-height:.9;color:var(--c-ink);font-feature-settings:"tnum";}
+.stat .num em{font-style:normal;font-family:var(--mono);font-size:46px;font-weight:400;color:var(--c-anchor-ink);margin-left:.12em;position:relative;top:-.05em;}
+.stat .cap{font-size:30px;font-weight:400;color:var(--c-ink-2);margin-top:var(--s2);line-height:1.5;max-width:20em;}
+.stat .src{font-family:var(--mono);font-size:22px;color:var(--c-ink-3);margin-top:var(--s2);letter-spacing:.04em;}
+.context{margin-top:var(--s5);padding-top:var(--s4);border-top:var(--hair-w) solid var(--c-hair-2);font-family:var(--mono);font-size:26px;color:var(--c-ink-3);letter-spacing:.05em;}
+.brandfoot{margin-top:auto;padding-top:var(--s3);border-top:var(--hair-w) solid var(--c-hair);text-align:right;font-family:var(--mono);font-size:22px;color:var(--c-ink-3);letter-spacing:.06em;}
+.cover{flex:1;display:flex;flex-direction:column;justify-content:flex-end;}
+.cover .topic{font-family:var(--mono);font-size:25px;font-weight:600;letter-spacing:.18em;color:var(--c-anchor-ink);}
+.cover .title{font-size:128px;font-weight:250;line-height:1.12;color:var(--c-ink);letter-spacing:.02em;margin-top:var(--s4);}
+.cover .title .d{color:var(--c-anchor);font-weight:500;}
+.cover .sub{font-size:36px;font-weight:300;line-height:1.6;color:var(--c-ink-2);margin-top:var(--s5);max-width:19em;}
+.end{display:flex;flex-direction:column;}
+.end .h{font-size:72px;font-weight:250;line-height:1.26;color:var(--c-ink);margin-top:var(--s6);letter-spacing:.01em;}
+.recap{margin-top:var(--s5);display:grid;grid-template-columns:1fr 1fr;gap:var(--s2) var(--s5);}
+.recap .it{font-size:30px;font-weight:400;color:var(--c-ink-2);display:flex;gap:var(--s2);align-items:baseline;}
+.recap .it .n{font-family:var(--mono);font-size:24px;color:var(--c-anchor-ink);min-width:1.8em;}
+.cta{margin-top:var(--s5);padding-top:var(--s4);border-top:var(--hair-w) solid var(--c-hair);font-size:30px;color:var(--c-ink);line-height:1.5;}
+.cta b{color:var(--c-anchor-ink);font-weight:600;}
+</style>
+</head>
+<body>
+<div class="banner">
+<b>版式层规则样例 · HE-0003「11 种立刻治愈坏心情的食物」</b><br>
+mint 主题 · 规则 <b>L</b> 留白沉底 · 规则 <b>D</b> 密度分级（数据块 / 偏轻细线锚点）· 规则 <b>W</b> 间距 token 阶梯 · 全部数据为<b>示例 · 待核</b>
+</div>
+<div class="gallery">
+
+<div class="frame"><div class="label">封面 · Cover</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003</span><span class="h-right">健康饮食 · 津玉不良言</span></div>
+<div class="cover">
+<div class="topic">治愈坏心情</div>
+<h1 class="title"><span class="d">11</span> 种立刻<br>治愈坏心情<br>的食物</h1>
+<p class="sub">心情差不一定要靠甜品续命。这 11 种食物，能从营养上把情绪托住。</p>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">01 / 11 · 正文（偏轻）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+<div class="body light">
+<div class="index">01</div>
+<h2>青口贝</h2>
+<p class="point">维生素 B12 是情绪稳定的关键，而青口贝是它最密集的来源之一。缺 B12 的人更容易疲惫、低落。</p>
+<div class="context">维生素 B12 · 海鲜中的密集来源</div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">02 / 11 · 正文（偏轻）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+<div class="body light">
+<div class="index">02</div>
+<h2>瑞士甜菜</h2>
+<p class="point">深绿叶菜富含镁，而镁不足与情绪低落直接相关。一把甜菜，就是一份天然的情绪缓冲。</p>
+<div class="context">镁 · Depression &amp; Anxiety 2009</div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">03 / 11 · 正文（偏轻）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+<div class="body light">
+<div class="index">03</div>
+<h2>蓝土豆</h2>
+<p class="point">蓝紫色来自花青素——一种强抗氧化物，被认为有助于平复情绪、保护脑细胞。颜色越深越好。</p>
+<div class="context">花青素 · 抗氧化</div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">04 / 11 · 正文（偏轻）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+<div class="body light">
+<div class="index">04</div>
+<h2>草饲牛肉</h2>
+<p class="point">比谷饲牛肉含更多 CLA 与 Omega-3，这类好脂肪与更稳的情绪相关。红肉也能是情绪友好的。</p>
+<div class="context">CLA / Omega-3 · 草饲优于谷饲</div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">05 / 11 · 正文（偏轻）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+<div class="body light">
+<div class="index">05</div>
+<h2>黑巧克力</h2>
+<p class="point">纯可可能促进内啡肽释放，让人瞬间松一口气。选可可含量高的黑巧，别选含糖量高的奶巧。</p>
+<div class="context">纯可可 · 内啡肽</div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">06 / 11 · 正文（饱满）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div>
+<div class="body">
+<div class="index">06</div>
+<h2>希腊酸奶</h2>
+<p class="point">蛋白质高、糖分低，既稳血糖又稳情绪。一份希腊酸奶的蛋白质，差不多是普通酸奶的两倍。</p>
+<div class="stat"><div class="num">10<em>g</em></div><div class="cap">每份蛋白质，约为普通酸奶的两倍。</div><div class="src">示例 · 待核 / Fage 营养标</div></div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">07 / 11 · 正文（饱满）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div>
+<div class="body">
+<div class="index">07</div>
+<h2>芦笋</h2>
+<p class="point">叶酸不足常与情绪低落同时出现，而芦笋是叶酸大户。一份芦笋就能补上每日所需的一半。</p>
+<div class="stat"><div class="num">50<em>%</em></div><div class="cap">一份芦笋约提供每日叶酸需求的一半。</div><div class="src">示例 · 待核</div></div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">08 / 11 · 正文（饱满）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></div>
+<div class="body">
+<div class="index">08</div>
+<h2>蜂蜜</h2>
+<p class="point">想吃甜又怕负担？用蜂蜜替代精制糖。它含天然抗氧化物，热量也比你想的克制。</p>
+<div class="stat"><div class="num">64<em>kcal</em></div><div class="cap">一汤匙蜂蜜约 17g 糖、64 千卡。</div><div class="src">示例 · 待核</div></div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">09 / 11 · 正文（偏轻）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></span></div>
+<div class="body light">
+<div class="index">09</div>
+<h2>樱桃番茄</h2>
+<p class="point">番茄红素是强抗氧化物，集中在番茄皮里。小番茄皮多，单位重量里的番茄红素更高。</p>
+<div class="context">番茄红素 · 皮中含量更高</div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">10 / 11 · 正文（饱满）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></div>
+<div class="body">
+<div class="index">10</div>
+<h2>鸡蛋</h2>
+<p class="point">早餐两个鸡蛋，能让你一整天更不容易饿、情绪更稳。蛋白质带来的饱腹感是关键。</p>
+<div class="stat"><div class="num">2<em>个</em></div><div class="cap">早餐吃两个鸡蛋，饱腹更久、情绪更稳。</div><div class="src">示例 · 待核 / Int. J. Obesity 2008</div></div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">11 / 11 · 正文（偏轻）</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></div>
+<div class="body light">
+<div class="index">11</div>
+<h2>椰子</h2>
+<p class="point">椰肉中的中链脂肪酸（MCT）能快速供能给大脑，被认为有助于提振情绪与精神状态。</p>
+<div class="context">中链脂肪酸 MCT · 快速供能</div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+<div class="frame"><div class="label">尾页 · End</div><div class="shell"><div class="canvas">
+<div class="header"><span class="h-left">HE-0003 · 治愈坏心情</span><span class="h-right">END</span></div>
+<div class="end">
+<div class="h">心情差的时候，<br>先吃对。</div>
+<div class="recap">
+<div class="it"><span class="n">01</span>青口贝</div>
+<div class="it"><span class="n">02</span>瑞士甜菜</div>
+<div class="it"><span class="n">03</span>蓝土豆</div>
+<div class="it"><span class="n">04</span>草饲牛肉</div>
+<div class="it"><span class="n">05</span>黑巧克力</div>
+<div class="it"><span class="n">06</span>希腊酸奶</div>
+<div class="it"><span class="n">07</span>芦笋</div>
+<div class="it"><span class="n">08</span>蜂蜜</div>
+<div class="it"><span class="n">09</span>樱桃番茄</div>
+<div class="it"><span class="n">10</span>鸡蛋</div>
+<div class="it"><span class="n">11</span>椰子</div>
+</div>
+<div class="cta">收藏这份清单，<b>关注 + 转发</b>，下次心情差先翻它。</div>
+</div>
+<div class="brandfoot">@津玉不良言</div>
+</div></div></div>
+
+</div>
+</body>
+</html>
