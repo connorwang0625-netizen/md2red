@@ -14,41 +14,44 @@
   .body .lead{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.5;max-width:860px;margin-bottom:var(--s5);}
   .body .how{font-size:var(--t-body);color:var(--c-ink-2);line-height:1.55;max-width:880px;display:flex;gap:var(--s3);}
   .body .how b{color:var(--c-anchor-ink);font-weight:600;white-space:nowrap;}
-  /* 文字主导页（无真实数字）：M04 Pull Quote */
   .body .pull{font-size:50px;font-weight:300;line-height:1.4;color:var(--c-ink);letter-spacing:-.005em;border-left:4px solid var(--c-anchor);padding:var(--s2) 0 var(--s2) var(--s4);margin-bottom:var(--s5);max-width:900px;}
   .body .src-line{font-size:var(--t-source);color:var(--c-ink-3);letter-spacing:.03em;margin-top:var(--s5);}
   body.theme-acid .body .pull{border-left-color:var(--c-neon-2);}
+  /* —— 尾页：收束标题缩小 —— */
+  .end .h{font-size:54px;line-height:1.2;}
 </style>
 </head>
 <body class="theme-mint">
 
   <div class="toolbar">
-    <div class="kicker">md2red · HE-0001</div>
-    <h1>改变人生的 6 个晨间仪式</h1>
-    <p>数字主导 File Card 正文 + .dots 页码 + M07 收束尾页。三主题可切换，画布 1080×1440（3:4）。</p>
+    <div class="kicker">md2red · DECK</div>
+    <h1>HE-0001 · 改变人生的 6 个晨间仪式</h1>
+    <p>封面 + 6 个仪式各自单焦点成页（数字主导 File Card）+ M07 收束尾页，共 8 页。三套主题可切换，画布 1080×1440（3:4）。</p>
     <div class="switch">
-      <button class="active" data-theme="theme-mint">清新薄荷</button>
-      <button data-theme="theme-acid">酸性霓虹</button>
-      <button data-theme="theme-maillard">美拉德</button>
+      <button class="active" data-theme="theme-mint">B · 清新薄荷</button>
+      <button data-theme="theme-acid">C · 酸性霓虹</button>
+      <button data-theme="theme-maillard">D · 美拉德×莫兰迪</button>
     </div>
   </div>
 
   <div class="gallery">
 
-    <!-- 封面 -->
+    <!-- 封面（已锁定，逐字还原自 634b990，禁改） -->
     <div class="frame">
       <div class="canvas cover">
-        <div class="aura"></div><div class="ghost">6</div>
+        <div class="aura"></div>
+        <div class="ghost">6</div>
         <div class="pad">
+          <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
           <div class="content">
-            <div class="topic">EAT THIS · 健康晨间习惯</div>
-            <div class="title"><span class="d">6</span>改变人生的<br>晨间仪式</div>
-            <div class="sub">晒太阳、早起、提醒目标、加维 C、冥想、喝白茶——6 件有研究背书的小事，叠出一个更清醒、更轻盈的早晨。</div>
+            <div class="topic">健康饮食与生活方式 · Eat This</div>
+            <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+            <div class="sub">夜猫子也能变早起鸟。一套有科学支撑的早晨例程，能一口气拉高你的身体、情绪、体重和收入。</div>
           </div>
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">封面 · M01</div>
+      <div class="label">封面 · Cover</div>
     </div>
 
     <!-- 01 去晒晨光 -->
@@ -56,8 +59,8 @@
       <div class="canvas">
         <div class="pad">
           <div class="header">
-            <div class="h-left">晨间仪式</div>
-            <div class="h-right"><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <span class="h-left">晨间仪式</span>
+            <span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span>
           </div>
           <div class="body">
             <div class="topline"><span class="idx">01</span><h2>去晒晨光</h2></div>
@@ -80,8 +83,8 @@
       <div class="canvas">
         <div class="pad">
           <div class="header">
-            <div class="h-left">晨间仪式</div>
-            <div class="h-right"><div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+            <span class="h-left">晨间仪式</span>
+            <span class="h-right"><span class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span>
           </div>
           <div class="body">
             <div class="topline"><span class="idx">02</span><h2>提早起床</h2></div>
@@ -104,8 +107,8 @@
       <div class="canvas">
         <div class="pad">
           <div class="header">
-            <div class="h-left">晨间仪式</div>
-            <div class="h-right"><div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div></div>
+            <span class="h-left">晨间仪式</span>
+            <span class="h-right"><span class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></span>
           </div>
           <div class="body">
             <div class="topline"><span class="idx">03</span><h2>提醒饮食目标</h2></div>
@@ -125,8 +128,8 @@
       <div class="canvas">
         <div class="pad">
           <div class="header">
-            <div class="h-left">晨间仪式</div>
-            <div class="h-right"><div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div></div>
+            <span class="h-left">晨间仪式</span>
+            <span class="h-right"><span class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></span></span>
           </div>
           <div class="body">
             <div class="topline"><span class="idx">04</span><h2>燕麦加维C</h2></div>
@@ -149,8 +152,8 @@
       <div class="canvas">
         <div class="pad">
           <div class="header">
-            <div class="h-left">晨间仪式</div>
-            <div class="h-right"><div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div></div>
+            <span class="h-left">晨间仪式</span>
+            <span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></span>
           </div>
           <div class="body">
             <div class="topline"><span class="idx">05</span><h2>冥想塑身</h2></div>
@@ -173,8 +176,8 @@
       <div class="canvas">
         <div class="pad">
           <div class="header">
-            <div class="h-left">晨间仪式</div>
-            <div class="h-right"><div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div></div>
+            <span class="h-left">晨间仪式</span>
+            <span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></span>
           </div>
           <div class="body">
             <div class="topline"><span class="idx">06</span><h2>喝杯甜茶</h2></div>
@@ -197,8 +200,8 @@
       <div class="canvas">
         <div class="pad">
           <div class="header">
-            <div class="h-left">晨间仪式</div>
-            <div class="h-right">收束</div>
+            <span class="h-left">晨间仪式</span>
+            <span class="h-right">收束</span>
           </div>
           <div class="end">
             <div class="h">改变人生，不靠某个清晨的壮举，<br>而靠每个清晨重复同一个选择。</div>
@@ -210,7 +213,7 @@
               <div class="it"><span class="n">05</span><span>冥想塑身 —— 20 分钟降压，8 周重塑大脑</span></div>
               <div class="it"><span class="n">06</span><span>喝杯甜茶 —— 抗氧化、助分解脂肪</span></div>
             </div>
-            <div class="cta">收藏这 6 件小事，明早就开始。<b>@津玉不良言</b></div>
+            <div class="cta">收藏这 6 件小事，明早就开始。</div>
           </div>
           <div class="brandfoot">@津玉不良言</div>
         </div>
