@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WL-0001 · 越减越胖的 5 大原因 · L-LEDGER 深色</title>
+<link rel="stylesheet" href="../../templates/card-base.css">
+<style>
+/* ---- WL-0001 实例：L-LEDGER 重型账本 + 逐条详情，默认深色 acid ----
+   形态：编号清单（5条，每条 原因→后果），总览账本 + 逐条详情页。
+   数字仅在原文确有时出现，无则走文字+后果框，不造数。 */
+
+/* 账本总览（沿用 L-LEDGER 母版结构） */
+.ledger{display:flex;flex-direction:column;flex:1;}
+.ledger .lead{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.5;margin-bottom:var(--s4);max-width:860px;}
+.ledger .rows{display:flex;flex-direction:column;flex:1;justify-content:center;}
+.ledger .row{display:flex;gap:var(--s5);align-items:flex-start;padding:var(--s3) 0;min-height:140px;border-top:var(--hair-w) solid var(--c-hair);}
+.ledger .row:last-child{border-bottom:var(--hair-w) solid var(--c-hair);}
+.ledger .idx{font-family:var(--font-mono);font-size:76px;font-weight:var(--big-weight);line-height:.9;color:var(--c-anchor);min-width:110px;letter-spacing:-.02em;}
+.ledger .col{flex:1;display:flex;flex-direction:column;gap:var(--s2);}
+.ledger .lbl{font-size:38px;font-weight:500;line-height:1.2;color:var(--c-ink);}
+.ledger .csq{font-size:26px;font-weight:300;line-height:1.5;color:var(--c-ink-2);}
+.ledger .csq b{color:var(--c-anchor-ink);font-weight:500;}
+
+/* 逐条详情页 */
+.detail{display:flex;flex-direction:column;flex:1;}
+.detail .top{display:flex;gap:var(--s4);align-items:baseline;margin-bottom:var(--s4);}
+.detail .idx{font-family:var(--font-mono);font-size:86px;font-weight:var(--big-weight);line-height:.85;color:var(--c-anchor);letter-spacing:-.02em;}
+.detail h2{flex:1;font-size:56px;font-weight:500;line-height:1.16;letter-spacing:.005em;}
+.detail .lead{font-size:32px;font-weight:300;color:var(--c-ink-2);line-height:1.55;max-width:880px;margin-bottom:var(--s5);}
+.detail .accent{font-family:var(--font-mono);font-size:128px;font-weight:var(--big-weight);line-height:.9;letter-spacing:-.03em;color:var(--c-anchor);margin-bottom:var(--s4);}
+.detail .accent .u{font-family:"Helvetica Neue","PingFang SC",sans-serif;font-size:.32em;font-weight:400;color:var(--c-ink-2);margin-left:.14em;}
+.detail .csq{background:var(--c-card-2);border-left:4px solid var(--c-anchor-2);padding:var(--s4) var(--s5);font-size:30px;font-weight:300;line-height:1.55;color:var(--c-ink);}
+.detail .csq .k{display:block;font-size:21px;letter-spacing:.18em;text-transform:uppercase;color:var(--c-anchor-ink);font-weight:700;margin-bottom:var(--s2);}
+.detail .csq b{color:var(--c-anchor-ink);font-weight:600;}
+.detail .src-line{margin-top:auto;padding-top:var(--s3);border-top:var(--hair-w) solid var(--c-hair);font-size:var(--t-source);color:var(--c-ink-3);letter-spacing:.03em;}
+
+/* 尾页：标题不超大（冻结约束 ≤54px），不放署名块 */
+.end .h{font-size:54px;}
+
+/* acid 深色：序号/焦点数字描金渐变 + 发光 */
+body.theme-acid .ledger .idx,
+body.theme-acid .detail .idx,
+body.theme-acid .detail .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(198,255,58,.22));}
+body.theme-acid .detail .accent .u{-webkit-text-fill-color:var(--c-ink-2);background:none;filter:none;}
+body.theme-acid .ledger .csq b,
+body.theme-acid .detail .csq b{color:var(--c-anchor-2);}
+body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
+</style>
+</head>
+<body class="theme-acid">
+
+<div class="toolbar">
+  <div class="kicker">md2red · WL-0001 · L-LEDGER</div>
+  <h1>越减越胖的 5 大原因</h1>
+  <p>体重管理 · 反共识/警示类厚文章。深色账本皮肤,与 HE-0001 的浅色 File Card 截然不同——同一套系统按语义路由出的不同手法。封面=大数字「5」,正文=账本总览 + 5 条逐条详情,尾页=收束。可切换主题预览。</p>
+  <div class="switch">
+    <button data-theme="theme-acid" class="active">C · 酸性霓虹（深色）</button>
+    <button data-theme="theme-mint">B · 清新薄荷</button>
+    <button data-theme="theme-maillard">D · 美拉德×莫兰迪</button>
+  </div>
+</div>
+
+<div class="gallery">
+
+  <!-- 01 封面：大数字 5 -->
+  <div class="frame"><div class="canvas cover">
+    <div class="aura"></div>
+    <div class="ghost">5</div>
+    <div class="pad">
+      <div class="header"><span class="h-left">WL-0001 · 减脂误区</span><span class="h-right">向右滑 →</span></div>
+      <div class="content">
+        <div class="topic">体重管理 · Eat This</div>
+        <div class="title">越减越胖的<br><span class="d">5</span>个真凶</div>
+        <div class="sub">不是你不够自律。是这 5 个被忽略的生理开关,正把你流的汗,一滴滴勾销。</div>
+      </div>
+      <div class="brandfoot">@津玉不良言</div>
+    </div>
+  </div><div class="label">01 · 封面 Cover（大数字封面）</div></div>
+
+  <!-- 02 账本总览 -->
+  <div class="frame"><div class="canvas body"><div class="pad">
+    <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
+    <div class="ledger">
+      <div class="lead">先把账摊开:每一条,都在悄悄把「减脂」改写成「囤脂」。</div>
+      <div class="rows">
+        <div class="row"><div class="idx">01</div><div class="col"><div class="lbl">食物敏感</div><div class="csq">吃到不耐受的食物→肾上腺素飙升带来「上瘾式」渴求,还引发<b>炎症与水潴留</b>。</div></div></div>
+        <div class="row"><div class="idx">02</div><div class="col"><div class="lbl">慢性压力 / 缺觉</div><div class="csq">皮质醇拆肌肉、乱血糖;少睡 1 小时就<b>饥饿素↑、瘦素↓</b>,身体逼你多吃。</div></div></div>
+        <div class="row"><div class="idx">03</div><div class="col"><div class="lbl">环境毒素</div><div class="csq">BPA、农药、塑化剂毒害线粒体——<b>烧不掉的燃料,直接变脂肪</b>。</div></div></div>
+        <div class="row"><div class="idx">04</div><div class="col"><div class="lbl">甲状腺低下</div><div class="csq">约 1/3 人甲状腺处于次优,它管<b>每个细胞的代谢</b>;它乱了,再节食也不瘦。</div></div></div>
+        <div class="row"><div class="idx">05</div><div class="col"><div class="lbl">激素停滞</div><div class="csq">减脂本身扰乱胰岛素 / 瘦素 / 饥饿素,<b>第 10 周准时反扑</b>,可持续一年。</div></div></div>
+      </div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">02 · 账本总览（L-LEDGER 账本）</div></div>
+
+  <!-- 03 详情·食物敏感（无焦点数字，文字主导） -->
+  <div class="frame"><div class="canvas body"><div class="pad">
+    <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span></div>
+    <div class="detail">
+      <div class="top"><div class="idx">01</div><h2>你对某些食物「上瘾」</h2></div>
+      <div class="lead">吃下身体不耐受的食物,会刺激肾上腺素、去甲肾上腺素飙升,产生一种「嗨」的感觉——于是你偏偏对最该避开的那几样上瘾。先排查食物敏感,再谈节食。</div>
+      <div class="csq"><span class="k">后果</span>食物敏感还会带来<b>炎症和水潴留</b>,让你「看起来更胖」;而非处方抗组胺药一边<b>增进食欲</b>、一边让你犯困少动,把问题继续放大。</div>
+      <div class="src-line">来源 · Pamela Wartian Smith, M.D.｜南佛罗里达大学医学院</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">03 · 详情 01 · 食物敏感</div></div>
+
+  <!-- 04 详情·压力缺觉（焦点：少睡1小时） -->
+  <div class="frame"><div class="canvas body"><div class="pad">
+    <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></span></div>
+    <div class="detail">
+      <div class="top"><div class="idx">02</div><h2>压力和缺觉,直接催肥</h2></div>
+      <div class="lead">长期压力让皮质醇飙升:它拆解肌肉纤维、扰乱血糖代谢,还抬高大脑里的神经肽 Y——专门点燃食欲。</div>
+      <div class="accent">1<span class="u">小时</span></div>
+      <div class="csq"><span class="k">后果</span>连续 3 天每晚少睡 1 小时,<b>饥饿素升高、瘦素下降</b>:你会更饿、更难有饱腹感。而深睡才催生燃脂的生长激素(HGH)——睡得差,等于一边减一边囤。</div>
+      <div class="src-line">来源 · Michael J. Breus, Ph.D.｜《The Sleep Doctor&#39;s Diet Plan》</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">04 · 详情 02 · 压力 / 缺觉</div></div>
+
+  <!-- 05 详情·毒素（焦点：+75%） -->
+  <div class="frame"><div class="canvas body"><div class="pad">
+    <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></span></span></div>
+    <div class="detail">
+      <div class="top"><div class="idx">03</div><h2>你每天都在吃进「肥胖原」</h2></div>
+      <div class="lead">BPA、有机磷农药、塑化剂被研究者称作 obesogen(肥胖原)。它们正越来越多地与肥胖问题挂钩。</div>
+      <div class="accent">+75<span class="u">% 肥胖风险</span></div>
+      <div class="csq"><span class="k">后果</span>哈佛 2011 研究:尿中 BPA 浓度最高的人,<b>腰围更大、肥胖风险高出 75%</b>;毒素还会毒害线粒体——「<b>烧不掉的燃料,就变成脂肪</b>」。</div>
+      <div class="src-line">来源 · Harvard 2011｜Bruce Blumberg（UC Irvine）/ Walter Crinnion, N.D.</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">05 · 详情 03 · 环境毒素</div></div>
+
+  <!-- 06 详情·甲状腺（焦点：1/3） -->
+  <div class="frame"><div class="canvas body"><div class="pad">
+    <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></span></div>
+    <div class="detail">
+      <div class="top"><div class="idx">04</div><h2>甲状腺掉链子,白减</h2></div>
+      <div class="lead">约三分之一的人,甲状腺运转在「次优区间」——常由压力、基因、每天运动超 1 小时、或过度节食(女 &lt;1700、男 &lt;2000 大卡)诱发。</div>
+      <div class="accent">1/3<span class="u">的人</span></div>
+      <div class="csq"><span class="k">后果</span>甲状腺掌管<b>每个细胞的代谢</b>。它一旦失衡,你「减到脸发青也不会瘦」;预警信号包括<b>眉尾变稀、便秘、皮肤干、月经紊乱</b>。</div>
+      <div class="src-line">来源 · Natasha Turner, N.D.｜《The Hormone Diet》</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">06 · 详情 04 · 甲状腺低下</div></div>
+
+  <!-- 07 详情·激素停滞（焦点：第10周） -->
+  <div class="frame"><div class="canvas body"><div class="pad">
+    <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></span></div>
+    <div class="detail">
+      <div class="top"><div class="idx">05</div><h2>节食本身,会触发反扑</h2></div>
+      <div class="lead">限制热量、减脂,会扰乱胰岛素、瘦素、饥饿素等一连串激素,让饥饿感飙升、代谢下滑。</div>
+      <div class="accent">10<span class="u">周后反扑</span></div>
+      <div class="csq"><span class="k">后果</span>这通常在减重计划的<b>第 10 周</b>出现,可<b>持续一年以上</b>,即便你已经停止节食;多巴胺还会下降,连动力一起被掐灭。</div>
+      <div class="src-line">来源 · New England Journal of Medicine, 2011</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">07 · 详情 05 · 激素停滞</div></div>
+
+  <!-- 08 尾页 -->
+  <div class="frame"><div class="canvas end"><div class="pad">
+    <div class="header"><span class="h-left">减脂误区</span><span class="h-right">回顾 · RECAP</span></div>
+    <div class="h">先停掉这 5 件,<br>再谈怎么减。</div>
+    <div class="recap">
+      <div class="it"><span class="n">01</span>找出并避开你敏感的食物</div>
+      <div class="it"><span class="n">02</span>睡够觉,先把压力降下来</div>
+      <div class="it"><span class="n">03</span>少碰塑料瓶与加工毒素</div>
+      <div class="it"><span class="n">04</span>查一次甲状腺功能</div>
+      <div class="it"><span class="n">05</span>别极端节食,给激素留余地</div>
+    </div>
+    <div class="cta">对照中了几条?<b>收藏这份清单</b>,先停掉,再开始。</div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">08 · 尾页 End</div></div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.switch button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.body.className = btn.dataset.theme;
+      document.documentElement.style.background = getComputedStyle(document.body).getPropertyValue('--c-page');
+      document.querySelectorAll('.switch button').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
