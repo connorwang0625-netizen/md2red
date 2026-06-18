@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>md2red · L-CHECK · 轻型清单（编号清单体·变体）</title>
+<link rel="stylesheet" href="card-base.css">
+<style>
+/* ---- L-CHECK 变体特有样式 ----
+   形态：编号清单体 / 轻型；每条 = 勾选标记 + 可执行动作 + 一句为什么。
+   规则：4–8 条，可执行、无重后果，行更轻、字重更小。 */
+.check{display:flex;flex-direction:column;}
+.check .lead{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.5;margin-bottom:var(--s4);max-width:840px;}
+.check .rows{display:flex;flex-direction:column;}
+.check .row{display:flex;gap:var(--s4);align-items:baseline;padding:var(--s3) 0;border-top:var(--hair-w) solid var(--c-hair-2);}
+.check .row:last-child{border-bottom:var(--hair-w) solid var(--c-hair-2);}
+.check .mk{font-size:34px;line-height:1;color:var(--c-anchor);font-weight:600;min-width:44px;}
+.check .col{flex:1;display:flex;flex-direction:column;gap:6px;}
+.check .txt{font-size:38px;font-weight:400;line-height:1.25;color:var(--c-ink);}
+.check .why{font-size:26px;font-weight:300;line-height:1.45;color:var(--c-ink-3);}
+body.theme-acid .check .mk{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+</style>
+</head>
+<body class="theme-mint">
+
+<div class="toolbar">
+  <div class="kicker">md2red · L-CHECK</div>
+  <h1>轻型清单 · 编号清单体变体</h1>
+  <p>用于「可执行、无重后果」的习惯 / 法则 / 技巧类清单（如 HE-0001《改变人生的 6 个晨间仪式》）。勾选行 + 动作 + 一句为什么，语气更轻。与 L-LEDGER 重型账本同形态、不同版式。</p>
+  <div class="switch">
+    <button data-theme="theme-mint" class="active">B · 清新薄荷</button>
+    <button data-theme="theme-acid">C · 酸性霿虹</button>
+    <button data-theme="theme-maillard">D · 美拉德×莫兰迪</button>
+  </div>
+</div>
+
+<div class="gallery">
+
+  <div class="frame"><div class="canvas cover">
+    <div class="aura"></div>
+    <div class="ghost">6</div>
+    <div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
+    <div class="content">
+      <div class="topic">健康饮食与生活方式</div>
+      <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+      <div class="sub">不靠意志力，靠系统。把早晨前 60 分钟交给固定动作，一整天自动进正轨。</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">01 · 封面 Cover（期号封面）</div></div>
+
+  <div class="frame"><div class="canvas body"><div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right"><span class="dots"><i class="on"></i><i></i></span></span></div>
+    <div class="check">
+      <div class="lead">不用全做。挑 1–2 个先固定下来，能坚持的才算数。</div>
+      <div class="rows">
+        <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">先喝 300ml 温水</div><div class="why">补回整夜流失的水分，比咖啡更早唤醒身体。</div></div></div>
+        <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">晒 15 分钟晨光</div><div class="why">校准生物钟，当晚更容易困、睡得更沉。</div></div></div>
+        <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">早餐吃够 25g 蛋白</div><div class="why">稳住血糖，上午不犯困、不嘴馅。</div></div></div>
+        <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">10 分钟唤醒身体</div><div class="why">拉伸或快走，把代谢和精神一起打开。</div></div></div>
+        <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">30 分钟不碰手机</div><div class="why">先把注意力留给自己，再交给世界。</div></div></div>
+        <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">写下今天 3 件要事</div><div class="why">先定方向，一天才不会被琐事带跑。</div></div></div>
+      </div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">02 · 正文 Body（L-CHECK 清单）</div></div>
+
+  <div class="frame"><div class="canvas end"><div class="pad">
+    <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">记住这三点 · RECAP</span></div>
+    <div class="h">明早，<br>挑一个先开始。</div>
+    <div class="recap">
+      <div class="it"><span class="n">01</span>先补水，再补咖啡因</div>
+      <div class="it"><span class="n">02</span>先晒光，校准生物钟</div>
+      <div class="it"><span class="n">03</span>先离屏，把开头留给自己</div>
+    </div>
+    <div class="cta">觉得有用，<b>收藏 + 关注</b>，明早照着做。</div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">03 · 尾页 End（记住这三点）</div></div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.switch button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.body.className = btn.dataset.theme;
+      document.documentElement.style.background = getComputedStyle(document.body).getPropertyValue('--c-page');
+      document.querySelectorAll('.switch button').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

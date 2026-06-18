@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>md2red · L-LEDGER · 重型账本（编号清单体·变体）</title>
+<link rel="stylesheet" href="card-base.css">
+<style>
+/* ---- L-LEDGER 变体特有样式（依赖 card-base.css 的 token 与主题）----
+   形态：编号清单体 / 重型；每条 = 序号 + 原因(label) + 后果(consequence)。
+   规则：≤6 条，每条 118–170px 满宽行，填充 ≥75%。 */
+.ledger{display:flex;flex-direction:column;}
+.ledger .lead{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.5;margin-bottom:var(--s4);max-width:840px;}
+.ledger .rows{display:flex;flex-direction:column;}
+.ledger .row{display:flex;gap:var(--s5);align-items:flex-start;padding:var(--s4) 0;min-height:150px;border-top:var(--hair-w) solid var(--c-hair);}
+.ledger .row:last-child{border-bottom:var(--hair-w) solid var(--c-hair);}
+.ledger .idx{font-family:var(--font-mono);font-size:80px;font-weight:var(--big-weight);line-height:.9;color:var(--c-anchor);min-width:118px;letter-spacing:-.02em;}
+.ledger .col{flex:1;display:flex;flex-direction:column;gap:var(--s2);}
+.ledger .lbl{font-size:40px;font-weight:500;line-height:1.2;color:var(--c-ink);}
+.ledger .csq{font-size:28px;font-weight:300;line-height:1.5;color:var(--c-ink-2);}
+.ledger .csq b{color:var(--c-anchor-ink);font-weight:500;}
+body.theme-acid .ledger .idx{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(198,255,58,.25));}
+body.theme-acid .ledger .csq b{color:var(--c-anchor-2);}
+</style>
+</head>
+<body class="theme-mint">
+
+<div class="toolbar">
+  <div class="kicker">md2red · L-LEDGER</div>
+  <h1>重型账本 · 编号清单体变体</h1>
+  <p>用于「每条都带原因 / 后果 / 代价」的反共识、警示类清单（如 WL-0001《越减越胖的 5 大原因》）。满宽账本行，左侧大号等宽序号 + 右侧原因与后果。与 L-CHECK 轻型清单同形态、不同版式。数据为占位示例，待核。</p>
+  <div class="switch">
+    <button data-theme="theme-mint" class="active">B · 清新薄荷</button>
+    <button data-theme="theme-acid">C · 酸性霿虹</button>
+    <button data-theme="theme-maillard">D · 美拉德×莫兰迪</button>
+  </div>
+</div>
+
+<div class="gallery">
+
+  <div class="frame"><div class="canvas cover">
+    <div class="aura"></div>
+    <div class="ghost">5</div>
+    <div class="pad">
+    <div class="header"><span class="h-left">WL-0001 · 减脂误区</span><span class="h-right">向右滑 →</span></div>
+    <div class="content">
+      <div class="topic">体重管理 · 越努力越胖</div>
+      <div class="title">越减越胖的<br><span class="d">5</span>大原因</div>
+      <div class="sub">不是你不够自律。是这 5 件事，正您您把你的努力一笔笔勾销。</div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">01 · 封面 Cover（钩子封面）</div></div>
+
+  <div class="frame"><div class="canvas body"><div class="pad">
+    <div class="header"><span class="h-left">WL-0001 · 减脂误区</span><span class="h-right"><span class="dots"><i class="on"></i><i></i></span></span></div>
+    <div class="ledger">
+      <div class="lead">每一条，都是「看起来在减肥、实际在囤脂」的陷阱。</div>
+      <div class="rows">
+        <div class="row"><div class="idx">01</div><div class="col"><div class="lbl">长期极端节食</div><div class="csq">基础代谢被身体主动调低，<b>一恢复正常吃就立刻反弹</b>，比减之前更难瘦。</div></div></div>
+        <div class="row"><div class="idx">02</div><div class="col"><div class="lbl">只盯着体重秤</div><div class="csq">掉的多是水和肌肉，<b>脂肪几乎没动</b>；肌肉一少，代谢更低。</div></div></div>
+        <div class="row"><div class="idx">03</div><div class="col"><div class="lbl">长期睡不够</div><div class="csq">饥饿素升高、瘦素下降，<b>第二天平均多摄入约 300 大卡</b>。</div></div></div>
+        <div class="row"><div class="idx">04</div><div class="col"><div class="lbl">猛吃「无糖」零食</div><div class="csq">代糖持续勾着食欲，<b>越吃越想吃</b>，总量反而上去了。</div></div></div>
+        <div class="row"><div class="idx">05</div><div class="col"><div class="lbl">运动后报复性进食</div><div class="csq">一小时跑步的缺口，<b>常被一顿饭轻松补回</b>，白练。</div></div></div>
+      </div>
+    </div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">02 · 正文 Body（L-LEDGER 账本）</div></div>
+
+  <div class="frame"><div class="canvas end"><div class="pad">
+    <div class="header"><span class="h-left">WL-0001 · 减脂误区</span><span class="h-right">回顾 · RECAP</span></div>
+    <div class="h">先停掉这 5 件，<br>再谈怎么减。</div>
+    <div class="recap">
+      <div class="it"><span class="n">01</span>别极端节食，护住代谢</div>
+      <div class="it"><span class="n">02</span>别只看秤，看体脂和围度</div>
+      <div class="it"><span class="n">03</span>睡够 7 小时</div>
+      <div class="it"><span class="n">04</span>少碰代糖零食</div>
+      <div class="it"><span class="n">05</span>运动后正常吃，别补偿</div>
+    </div>
+    <div class="cta">对照中了几条？<b>收藏 + 关注</b>，从今天改起。</div>
+    <div class="brandfoot">@津玉不良言</div>
+  </div></div><div class="label">03 · 尾页 End</div></div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.switch button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.body.className = btn.dataset.theme;
+      document.documentElement.style.background = getComputedStyle(document.body).getPropertyValue('--c-page');
+      document.querySelectorAll('.switch button').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
