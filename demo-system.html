@@ -10,21 +10,21 @@
   /* ============================================================
      DEMO · 统一设计系统（提案，未并入 components.css）
      纪律：6 页结构 / 网格 / UI / 阅读动线 全程零变化，只换内容。
-     四层都用 card-base.css 的主题 token，所以可切 B/C/D。
+     色彩纪律（60-30-10）：accent 是稀缺资源，只给“焦点”（数字/主张），
+     meta-UI（进度）一律静音。
      ============================================================ */
 
-  /* —— UI kit 1 · 进度条（每页同位置同样式，替代手写页码）—— */
-  .u-prog{display:flex;align-items:center;gap:16px;}
-  .u-prog .bar{width:200px;height:6px;background:var(--c-hair);position:relative;overflow:hidden;}
-  .u-prog .bar > i{position:absolute;left:0;top:0;bottom:0;background:var(--c-anchor);}
-  .u-prog .pg{font-family:var(--font-mono);font-size:22px;color:var(--c-ink-3);letter-spacing:.08em;}
+  /* —— UI kit 1 · 进度（发丝级，不抢眼，只在余光里给位置感）—— */
+  .u-prog{display:flex;align-items:center;gap:14px;opacity:.7;}
+  .u-prog .bar{width:120px;height:3px;background:var(--c-hair);position:relative;overflow:hidden;}
+  .u-prog .bar > i{position:absolute;left:0;top:0;bottom:0;background:var(--c-ink-3);}
+  .u-prog .pg{font-family:var(--font-mono);font-size:20px;color:var(--c-ink-3);letter-spacing:.06em;}
 
   /* —— 网格 · 固定三带：标题带（高度锁死）→ 焦点带 → 操作带 —— */
   .u-card .body{flex:1;display:flex;flex-direction:column;}
   .u-title{min-height:330px;}
   .u-title .idxwrap{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s3);}
   .u-title .idx{display:inline-flex;align-items:center;justify-content:center;background:var(--c-anchor);color:#fff;font-family:var(--font-mono);font-size:30px;font-weight:500;padding:6px 18px;letter-spacing:.04em;line-height:1.2;}
-  .u-title .kk{font-size:24px;letter-spacing:.2em;color:var(--c-ink-3);text-transform:uppercase;font-weight:600;}
   .u-title h2{font-size:66px;font-weight:500;line-height:1.14;color:var(--c-ink);margin-bottom:var(--s4);letter-spacing:-.01em;}
   .u-title .lead{font-size:33px;font-weight:300;line-height:1.5;color:var(--c-ink-2);max-width:820px;}
 
@@ -50,11 +50,10 @@
   .section .grid4 span{font-size:13px;color:var(--c-ink-2);}
   .section .grid4 b{color:var(--c-anchor-ink);}
   body.theme-acid .section .tag{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  /* C 主题：焦点面板数字走渐变描字（与系统一致） */
+  /* C 主题：焦点面板数字走渐变描字（与系统一致）—— accent 仍只给焦点 */
   body.theme-acid .u-focus{border-left-color:var(--c-neon-2);}
   body.theme-acid .u-focus .num{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
   body.theme-acid .u-focus .num em{-webkit-text-fill-color:var(--c-anchor-2);color:var(--c-anchor-2);background:none;}
-  body.theme-acid .u-prog .bar > i{background:var(--c-neon-1);}
   body.theme-acid .u-action .ico{border-color:var(--c-neon-2);color:var(--c-neon-1);}
   body.theme-maillard .u-focus{border-left-color:var(--c-anchor-2);}
 </style>
@@ -62,14 +61,14 @@
 <body class="theme-mint">
 
   <div class="toolbar">
-    <div class="kicker">md2red · DEMO · 统一设计系统</div>
+    <div class="kicker">md2red · DEMO · 统一设计系统 v2</div>
     <h1>四层一起上，6 页严格同一套</h1>
-    <p>这次不逐页换花样。每页都用同一套：① 固定三带网格（标题带高度锁死 → 焦点带 → 操作带），大数字落在同一条基线、翻页“钉在原地”；② 三级表面 + 焦点面板让数字浮起；③ 固定 UI kit（进度条 + 序号 chip + 操作条），每页同位置同样式；④ 固定阅读动线（眉 → 序号·标题 → 一句导语 → 数字焦点 → 怎么做）。03「提醒饮食目标」没有数字，但仍用同一个焦点面板，只把数字换成一句主张——这就是“差异来自内容，不是来自装饰”。可切主题看色彩系统。</p>
+    <p>本版调整：① 进度条从亮锡点色降为<b>发丝级灰线</b>，不再抢眼——按 60-30-10，accent 是稀缺资源，<b>只留给焦点（数字/主张）</b>；② 删掉了序号后那串没意义的小字（晨光/自律…），让“序号 → 标题”动线不被打断；③ 中间焦点文本框保留不动——它是“格式瞬间统一”的核心，03「提醒饮食目标」没有数字但用同一个面板，版式不破。可切主题看色彩系统。</p>
     <div class="grid4">
       <span><b>网格</b> 固定三带 · 焦点基线对齐</span>
-      <span><b>色彩</b> 三级表面 · 锚点钉焦点</span>
-      <span><b>UI</b> 进度条 + chip + 操作条</span>
-      <span><b>UX</b> 同一阅读动线 + 进度反馈</span>
+      <span><b>色彩</b> 60-30-10 · accent 只钉焦点</span>
+      <span><b>UI</b> 进度发丝级 + chip + 操作条</span>
+      <span><b>UX</b> 同一阅读动线 + 静音进度反馈</span>
     </div>
     <div class="switch">
       <button class="active" data-theme="theme-mint">B · 清新薄荷</button>
@@ -104,7 +103,7 @@
           <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:16.6%"></i></span><span class="pg">01 / 06</span></span></span></div>
           <div class="body">
             <div class="u-title">
-              <div class="idxwrap"><span class="idx">01</span><span class="kk">晨光</span></div>
+              <div class="idxwrap"><span class="idx">01</span></div>
               <h2>去晒晨光</h2>
               <div class="lead">醒来后第一件事，是把自己泡进自然光里。</div>
             </div>
@@ -127,7 +126,7 @@
           <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:33.3%"></i></span><span class="pg">02 / 06</span></span></span></div>
           <div class="body">
             <div class="u-title">
-              <div class="idxwrap"><span class="idx">02</span><span class="kk">自律</span></div>
+              <div class="idxwrap"><span class="idx">02</span></div>
               <h2>提早起床</h2>
               <div class="lead">不必早到痛苦，只要给清晨多留一点从容。</div>
             </div>
@@ -150,7 +149,7 @@
           <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:50%"></i></span><span class="pg">03 / 06</span></span></span></div>
           <div class="body">
             <div class="u-title">
-              <div class="idxwrap"><span class="idx">03</span><span class="kk">自控</span></div>
+              <div class="idxwrap"><span class="idx">03</span></div>
               <h2>提醒饮食目标</h2>
               <div class="lead">早餐的选择，往往定下一整天的饮食基调。</div>
             </div>
@@ -173,7 +172,7 @@
           <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:66.6%"></i></span><span class="pg">04 / 06</span></span></span></div>
           <div class="body">
             <div class="u-title">
-              <div class="idxwrap"><span class="idx">04</span><span class="kk">护心</span></div>
+              <div class="idxwrap"><span class="idx">04</span></div>
               <h2>燕麦加维C</h2>
               <div class="lead">一碗燕麦本就护心，再加一样东西效果翻倍。</div>
             </div>
@@ -196,7 +195,7 @@
           <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:83.3%"></i></span><span class="pg">05 / 06</span></span></span></div>
           <div class="body">
             <div class="u-title">
-              <div class="idxwrap"><span class="idx">05</span><span class="kk">减压</span></div>
+              <div class="idxwrap"><span class="idx">05</span></div>
               <h2>冥想塑身</h2>
               <div class="lead">先安顿好情绪，才管得住嘴。</div>
             </div>
@@ -219,7 +218,7 @@
           <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:100%"></i></span><span class="pg">06 / 06</span></span></span></div>
           <div class="body">
             <div class="u-title">
-              <div class="idxwrap"><span class="idx">06</span><span class="kk">代谢</span></div>
+              <div class="idxwrap"><span class="idx">06</span></div>
               <h2>喝杯甜茶</h2>
               <div class="lead">把早餐饮料换成一杯加蜂蜜的白茶。</div>
             </div>
