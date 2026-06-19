@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>示例 · 一致性里的节奏变化（装饰提案）</title>
+<link rel="stylesheet" href="templates/card-base.css">
+<link rel="stylesheet" href="templates/components.css">
+<style>
+  /* ===== DEMO 专用：装饰 / 节奏提案（尚未并入 components.css）=====
+     适度松动 N15：允许填色面板 + 装饰元素进正文卡。骨架仍是 data File Card。 */
+
+  /* 提案 1 · 填色面板：把「数字+机制」收进一个带顶部 accent 条的色块；how 也给轻底块 */
+  .v-panel .stat{
+    background:linear-gradient(180deg,var(--c-card-2),var(--c-card) 140%);
+    border-top:6px solid var(--c-anchor);
+    padding:var(--s5);
+  }
+  .v-panel .how{
+    background:var(--c-card-2);
+    padding:var(--s3) var(--s4);
+  }
+
+  /* 提案 2 · 大序号水印：巨大的幽灵序号沉在内容背后（装饰元素进正文） */
+  .v-ghost .pad{position:relative;}
+  .v-ghost .idxghost{
+    position:absolute;right:-30px;top:90px;z-index:0;
+    font-family:var(--font-mono);font-weight:700;font-size:560px;line-height:1;
+    color:var(--c-anchor);opacity:.07;letter-spacing:-.04em;pointer-events:none;
+  }
+  .v-ghost .header,.v-ghost .data,.v-ghost .brandfoot{position:relative;z-index:1;}
+
+  /* 提案 3 · accent 色带 + 序号 chip：左侧色带 + 序号做成填色小块 */
+  .v-band .pad::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:14px;background:var(--c-anchor);
+  }
+  .v-band .pad{position:relative;}
+  .v-band .topline .idx{
+    background:var(--c-anchor);color:#fff;padding:6px 16px;
+  }
+
+  /* 提案 4 · 机制拆标签短句：把一段灰字机制拆成「标签 + 一句」，去段落感 */
+  .v-chunk .mech{display:flex;flex-direction:column;gap:var(--s3);}
+  .v-chunk .mech .line{display:flex;gap:var(--s3);align-items:baseline;}
+  .v-chunk .mech .k{font-size:24px;font-weight:600;color:var(--c-anchor-ink);letter-spacing:.12em;min-width:96px;}
+  .v-chunk .mech .v{flex:1;font-size:30px;font-weight:300;line-height:1.45;color:var(--c-ink);}
+
+  /* DEMO 排版外壳 */
+  .section{max-width:1200px;margin:64px auto 28px;}
+  .section .tag{font-size:13px;letter-spacing:.22em;color:var(--c-anchor-ink);font-weight:600;text-transform:uppercase;}
+  .section h2{font-size:24px;font-weight:400;margin:8px 0 6px;color:var(--c-ink);}
+  .section p{font-size:14px;color:var(--c-ink-2);line-height:1.65;max-width:840px;}
+  .strip{display:flex;flex-wrap:wrap;gap:18px;max-width:1200px;margin:0 auto;}
+  .strip .frame{--s:0.26;}
+  body.theme-acid .section .tag{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+</style>
+</head>
+<body class="theme-mint">
+
+  <div class="toolbar">
+    <div class="kicker">md2red · DEMO · 一致性里的节奏变化</div>
+    <h1>同一条内容，四种「去作文感」装饰；外加一条全篇节奏演示</h1>
+    <p>骨架不变（仍是 data File Card 同一配方家族），只在「适度松动 N15」前提下加填色面板 / 装饰元素。上半部分用同一条「01 去晒晨光」对照四种装饰强度；下半部分用 6 张缩略卡演示——靠交替「强数字 / 文字主导 / 加水印 / 加色带」制造节奏，而不靠换组件。可切主题看 C 酸性霓虹下的效果。</p>
+    <div class="switch">
+      <button class="active" data-theme="theme-mint">B · 清新薄荷</button>
+      <button data-theme="theme-acid">C · 酸性霓虹</button>
+      <button data-theme="theme-maillard">D · 美拉德×莫兰迪</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="tag">PART A · 单卡装饰强度对照</div>
+    <h2>同一条「01 去晒晨光」，从现状到最满</h2>
+    <p>从左到右装饰逐级加重。你可以单选，也可以组合（比如「填色面板 + 机制拆标签」）。</p>
+  </div>
+
+  <div class="gallery">
+
+    <!-- A1 现状（对照） -->
+    <div class="frame">
+      <div class="canvas">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">01</span><h2>去晒晨光</h2></div>
+            <div class="lead">醒来后第一件事，是把自己泡进自然光里。</div>
+            <div class="stat">
+              <div class="num">20–30 <em>分钟</em></div>
+              <div class="cap">晨间光照越多，体重指数（BMI）越低，而且这一关联独立于运动量、年龄和热量摄入；即便是阴天一半强度的光也有效。</div>
+            </div>
+            <div class="how"><b>怎么做</b><span>早餐前先散个步、把通勤改成步行，或把工位挪到靠窗，让一天的头 20–30 分钟照够自然光。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">A1 · 现状（对照）</div>
+    </div>
+
+    <!-- A2 填色面板 -->
+    <div class="frame">
+      <div class="canvas v-panel">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">01</span><h2>去晒晨光</h2></div>
+            <div class="lead">醒来后第一件事，是把自己泡进自然光里。</div>
+            <div class="stat">
+              <div class="num">20–30 <em>分钟</em></div>
+              <div class="cap">晨间光照越多，体重指数（BMI）越低，而且这一关联独立于运动量、年龄和热量摄入；即便是阴天一半强度的光也有效。</div>
+            </div>
+            <div class="how"><b>怎么做</b><span>早餐前先散个步、把通勤改成步行，或把工位挪到靠窗，让一天的头 20–30 分钟照够自然光。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">A2 · 填色面板（数字区色块 + 顶部 accent 条 + how 轻底块）</div>
+    </div>
+
+    <!-- A3 大序号水印 -->
+    <div class="frame">
+      <div class="canvas v-ghost">
+        <div class="pad">
+          <div class="idxghost">01</div>
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">01</span><h2>去晒晨光</h2></div>
+            <div class="lead">醒来后第一件事，是把自己泡进自然光里。</div>
+            <div class="stat">
+              <div class="num">20–30 <em>分钟</em></div>
+              <div class="cap">晨间光照越多，体重指数（BMI）越低，而且这一关联独立于运动量、年龄和热量摄入；即便是阴天一半强度的光也有效。</div>
+            </div>
+            <div class="how"><b>怎么做</b><span>早餐前先散个步、把通勤改成步行，或把工位挪到靠窗，让一天的头 20–30 分钟照够自然光。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">A3 · 大序号水印（巨大幽灵 01 沉在背后）</div>
+    </div>
+
+    <!-- A4 综合：accent 色带 + chip + 机制拆标签 -->
+    <div class="frame">
+      <div class="canvas v-band v-chunk">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">01</span><h2>去晒晨光</h2></div>
+            <div class="lead">醒来后第一件事，是把自己泡进自然光里。</div>
+            <div class="stat">
+              <div class="num">20–30 <em>分钟</em></div>
+              <div class="mech">
+                <div class="line"><span class="k">证据</span><span class="v">晨间光照越多，BMI 越低，且独立于运动量、年龄、热量摄入。</span></div>
+                <div class="line"><span class="k">关键</span><span class="v">阴天一半强度的光也有效。</span></div>
+              </div>
+            </div>
+            <div class="how"><b>怎么做</b><span>早餐前先散个步、把通勤改成步行，或把工位挪到靠窗，让头 20–30 分钟照够自然光。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">A4 · 综合（左侧 accent 色带 + 序号 chip + 机制拆标签短句）</div>
+    </div>
+
+  </div>
+
+  <div class="section">
+    <div class="tag">PART B · 全篇节奏（6 页缩略）</div>
+    <h2>同一配方家族，靠交替「重量」制造节奏</h2>
+    <p>骨架都是 data File Card，但逐页换重心：强数字 → 强数字 → 文字主导（天然休止）→ 大序号水印 → 填色面板 → accent 色带。读者翻起来有起伏，却仍是「一组」。这就是「一致性里的节奏」，区别于往清单里插 finding/step 等异形页。</p>
+  </div>
+
+  <div class="strip">
+
+    <!-- 01 强数字 -->
+    <div class="frame">
+      <div class="canvas v-panel">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">01</span><h2>去晒晨光</h2></div>
+            <div class="stat"><div class="num">20–30 <em>分钟</em></div><div class="cap">晨光越多，BMI 越低。</div></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">01 · 强数字 + 面板</div>
+    </div>
+
+    <!-- 02 强数字 -->
+    <div class="frame">
+      <div class="canvas">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">02</span><h2>提早起床</h2></div>
+            <div class="stat"><div class="num">15 <em>分钟</em></div><div class="cap">早起者更主动、收入更高。</div></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">02 · 强数字（朴素）</div>
+    </div>
+
+    <!-- 03 文字主导（休止） -->
+    <div class="frame">
+      <div class="canvas">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">03</span><h2>提醒饮食目标</h2></div>
+            <div class="pull">把热量预算写下来、贴在镜子上，一整天都更容易选健康食物。</div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">03 · 文字主导（天然休止拍）</div>
+    </div>
+
+    <!-- 04 大序号水印 -->
+    <div class="frame">
+      <div class="canvas v-ghost">
+        <div class="pad">
+          <div class="idxghost">04</div>
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">04</span><h2>燕麦加维C</h2></div>
+            <div class="stat"><div class="num">2 <em>倍</em></div><div class="cap">维 C 让燕麦降坏胆固醇翻倍。</div></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">04 · 强数字 + 大序号水印</div>
+    </div>
+
+    <!-- 05 填色面板 -->
+    <div class="frame">
+      <div class="canvas v-panel">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">05</span><h2>冥想塑身</h2></div>
+            <div class="stat"><div class="num">8 <em>周</em></div><div class="cap">8 周重塑大脑、降压力。</div></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">05 · 强数字 + 面板</div>
+    </div>
+
+    <!-- 06 accent 色带 -->
+    <div class="frame">
+      <div class="canvas v-band">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></span></div>
+          <div class="data">
+            <div class="topline"><span class="idx">06</span><h2>喝杯甜茶</h2></div>
+            <div class="stat"><div class="num">3 <em>倍</em></div><div class="cap">白茶抗氧化约绿茶 3 倍。</div></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">06 · 强数字 + accent 色带</div>
+    </div>
+
+  </div>
+
+  <div style="height:80px"></div>
+
+<script>
+  document.querySelectorAll('.switch button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.body.className=b.dataset.theme;
+      document.documentElement.style.background = getComputedStyle(document.body).getPropertyValue('--c-page');
+      document.querySelectorAll('.switch button').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
