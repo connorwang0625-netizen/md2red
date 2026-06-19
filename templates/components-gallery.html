@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>md2red · 组件画廊 components-gallery</title>
+<link rel="stylesheet" href="card-base.css">
+<link rel="stylesheet" href="components.css">
+</head>
+<body class="theme-mint">
+
+  <div class="toolbar">
+    <div class="kicker">md2red · COMPONENTS GALLERY</div>
+    <h1>组件画廊 · 一处看齐所有组件 × 三主题</h1>
+    <p>这是全部内容组件的唯一预览页（取代了原来的 T-/L- 单件预览与 card-base.html）。皮肤在 <b>card-base.css</b>，组件在 <b>components.css</b>，两者正交：切主题只换颜色，不动结构。每篇成品 deck 在 <code>decks/&lt;slug&gt;/</code> 里同时链这两个 CSS、按语义组合这些组件。下面示例仅为结构演示，<b>数据为示例·待核</b>。</p>
+    <div class="switch">
+      <button class="active" data-theme="theme-mint">B · 清新薄荷</button>
+      <button data-theme="theme-acid">C · 酸性霓虹</button>
+      <button data-theme="theme-maillard">D · 美拉德×莫兰迪</button>
+    </div>
+  </div>
+
+  <div class="gallery">
+
+    <!-- ========== cover ========== -->
+    <div class="frame">
+      <div class="canvas cover">
+        <div class="aura"></div>
+        <div class="ghost">6</div>
+        <div class="pad">
+          <div class="header"><span class="h-left">示例期号 · cover</span><span class="h-right">向右滑 →</span></div>
+          <div class="content">
+            <div class="topic">内容题材 · 示例·待核</div>
+            <div class="title">封面标题<br><span class="d">6</span>个要点</div>
+            <div class="sub">cover = 大标题 + 可选序号描字 + 一句钩子。acid 主题下会出现背景光晕与巨型描字。</div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">cover · 封面</div>
+    </div>
+
+    <!-- ========== ledger ========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">ledger</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i></span></span></div>
+        <div class="ledger">
+          <div class="lead">重型账本：每条 = 序号 + 标签 + 后果/代价。适合反共识/警示类。</div>
+          <div class="rows">
+            <div class="row"><div class="idx">01</div><div class="col"><div class="lbl">标签一</div><div class="csq">后果描述，重点词<b>加粗</b>。示例·待核。</div></div></div>
+            <div class="row"><div class="idx">02</div><div class="col"><div class="lbl">标签二</div><div class="csq">后果描述，重点词<b>加粗</b>。示例·待核。</div></div></div>
+            <div class="row"><div class="idx">03</div><div class="col"><div class="lbl">标签三</div><div class="csq">后果描述，重点词<b>加粗</b>。示例·待核。</div></div></div>
+          </div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">ledger · 重型账本</div>
+    </div>
+
+    <!-- ========== check ========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">check</span><span class="h-right"><span class="dots"><i></i><i class="on"></i><i></i></span></span></div>
+        <div class="check">
+          <div class="lead">轻型清单：每条 = 勾选符 + 动作 + 为什么。适合可执行/种草类。</div>
+          <div class="rows">
+            <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">动作一</div><div class="why">为什么这么做。示例·待核。</div></div></div>
+            <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">动作二</div><div class="why">为什么这么做。示例·待核。</div></div></div>
+            <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">动作三</div><div class="why">为什么这么做。示例·待核。</div></div></div>
+            <div class="row"><div class="mk">✓</div><div class="col"><div class="txt">动作四</div><div class="why">为什么这么做。示例·待核。</div></div></div>
+          </div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">check · 轻型清单</div>
+    </div>
+
+    <!-- ========== data ========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">data</span><span class="h-right"><span class="dots"><i></i><i></i><i class="on"></i></span></span></div>
+        <div class="data">
+          <div class="topline"><span class="idx">01</span><h2>数据条目</h2></div>
+          <div class="lead">一页一焦点：小序号+标题 → 一句承上 → 大数字 stat → 怎么做。</div>
+          <div class="stat">
+            <div class="num">2 <em>倍</em></div>
+            <div class="cap">大数字配一句说明 + 来源。示例·待核。</div>
+            <div class="src">来源·待核</div>
+          </div>
+          <div class="how"><b>怎么做</b><span>落地动作。示例·待核。</span></div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">data · 数据条目（复用 .stat）</div>
+    </div>
+
+    <!-- ========== step ========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">step</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i class="on"></i></span></span></div>
+        <div class="step">
+          <div class="lead">步骤/流程：圆形序号 + 连接竖线表先后，每步 = 动作 + 结果。</div>
+          <div class="list">
+            <div class="item"><div class="snum">1</div><div class="col"><div class="act">动作一</div><div class="res">结果：<b>重点</b>。示例·待核。</div></div></div>
+            <div class="item"><div class="snum">2</div><div class="col"><div class="act">动作二</div><div class="res">结果：<b>重点</b>。示例·待核。</div></div></div>
+            <div class="item"><div class="snum">3</div><div class="col"><div class="act">动作三</div><div class="res">结果：<b>重点</b>。示例·待核。</div></div></div>
+          </div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">step · 步骤/流程</div>
+    </div>
+
+    <!-- ========== finding ========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">finding</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i class="on"></i></span></span></div>
+        <div class="finding">
+          <div class="center">
+            <div class="quote">一个<b>金句</b>或一个研究结论，独占整页。</div>
+            <div class="mega">80<em>%</em></div>
+            <div class="cap">大数字配一句解释。finding 是唯一允许留白的组件，但须保留三锚点。示例·待核。</div>
+          </div>
+          <div class="srcwrap"><div class="src-line">来源·待核</div></div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">finding · 单点强论（唯一允许留白）</div>
+    </div>
+
+    <!-- ========== doing（finding 配套）========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">finding · doing</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></span></div>
+        <div class="doing">
+          <h2>那怎么做？</h2>
+          <div class="row"><div class="mk">01</div><div class="col"><div class="txt">可执行项一</div><div class="why">一句补充。示例·待核。</div></div></div>
+          <div class="row"><div class="mk">02</div><div class="col"><div class="txt">可执行项二</div><div class="why">一句补充。示例·待核。</div></div></div>
+          <div class="row"><div class="mk">03</div><div class="col"><div class="txt">可执行项三</div><div class="why">一句补充。示例·待核。</div></div></div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">doing · finding 配套·可执行混用页</div>
+    </div>
+
+    <!-- ========== matrix ========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">matrix</span><span class="h-right"><span class="dots"><i class="on"></i><i></i></span></span></div>
+        <div class="matrix">
+          <div class="lead">对比/测评：列=被比项，行=维度，交叉填单元格。只做维度对照。</div>
+          <div class="grid">
+            <div class="corner"></div><div class="colhead">A</div><div class="colhead">B</div><div class="colhead">C</div>
+            <div class="rowhead">维度一</div><div class="cell">·</div><div class="cell">·</div><div class="cell">·</div>
+            <div class="rowhead">维度二</div><div class="cell">·</div><div class="cell">·</div><div class="cell">·</div>
+            <div class="rowhead">维度三</div><div class="cell">·</div><div class="cell">·</div><div class="cell">·</div>
+          </div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">matrix · 对比矩阵</div>
+    </div>
+
+    <!-- ========== pick（matrix 配套）========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">matrix · pick</span><span class="h-right"><span class="dots"><i></i><i class="on"></i></span></span></div>
+        <div class="pick">
+          <h2>怎么选？</h2>
+          <div class="row"><div class="tag">场景一</div><div class="desc">选哪个 + 一句理由。示例·待核。</div></div>
+          <div class="row"><div class="tag">场景二</div><div class="desc">选哪个 + 一句理由。示例·待核。</div></div>
+          <div class="row"><div class="tag">场景三</div><div class="desc">选哪个 + 一句理由。示例·待核。</div></div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">pick · matrix 配套·怎么选</div>
+    </div>
+
+    <!-- ========== close ========== -->
+    <div class="frame">
+      <div class="canvas"><div class="pad">
+        <div class="header"><span class="h-left">close</span><span class="h-right">收束</span></div>
+        <div class="close">
+          <div class="h">收尾：标题 ≤54px，4–6 条 recap，一个收尾块。</div>
+          <div class="recap">
+            <div class="it"><span class="n">01</span><span>要点一 —— 一句回顾</span></div>
+            <div class="it"><span class="n">02</span><span>要点二 —— 一句回顾</span></div>
+            <div class="it"><span class="n">03</span><span>要点三 —— 一句回顾</span></div>
+            <div class="it"><span class="n">04</span><span>要点四 —— 一句回顾</span></div>
+          </div>
+          <div class="cta">一句行动号召。示例·待核。</div>
+        </div>
+        <div class="brandfoot">@津玉不良言</div>
+      </div></div>
+      <div class="label">close · 收尾</div>
+    </div>
+
+  </div>
+
+<script>
+  document.querySelectorAll('.switch button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.body.className=b.dataset.theme;
+      document.documentElement.style.background = getComputedStyle(document.body).getPropertyValue('--c-page');
+      document.querySelectorAll('.switch button').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
