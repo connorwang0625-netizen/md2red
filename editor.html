@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>md2red · 出图工作台</title>
+<link rel="stylesheet" href="templates/card-base.css">
+<link rel="stylesheet" href="templates/components.css">
+<style>
+  /* 编辑时把预览缩放调大一点，更好点选文字 */
+  body{--s:0.5;padding:0 32px 96px;}
+  .canvas{print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+
+  /* 顶部操作栏（仅屏幕） */
+  .ed-bar{position:sticky;top:0;z-index:50;display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+    background:var(--c-card);border:1.5px solid var(--c-hair);padding:14px 18px;
+    max-width:1200px;margin:0 auto 22px;border-radius:10px;}
+  .ed-bar .ttl{font-size:15px;font-weight:600;color:var(--c-anchor-ink);margin-right:auto;letter-spacing:.02em;}
+  .ed-bar .btn{font-size:14px;padding:9px 18px;border:1.5px solid var(--c-anchor);background:var(--c-anchor);color:#fff;
+    cursor:pointer;border-radius:6px;font-family:inherit;line-height:1;}
+  .ed-bar .btn.file{background:transparent;color:var(--c-anchor);}
+  .ed-bar .btn:disabled{opacity:.4;cursor:not-allowed;}
+  .ed-bar .switch{margin:0;}
+  .ed-hint{max-width:1200px;margin:0 auto 26px;font-size:13px;color:var(--c-ink-2);line-height:1.7;
+    background:var(--c-card-2);padding:12px 16px;border-radius:8px;}
+  .ed-hint b{color:var(--c-anchor-ink);}
+
+  #stage{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:54px 40px;}
+  .empty{width:100%;margin:60px auto;text-align:center;color:var(--c-ink-3);font-size:15px;line-height:1.8;}
+
+  /* 可编辑文字的提示 */
+  [contenteditable="true"]{cursor:text;}
+  [contenteditable="true"]:hover{outline:2px dashed var(--c-anchor);outline-offset:3px;}
+  [contenteditable="true"]:focus{outline:2px solid var(--c-anchor);outline-offset:3px;}
+
+  /* ====== 打印 / 导出 PDF：每张卡一页，严格 1080×1440，去掉一切脚手架 ====== */
+  @media print{
+    @page{size:1080px 1440px;margin:0;}
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+    html,body{background:#fff;padding:0;margin:0;}
+    .ed-bar,.ed-hint,.frame .label{display:none !important;}
+    #stage{display:block;max-width:none;margin:0;gap:0;}
+    .frame{display:block;width:1080px;height:1440px;margin:0;padding:0;page-break-after:always;break-after:page;overflow:hidden;}
+    .frame:last-child{page-break-after:auto;break-after:auto;}
+    .canvas{transform:none !important;width:1080px !important;height:1440px !important;}
+  }
+</style>
+</head>
+<body class="theme-mint">
+
+  <div class="ed-bar">
+    <span class="ttl">md2red · 出图工作台</span>
+    <label class="btn file">导入 deck…<input id="file" type="file" accept=".html,text/html" hidden></label>
+    <div class="switch">
+      <button class="active" data-theme="theme-mint">B · 薄荷</button>
+      <button data-theme="theme-acid">C · 霓虹</button>
+      <button data-theme="theme-maillard">D · 美拉德</button>
+    </div>
+    <button id="export" class="btn" disabled>导出 PDF</button>
+  </div>
+
+  <div class="ed-hint">
+    流程：<b>导入 deck…</b> 选一个像 <code>he-0001-v2.html</code> 的文件 → 直接点卡片上的文字就能改 → 选主题 → <b>导出 PDF</b>。<br>
+    打印框里请选：目标「<b>另存为 PDF</b>」、边距「<b>无</b>」、勾选「<b>背景图形</b>」。每页已锁定 1080×1440（3:4）。<br>
+    注：本页修改只在当前会话有效，刷新即丢；小红书要的是图片（PNG）——需要「保存修改」或「直接导 PNG」告诉我加。
+  </div>
+
+  <div id="stage">
+    <div id="empty" class="empty">还没导入文件。<br>点左上「导入 deck…」选一个 deck 文件（如 he-0001-v2.html）。</div>
+  </div>
+
+<script>
+  var stage=document.getElementById('stage');
+  var fileInput=document.getElementById('file');
+  var exportBtn=document.getElementById('export');
+
+  // 哪些元素可编辑（文字叶子，结构不动）
+  var EDIT='h2,.lead,.cap,.src,.src-line,.num,.quote,.mega,.pull,.sub,.title,.topic,'
+    +'.cta,.close .h,.lbl,.csq,.act,.res,.txt,.why,.tag,.desc,.colhead,.rowhead,.cell,'
+    +'.recap .it span:last-child,.how span';
+
+  function makeEditable(node){
+    var els=node.querySelectorAll(EDIT);
+    for(var i=0;i<els.length;i++){
+      els[i].setAttribute('contenteditable','true');
+      els[i].spellcheck=false;
+    }
+  }
+
+  function syncSwitch(theme){
+    var bs=document.querySelectorAll('.ed-bar .switch button');
+    for(var i=0;i<bs.length;i++){ bs[i].classList.toggle('active',bs[i].dataset.theme===theme); }
+    document.documentElement.style.background=getComputedStyle(document.body).getPropertyValue('--c-page');
+  }
+
+  function render(html,name){
+    var doc=new DOMParser().parseFromString(html,'text/html');
+    var canvases=doc.querySelectorAll('.canvas');
+    if(!canvases.length){ alert('没在这个文件里找到卡片（.canvas）。请确认导入的是 deck HTML。'); return; }
+    // 跟随 deck 里的主题
+    var m=(doc.body.className||'').match(/theme-[a-z]+/);
+    if(m){ document.body.className=m[0]; syncSwitch(m[0]); }
+    stage.innerHTML='';
+    for(var i=0;i<canvases.length;i++){
+      var frame=document.createElement('div'); frame.className='frame';
+      var node=document.importNode(canvases[i],true);
+      frame.appendChild(node);
+      var label=document.createElement('div'); label.className='label';
+      label.textContent='第 '+(i+1)+' 页 / 共 '+canvases.length;
+      frame.appendChild(label);
+      stage.appendChild(frame);
+      makeEditable(node);
+    }
+    document.title=name||'md2red-deck';
+    exportBtn.disabled=false;
+  }
+
+  fileInput.addEventListener('change',function(e){
+    var f=e.target.files[0]; if(!f) return;
+    var name=f.name.replace(/\.html?$/i,'');
+    var r=new FileReader();
+    r.onload=function(){ render(String(r.result),name); };
+    r.readAsText(f,'utf-8');
+  });
+
+  exportBtn.addEventListener('click',function(){ if(!exportBtn.disabled) window.print(); });
+
+  var switchBtns=document.querySelectorAll('.ed-bar .switch button');
+  for(var i=0;i<switchBtns.length;i++){
+    switchBtns[i].addEventListener('click',function(){
+      document.body.className=this.dataset.theme;
+      syncSwitch(this.dataset.theme);
+    });
+  }
+</script>
+</body>
+</html>
