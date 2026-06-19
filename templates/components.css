@@ -2,7 +2,7 @@
    md2red — components.css （内容组件 / 单一事实来源）
    皮肤（token / 三主题 / 外壳 / 页眉页脚）在 card-base.css。
    本文件只放「内容组件」，命名按【结构】、与主题正交：
-     cover · ledger · check · data · step · finding · matrix · close
+     cover · ledger · check · data · step · finding · matrix · close · unified(.u-)
    规则：组件决定「内容长什么样」，主题（body.theme-*）只换配色，
    两者互不耦合。新增/调试过的组件一律落到这里，不靠任何一次会话记忆。
    每篇成品 deck = card-base.css + components.css + 组合下列组件。
@@ -121,11 +121,38 @@
 .close .cta{margin-top:var(--s5);font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);display:flex;align-items:center;gap:16px;}
 .close .cta b{color:var(--c-anchor-ink);font-weight:500;}
 
+/* ========== 9 · UNIFIED 三带卡（黄金样板系统 · he-0001 锁定）==========
+   任意文章提炼成单条要点页的【默认配方】。结构恒定：
+     标题带 .u-title（序号 chip + 标题同行 + 一句承上 .lead）
+     → 焦点面板 .u-focus（填色第三表面 + 左 8px 锚点边；大数字 .num / 无数字走 .bigtext + 机制 .mech）
+     → 操作条 .u-action（怎么做）。
+   网格：.u-card .body 整体垂直居中、上下呼吸均等（标题→焦点 s6 / 焦点→操作 s5）。
+   纪律：每页恰好 1 个填色焦点面板（N12/N15）；进度用点线 .u-dots（N11，无数字）；
+   配色 60-30-10（中性主导 / 第三表面承托 / 锚点只钉焦点，N18）。 */
+.u-card .body{flex:1;display:flex;flex-direction:column;justify-content:center;}
+.u-dots{display:flex;align-items:center;gap:10px;}
+.u-dots i{width:10px;height:10px;border-radius:50%;background:var(--c-hair);display:block;}
+.u-dots i.on{width:30px;border-radius:5px;background:var(--c-anchor);}
+.u-title .titlerow{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s4);}
+.u-title .idx{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;background:var(--c-anchor);color:#fff;font-family:var(--font-mono);font-size:30px;font-weight:500;padding:6px 18px;letter-spacing:.04em;line-height:1.2;}
+.u-title h2{font-size:66px;font-weight:500;line-height:1.14;color:var(--c-ink);margin:0;letter-spacing:-.01em;}
+.u-title .lead{font-size:33px;font-weight:300;line-height:1.5;color:var(--c-ink-2);max-width:820px;}
+.u-focus{margin-top:var(--s6);min-height:360px;background:var(--c-card-2);border-left:8px solid var(--c-anchor);padding:var(--s5);display:flex;flex-direction:column;justify-content:center;gap:var(--s4);}
+.u-focus .num{font-size:184px;font-weight:var(--big-weight);line-height:.84;color:var(--c-ink);display:flex;align-items:baseline;gap:18px;letter-spacing:-.025em;}
+.u-focus .num em{font-size:52px;font-style:normal;font-weight:500;color:var(--c-anchor);}
+.u-focus .bigtext{font-size:58px;font-weight:300;line-height:1.32;color:var(--c-ink);letter-spacing:-.01em;}
+.u-focus .mech{font-size:28px;font-weight:300;line-height:1.5;color:var(--c-ink-2);max-width:780px;}
+.u-action{margin-top:var(--s5);display:flex;align-items:center;gap:var(--s3);border:2px solid var(--c-hair);padding:var(--s3) var(--s4);}
+.u-action .ico{width:54px;height:54px;flex:0 0 auto;border-radius:50%;border:2px solid var(--c-anchor);color:var(--c-anchor);display:flex;align-items:center;justify-content:center;font-size:26px;}
+.u-action .lbl{font-size:24px;font-weight:600;color:var(--c-anchor-ink);letter-spacing:.1em;flex:0 0 auto;}
+.u-action .txt{flex:1;font-size:27px;font-weight:300;line-height:1.45;color:var(--c-ink);}
+
 /* ========== 主题专属覆盖（组件级；皮肤级在 card-base.css）========== */
 /* B 清新薄荷 */
 body.theme-mint .stat .num em{font-weight:400;color:var(--c-anchor-ink);}
 /* D 美拉德×莫兰迪 */
 body.theme-maillard .stat{border-left:4px solid var(--c-anchor-2);}
+body.theme-maillard .u-focus{border-left-color:var(--c-anchor-2);}
 /* C 酸性霓虹：深底封面 + 渐变描字 + 发光 */
 body.theme-acid .canvas.cover{background:var(--c-page);}
 body.theme-acid .cover .aura,body.theme-acid .cover .ghost{display:block;}
@@ -149,3 +176,8 @@ body.theme-acid .matrix .colhead{background:var(--grad);-webkit-background-clip:
 body.theme-acid .pick .tag{color:var(--c-anchor-2);}
 body.theme-acid .close .recap .n{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
 body.theme-acid .close .cta b{font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+body.theme-acid .u-focus{border-left-color:var(--c-neon-2);}
+body.theme-acid .u-focus .num{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+body.theme-acid .u-focus .num em{-webkit-text-fill-color:var(--c-anchor-2);color:var(--c-anchor-2);background:none;}
+body.theme-acid .u-dots i.on{background:var(--c-neon-1);}
+body.theme-acid .u-action .ico{border-color:var(--c-neon-2);color:var(--c-neon-1);}
