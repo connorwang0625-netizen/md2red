@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>示例 · 统一设计系统（网格 / 色彩 / UI / UX）</title>
+<link rel="stylesheet" href="templates/card-base.css">
+<link rel="stylesheet" href="templates/components.css">
+<style>
+  /* ============================================================
+     DEMO · 统一设计系统（提案，未并入 components.css）
+     纪律：6 页结构 / 网格 / UI / 阅读动线 全程零变化，只换内容。
+     四层都用 card-base.css 的主题 token，所以可切 B/C/D。
+     ============================================================ */
+
+  /* —— UI kit 1 · 进度条（每页同位置同样式，替代手写页码）—— */
+  .u-prog{display:flex;align-items:center;gap:16px;}
+  .u-prog .bar{width:200px;height:6px;background:var(--c-hair);position:relative;overflow:hidden;}
+  .u-prog .bar > i{position:absolute;left:0;top:0;bottom:0;background:var(--c-anchor);}
+  .u-prog .pg{font-family:var(--font-mono);font-size:22px;color:var(--c-ink-3);letter-spacing:.08em;}
+
+  /* —— 网格 · 固定三带：标题带（高度锁死）→ 焦点带 → 操作带 —— */
+  .u-card .body{flex:1;display:flex;flex-direction:column;}
+  .u-title{min-height:330px;}
+  .u-title .idxwrap{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s3);}
+  .u-title .idx{display:inline-flex;align-items:center;justify-content:center;background:var(--c-anchor);color:#fff;font-family:var(--font-mono);font-size:30px;font-weight:500;padding:6px 18px;letter-spacing:.04em;line-height:1.2;}
+  .u-title .kk{font-size:24px;letter-spacing:.2em;color:var(--c-ink-3);text-transform:uppercase;font-weight:600;}
+  .u-title h2{font-size:66px;font-weight:500;line-height:1.14;color:var(--c-ink);margin-bottom:var(--s4);letter-spacing:-.01em;}
+  .u-title .lead{font-size:33px;font-weight:300;line-height:1.5;color:var(--c-ink-2);max-width:820px;}
+
+  /* —— 色彩 · 焦点面板（第三表面层 + 左侧 accent，让数字浮起）—— */
+  .u-focus{min-height:400px;background:var(--c-card-2);border-left:8px solid var(--c-anchor);padding:var(--s5);display:flex;flex-direction:column;justify-content:center;gap:var(--s4);}
+  .u-focus .num{font-size:184px;font-weight:var(--big-weight);line-height:.84;color:var(--c-ink);display:flex;align-items:baseline;gap:18px;letter-spacing:-.025em;}
+  .u-focus .num em{font-size:52px;font-style:normal;font-weight:500;color:var(--c-anchor);}
+  .u-focus .bigtext{font-size:58px;font-weight:300;line-height:1.32;color:var(--c-ink);letter-spacing:-.01em;}
+  .u-focus .mech{font-size:28px;font-weight:300;line-height:1.5;color:var(--c-ink-2);max-width:780px;}
+
+  /* —— UI kit 2 · 操作条（每页同位置同样式，钉在底部）—— */
+  .u-action{margin-top:auto;display:flex;align-items:center;gap:var(--s3);border:2px solid var(--c-hair);padding:var(--s3) var(--s4);}
+  .u-action .ico{width:54px;height:54px;flex:0 0 auto;border-radius:50%;border:2px solid var(--c-anchor);color:var(--c-anchor);display:flex;align-items:center;justify-content:center;font-size:26px;}
+  .u-action .lbl{font-size:24px;font-weight:600;color:var(--c-anchor-ink);letter-spacing:.1em;flex:0 0 auto;}
+  .u-action .txt{flex:1;font-size:27px;font-weight:300;line-height:1.45;color:var(--c-ink);}
+
+  /* —— DEMO 排版外壳 —— */
+  .section{max-width:1200px;margin:60px auto 26px;}
+  .section .tag{font-size:13px;letter-spacing:.22em;color:var(--c-anchor-ink);font-weight:600;text-transform:uppercase;}
+  .section h2{font-size:24px;font-weight:400;margin:8px 0 6px;color:var(--c-ink);}
+  .section p{font-size:14px;color:var(--c-ink-2);line-height:1.65;max-width:860px;}
+  .section .grid4{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:12px;}
+  .section .grid4 span{font-size:13px;color:var(--c-ink-2);}
+  .section .grid4 b{color:var(--c-anchor-ink);}
+  body.theme-acid .section .tag{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  /* C 主题：焦点面板数字走渐变描字（与系统一致） */
+  body.theme-acid .u-focus{border-left-color:var(--c-neon-2);}
+  body.theme-acid .u-focus .num{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  body.theme-acid .u-focus .num em{-webkit-text-fill-color:var(--c-anchor-2);color:var(--c-anchor-2);background:none;}
+  body.theme-acid .u-prog .bar > i{background:var(--c-neon-1);}
+  body.theme-acid .u-action .ico{border-color:var(--c-neon-2);color:var(--c-neon-1);}
+  body.theme-maillard .u-focus{border-left-color:var(--c-anchor-2);}
+</style>
+</head>
+<body class="theme-mint">
+
+  <div class="toolbar">
+    <div class="kicker">md2red · DEMO · 统一设计系统</div>
+    <h1>四层一起上，6 页严格同一套</h1>
+    <p>这次不逐页换花样。每页都用同一套：① 固定三带网格（标题带高度锁死 → 焦点带 → 操作带），大数字落在同一条基线、翻页“钉在原地”；② 三级表面 + 焦点面板让数字浮起；③ 固定 UI kit（进度条 + 序号 chip + 操作条），每页同位置同样式；④ 固定阅读动线（眉 → 序号·标题 → 一句导语 → 数字焦点 → 怎么做）。03「提醒饮食目标」没有数字，但仍用同一个焦点面板，只把数字换成一句主张——这就是“差异来自内容，不是来自装饰”。可切主题看色彩系统。</p>
+    <div class="grid4">
+      <span><b>网格</b> 固定三带 · 焦点基线对齐</span>
+      <span><b>色彩</b> 三级表面 · 锚点钉焦点</span>
+      <span><b>UI</b> 进度条 + chip + 操作条</span>
+      <span><b>UX</b> 同一阅读动线 + 进度反馈</span>
+    </div>
+    <div class="switch">
+      <button class="active" data-theme="theme-mint">B · 清新薄荷</button>
+      <button data-theme="theme-acid">C · 酸性霓虹</button>
+      <button data-theme="theme-maillard">D · 美拉德×莫兰迪</button>
+    </div>
+  </div>
+
+  <div class="gallery">
+
+    <!-- 封面 -->
+    <div class="frame">
+      <div class="canvas cover">
+        <div class="aura"></div>
+        <div class="ghost">6</div>
+        <div class="pad">
+          <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
+          <div class="content">
+            <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
+            <div class="sub">夜猫子也能变早起鸟。一套有科学支撑的早晨例程，能一口气拉高你的身体、情绪、体重和收入。</div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">封面 · cover</div>
+    </div>
+
+    <!-- 01 -->
+    <div class="frame">
+      <div class="canvas u-card">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:16.6%"></i></span><span class="pg">01 / 06</span></span></span></div>
+          <div class="body">
+            <div class="u-title">
+              <div class="idxwrap"><span class="idx">01</span><span class="kk">晨光</span></div>
+              <h2>去晒晨光</h2>
+              <div class="lead">醒来后第一件事，是把自己泡进自然光里。</div>
+            </div>
+            <div class="u-focus">
+              <div class="num">20–30 <em>分钟</em></div>
+              <div class="mech">晨间光照越多，BMI 越低，且独立于运动量、年龄和热量摄入；阴天一半强度的光也有效。</div>
+            </div>
+            <div class="u-action"><span class="ico">→</span><span class="lbl">怎么做</span><span class="txt">早餐前先散个步、把通勤改成步行，或把工位挪到靠窗。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">01 · 统一系统</div>
+    </div>
+
+    <!-- 02 -->
+    <div class="frame">
+      <div class="canvas u-card">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:33.3%"></i></span><span class="pg">02 / 06</span></span></span></div>
+          <div class="body">
+            <div class="u-title">
+              <div class="idxwrap"><span class="idx">02</span><span class="kk">自律</span></div>
+              <h2>提早起床</h2>
+              <div class="lead">不必早到痛苦，只要给清晨多留一点从容。</div>
+            </div>
+            <div class="u-focus">
+              <div class="num">15 <em>分钟</em></div>
+              <div class="mech">早起者更主动、目标感更强，职业成就与收入也往往更高；约一半属性由基因决定，但作息可逐步前移约 1 小时。</div>
+            </div>
+            <div class="u-action"><span class="ico">→</span><span class="lbl">怎么做</span><span class="txt">每周把闹钟往前拨几分钟，循序渐进，先从 15 分钟开始。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">02 · 统一系统</div>
+    </div>
+
+    <!-- 03 文字主导（无数字，仍用同一焦点面板） -->
+    <div class="frame">
+      <div class="canvas u-card">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:50%"></i></span><span class="pg">03 / 06</span></span></span></div>
+          <div class="body">
+            <div class="u-title">
+              <div class="idxwrap"><span class="idx">03</span><span class="kk">自控</span></div>
+              <h2>提醒饮食目标</h2>
+              <div class="lead">早餐的选择，往往定下一整天的饮食基调。</div>
+            </div>
+            <div class="u-focus">
+              <div class="bigtext">把热量预算写下来，贴在浴室镜子上。</div>
+              <div class="mech">定期收到「热量预算」提醒的人，一整天都更容易做出健康的食物选择。</div>
+            </div>
+            <div class="u-action"><span class="ico">→</span><span class="lbl">怎么做</span><span class="txt">用便签或手机闹钟标签，把目标放在每天一定会看到的地方。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">03 · 文字主导（同一面板）</div>
+    </div>
+
+    <!-- 04 -->
+    <div class="frame">
+      <div class="canvas u-card">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:66.6%"></i></span><span class="pg">04 / 06</span></span></span></div>
+          <div class="body">
+            <div class="u-title">
+              <div class="idxwrap"><span class="idx">04</span><span class="kk">护心</span></div>
+              <h2>燕麦加维C</h2>
+              <div class="lead">一碗燕麦本就护心，再加一样东西效果翻倍。</div>
+            </div>
+            <div class="u-focus">
+              <div class="num">2 <em>倍</em></div>
+              <div class="mech">给燕麦配上维生素 C，酚类物质协同稳定 LDL（坏胆固醇），让燕麦降坏胆固醇的护心效果翻倍。</div>
+            </div>
+            <div class="u-action"><span class="ico">→</span><span class="lbl">怎么做</span><span class="txt">早餐燕麦里拌入猕猴桃、草莓、橙子，或配一小杯鲜橙汁。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">04 · 统一系统</div>
+    </div>
+
+    <!-- 05 -->
+    <div class="frame">
+      <div class="canvas u-card">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:83.3%"></i></span><span class="pg">05 / 06</span></span></span></div>
+          <div class="body">
+            <div class="u-title">
+              <div class="idxwrap"><span class="idx">05</span><span class="kk">减压</span></div>
+              <h2>冥想塑身</h2>
+              <div class="lead">先安顿好情绪，才管得住嘴。</div>
+            </div>
+            <div class="u-focus">
+              <div class="num">8 <em>周</em></div>
+              <div class="mech">每天 20 分钟专注呼吸能降低促脂的压力激素；坚持 8 周足以重塑大脑结构、降低杏仁核灰质密度。</div>
+            </div>
+            <div class="u-action"><span class="ico">→</span><span class="lbl">怎么做</span><span class="txt">起床后给自己 20 分钟，安静坐着专注呼吸，让大脑先于身体醒来。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">05 · 统一系统</div>
+    </div>
+
+    <!-- 06 -->
+    <div class="frame">
+      <div class="canvas u-card">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right"><span class="u-prog"><span class="bar"><i style="width:100%"></i></span><span class="pg">06 / 06</span></span></span></div>
+          <div class="body">
+            <div class="u-title">
+              <div class="idxwrap"><span class="idx">06</span><span class="kk">代谢</span></div>
+              <h2>喝杯甜茶</h2>
+              <div class="lead">把早餐饮料换成一杯加蜂蜜的白茶。</div>
+            </div>
+            <div class="u-focus">
+              <div class="num">3 <em>倍</em></div>
+              <div class="mech">白茶的抗氧化物约是绿茶的 3 倍，能同时促进脂肪分解、抑制脂肪生成；再加一勺蜂蜜，葡萄糖配咖啡因还能提升专注力。</div>
+            </div>
+            <div class="u-action"><span class="ico">→</span><span class="lbl">怎么做</span><span class="txt">用白茶替代含糖饮料，想加甜就加一勺蜂蜜，趁早晨喝。</span></div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">06 · 统一系统</div>
+    </div>
+
+    <!-- 尾页 -->
+    <div class="frame">
+      <div class="canvas">
+        <div class="pad">
+          <div class="header"><span class="h-left">晨间仪式</span><span class="h-right">收束</span></div>
+          <div class="close">
+            <div class="h">这六件事单独看都不大，<br>难在每个清晨都重复去做。</div>
+            <div class="recap">
+              <div class="it"><span class="n">01</span><span>去晒晨光 · 晨光越多，BMI 越低</span></div>
+              <div class="it"><span class="n">02</span><span>提早起床 · 更主动、收入更高</span></div>
+              <div class="it"><span class="n">03</span><span>提醒目标 · 把目标贴在眼前</span></div>
+              <div class="it"><span class="n">04</span><span>燕麦加维C · 降坏胆固醇翻倍</span></div>
+              <div class="it"><span class="n">05</span><span>冥想塑身 · 8 周重塑大脑</span></div>
+              <div class="it"><span class="n">06</span><span>喝杯甜茶 · 抗氧化、助代谢</span></div>
+            </div>
+            <div class="cta"><b>收藏这 6 件小事</b>，明早就开始。</div>
+          </div>
+          <div class="brandfoot">@津玉不良言</div>
+        </div>
+      </div>
+      <div class="label">尾页 · close</div>
+    </div>
+
+  </div>
+
+  <div style="height:80px"></div>
+
+<script>
+  document.querySelectorAll('.switch button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.body.className=b.dataset.theme;
+      document.documentElement.style.background = getComputedStyle(document.body).getPropertyValue('--c-page');
+      document.querySelectorAll('.switch button').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
