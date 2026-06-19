@@ -10,9 +10,9 @@
 <body class="theme-mint">
 
   <div class="toolbar">
-    <div class="kicker">md2red · DECK</div>
+    <div class="kicker">md2red · DECK · HE-0001</div>
     <h1>HE-0001 · 改变人生的 6 个晨间仪式</h1>
-    <p>组合 = cover 封面 + 6 张 data 数据条目 File Card + close 收尾，共 8 页。皮肤 card-base.css + 组件 components.css，主题可切换，画布 1080×1440（3:4）。</p>
+    <p>按生成契约重生：封面 + 正文 data×6 + close，共 8 页。六条统一 data 配方家族（07 §E 「编号清单体保持单一风格」）；五条带真实数字走 .stat，03「提醒饮食目标」原文无数字、走同家族 .pull 文字主导（不带 .num）。按约束：卡面一律不展示来源出处（.src/.src-line）。主题可切换，画布 1080×1440（3:4）。</p>
     <div class="switch">
       <button class="active" data-theme="theme-mint">B · 清新薄荷</button>
       <button data-theme="theme-acid">C · 酸性霓虹</button>
@@ -22,7 +22,7 @@
 
   <div class="gallery">
 
-    <!-- 封面（已锁定，逐字还原自 634b990，禁改） -->
+    <!-- 封面 cover（冻结基准 634b990，按用户授权删 .topic 行） -->
     <div class="frame">
       <div class="canvas cover">
         <div class="aura"></div>
@@ -30,7 +30,6 @@
         <div class="pad">
           <div class="header"><span class="h-left">HE-0001 · 晨间仪式</span><span class="h-right">向右滑 →</span></div>
           <div class="content">
-            <div class="topic">健康饮食与生活方式 · Eat This</div>
             <div class="title">改变人生的<br><span class="d">6</span>个晨间仪式</div>
             <div class="sub">夜猫子也能变早起鸟。一套有科学支撑的早晨例程，能一口气拉高你的身体、情绪、体重和收入。</div>
           </div>
@@ -40,7 +39,7 @@
       <div class="label">封面 · cover</div>
     </div>
 
-    <!-- 01 去晒晨光 -->
+    <!-- 01 去晒晨光 · data/stat -->
     <div class="frame">
       <div class="canvas">
         <div class="pad">
@@ -50,11 +49,10 @@
           </div>
           <div class="data">
             <div class="topline"><span class="idx">01</span><h2>去晒晨光</h2></div>
-            <div class="lead">醒来后第一件事，是让自己泡进自然光里。</div>
+            <div class="lead">醒来后第一件事，是把自己泡进自然光里。</div>
             <div class="stat">
               <div class="num">20–30 <em>分钟</em></div>
-              <div class="cap">晨间光照越多，体重指数（BMI）越低——而且这一关联独立于运动量、年龄和热量摄入。</div>
-              <div class="src">PLOS ONE</div>
+              <div class="cap">晨间光照越多，体重指数（BMI）越低——而且这一关联独立于运动量、年龄和热量摄入；即便是阴天一半强度的光也有效。</div>
             </div>
             <div class="how"><b>怎么做</b><span>早餐前先散个步、把通勤改成步行，或干脆把工位挪到靠窗——让一天的头 20–30 分钟照够自然光。</span></div>
           </div>
@@ -64,7 +62,7 @@
       <div class="label">01 · data 数字主导</div>
     </div>
 
-    <!-- 02 提早起床 -->
+    <!-- 02 提早起床 · data/stat -->
     <div class="frame">
       <div class="canvas">
         <div class="pad">
@@ -74,13 +72,12 @@
           </div>
           <div class="data">
             <div class="topline"><span class="idx">02</span><h2>提早起床</h2></div>
-            <div class="lead">不必早到痛苦，只要给清晨多留出一点从容。</div>
+            <div class="lead">不必早到痛苦，只要给清晨多留一点从容。</div>
             <div class="stat">
               <div class="num">15 <em>分钟</em></div>
-              <div class="cap">习惯早起的人更主动、目标感更强，收入也往往更高；约一半的作息类型由基因决定，但可以逐步训练。</div>
-              <div class="src">Christoph Randler, 2008</div>
+              <div class="cap">习惯早起的人更主动、目标感更强，职业成就与收入也往往更高；约一半的「早鸟 / 夜猫」属性由基因决定，但作息可逐步前移约 1 小时。</div>
             </div>
-            <div class="how"><b>怎么做</b><span>别想一步到位，每周把闹钟往前拨几分钟，循序渐进地把起床时间提早。</span></div>
+            <div class="how"><b>怎么做</b><span>别想一步到位——每周把闹钟往前拨几分钟，循序渐进把起床时间提早，先从 15 分钟开始。</span></div>
           </div>
           <div class="brandfoot">@津玉不良言</div>
         </div>
@@ -88,7 +85,7 @@
       <div class="label">02 · data 数字主导</div>
     </div>
 
-    <!-- 03 提醒饮食目标（文字主导 · 无真实数字）-->
+    <!-- 03 提醒饮食目标 · data 文字主导（原文无真实数字 → .pull + .how，不带 .num） -->
     <div class="frame">
       <div class="canvas">
         <div class="pad">
@@ -98,18 +95,17 @@
           </div>
           <div class="data">
             <div class="topline"><span class="idx">03</span><h2>提醒饮食目标</h2></div>
-            <div class="lead">早餐的选择，往往定下了一整天的饮食基调。</div>
-            <div class="pull">把当天的热量预算写下来，<br>贴在浴室镜子上。</div>
-            <div class="how"><b>怎么做</b><span>用便签或手机短信反复提醒自己的饮食目标，研究发现这能让你全天更容易做出健康的食物选择。</span></div>
-            <div class="src-line">Health Promotion Practice</div>
+            <div class="lead">早餐的选择，往往定下一整天的饮食基调。</div>
+            <div class="pull">把当天的热量预算写下来、贴在浴室镜子上——定期收到「热量预算」提醒的人，一整天都更容易做出健康的食物选择。</div>
+            <div class="how"><b>怎么做</b><span>用便签或手机闹钟标签反复提醒，把饮食目标放在每天一定会看到的地方。</span></div>
           </div>
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">03 · data 文字主导（混用）</div>
+      <div class="label">03 · data 文字主导（无数字）</div>
     </div>
 
-    <!-- 04 燕麦加维C -->
+    <!-- 04 燕麦加维C · data/stat -->
     <div class="frame">
       <div class="canvas">
         <div class="pad">
@@ -122,10 +118,9 @@
             <div class="lead">一碗燕麦本就护心，再加一样东西效果翻倍。</div>
             <div class="stat">
               <div class="num">2 <em>倍</em></div>
-              <div class="cap">给燕麦加一份维生素 C，其中的酚类物质能让燕麦“降低坏胆固醇（LDL）”的效果翻倍。</div>
-              <div class="src">期刊《Nutrition》</div>
+              <div class="cap">给燕麦配上维生素 C，酚类物质协同稳定 LDL（坏胆固醇），让燕麦「降坏胆固醇」的护心效果翻倍。</div>
             </div>
-            <div class="how"><b>怎么做</b><span>早餐燕麦里拌入猕猴桃、草莓或橙子等富含维生素 C 的水果。</span></div>
+            <div class="how"><b>怎么做</b><span>早餐燕麦里拌入猥猴桃、草莓、橙子，或配一小杯鲜橙汁。</span></div>
           </div>
           <div class="brandfoot">@津玉不良言</div>
         </div>
@@ -133,7 +128,7 @@
       <div class="label">04 · data 数字主导</div>
     </div>
 
-    <!-- 05 冥想塑身 -->
+    <!-- 05 冥想塑身 · data/stat -->
     <div class="frame">
       <div class="canvas">
         <div class="pad">
@@ -146,8 +141,7 @@
             <div class="lead">先安顿好情绪，才管得住嘴。</div>
             <div class="stat">
               <div class="num">8 <em>周</em></div>
-              <div class="cap">每天 20 分钟冥想能降低压力激素；坚持 8 周可重塑大脑、增加杏仁核灰质，帮助管住情绪性进食。</div>
-              <div class="src">麻省总医院（MGH）</div>
+              <div class="cap">每天 20 分钟专注呼吸能降低促脂的压力激素；坚持 8 周足以重塑大脑结构、降低与压力相关的杏仁核灰质密度，帮你管住情绪性进食。</div>
             </div>
             <div class="how"><b>怎么做</b><span>起床后给自己 20 分钟，安静坐着专注呼吸，让大脑先于身体醒来。</span></div>
           </div>
@@ -157,7 +151,7 @@
       <div class="label">05 · data 数字主导</div>
     </div>
 
-    <!-- 06 喝杯甜茶 -->
+    <!-- 06 喝杯甜茶 · data/stat -->
     <div class="frame">
       <div class="canvas">
         <div class="pad">
@@ -170,8 +164,7 @@
             <div class="lead">把早餐饮料换成一杯加蜂蜜的白茶。</div>
             <div class="stat">
               <div class="num">3 <em>倍</em></div>
-              <div class="cap">白茶的抗氧化物约是绿茶的 3 倍，能促进脂肪分解、抑制脂肪生成；配蜂蜜里的葡萄糖与咖啡因，还能提升专注力。</div>
-              <div class="src">据原文综述引用</div>
+              <div class="cap">白茶的抗氧化物约是绿茶的 3 倍，能同时促进脂肪分解、抑制脂肪生成；再加一勺蜂蜜，葡萄糖配咖啡因还能提升专注力。</div>
             </div>
             <div class="how"><b>怎么做</b><span>用白茶替代含糖饮料，想加甜就加一勺蜂蜜，趁早晨喝。</span></div>
           </div>
@@ -181,7 +174,7 @@
       <div class="label">06 · data 数字主导</div>
     </div>
 
-    <!-- 尾页 close（M07）-->
+    <!-- 尾页 close（M07） -->
     <div class="frame">
       <div class="canvas">
         <div class="pad">
