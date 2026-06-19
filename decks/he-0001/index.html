@@ -5,28 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HE-0001 · 改变人生的 6 个晨间仪式</title>
 <link rel="stylesheet" href="../../templates/card-base.css">
-<style>
-  /* —— HE-0001 正文：数字主导 File Card（小序号 + 标题同行）—— */
-  .body{display:flex;flex-direction:column;}
-  .body .topline{display:flex;align-items:baseline;gap:var(--s3);margin-bottom:var(--s4);}
-  .body .topline .idx{font-family:var(--font-mono);font-size:36px;font-weight:500;color:var(--c-anchor);letter-spacing:.06em;line-height:1;}
-  .body .topline h2{margin-bottom:0;font-size:56px;font-weight:500;line-height:1.15;}
-  .body .lead{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.5;max-width:860px;margin-bottom:var(--s5);}
-  .body .how{font-size:var(--t-body);color:var(--c-ink-2);line-height:1.55;max-width:880px;display:flex;gap:var(--s3);}
-  .body .how b{color:var(--c-anchor-ink);font-weight:600;white-space:nowrap;}
-  .body .pull{font-size:50px;font-weight:300;line-height:1.4;color:var(--c-ink);letter-spacing:-.005em;border-left:4px solid var(--c-anchor);padding:var(--s2) 0 var(--s2) var(--s4);margin-bottom:var(--s5);max-width:900px;}
-  .body .src-line{font-size:var(--t-source);color:var(--c-ink-3);letter-spacing:.03em;margin-top:var(--s5);}
-  body.theme-acid .body .pull{border-left-color:var(--c-neon-2);}
-  /* —— 尾页：收束标题缩小 —— */
-  .end .h{font-size:54px;line-height:1.2;}
-</style>
+<link rel="stylesheet" href="../../templates/components.css">
 </head>
 <body class="theme-mint">
 
   <div class="toolbar">
     <div class="kicker">md2red · DECK</div>
     <h1>HE-0001 · 改变人生的 6 个晨间仪式</h1>
-    <p>封面 + 6 个仪式各自单焦点成页（数字主导 File Card）+ M07 收束尾页，共 8 页。三套主题可切换，画布 1080×1440（3:4）。</p>
+    <p>组合 = cover 封面 + 6 张 data 数据条目 File Card + close 收尾，共 8 页。皮肤 card-base.css + 组件 components.css，主题可切换，画布 1080×1440（3:4）。</p>
     <div class="switch">
       <button class="active" data-theme="theme-mint">B · 清新薄荷</button>
       <button data-theme="theme-acid">C · 酸性霓虹</button>
@@ -51,7 +37,7 @@
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">封面 · Cover</div>
+      <div class="label">封面 · cover</div>
     </div>
 
     <!-- 01 去晒晨光 -->
@@ -62,7 +48,7 @@
             <span class="h-left">晨间仪式</span>
             <span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span>
           </div>
-          <div class="body">
+          <div class="data">
             <div class="topline"><span class="idx">01</span><h2>去晒晨光</h2></div>
             <div class="lead">醒来后第一件事，是让自己泡进自然光里。</div>
             <div class="stat">
@@ -75,7 +61,7 @@
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">01 · S03 数字主导</div>
+      <div class="label">01 · data 数字主导</div>
     </div>
 
     <!-- 02 提早起床 -->
@@ -86,7 +72,7 @@
             <span class="h-left">晨间仪式</span>
             <span class="h-right"><span class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span>
           </div>
-          <div class="body">
+          <div class="data">
             <div class="topline"><span class="idx">02</span><h2>提早起床</h2></div>
             <div class="lead">不必早到痛苦，只要给清晨多留出一点从容。</div>
             <div class="stat">
@@ -99,7 +85,7 @@
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">02 · S03 数字主导</div>
+      <div class="label">02 · data 数字主导</div>
     </div>
 
     <!-- 03 提醒饮食目标（文字主导 · 无真实数字）-->
@@ -110,7 +96,7 @@
             <span class="h-left">晨间仪式</span>
             <span class="h-right"><span class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></span>
           </div>
-          <div class="body">
+          <div class="data">
             <div class="topline"><span class="idx">03</span><h2>提醒饮食目标</h2></div>
             <div class="lead">早餐的选择，往往定下了一整天的饮食基调。</div>
             <div class="pull">把当天的热量预算写下来，<br>贴在浴室镜子上。</div>
@@ -120,7 +106,7 @@
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">03 · M04 文字主导</div>
+      <div class="label">03 · data 文字主导（混用）</div>
     </div>
 
     <!-- 04 燕麦加维C -->
@@ -131,7 +117,7 @@
             <span class="h-left">晨间仪式</span>
             <span class="h-right"><span class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></span></span>
           </div>
-          <div class="body">
+          <div class="data">
             <div class="topline"><span class="idx">04</span><h2>燕麦加维C</h2></div>
             <div class="lead">一碗燕麦本就护心，再加一样东西效果翻倍。</div>
             <div class="stat">
@@ -144,7 +130,7 @@
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">04 · S03 数字主导</div>
+      <div class="label">04 · data 数字主导</div>
     </div>
 
     <!-- 05 冥想塑身 -->
@@ -155,7 +141,7 @@
             <span class="h-left">晨间仪式</span>
             <span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></span>
           </div>
-          <div class="body">
+          <div class="data">
             <div class="topline"><span class="idx">05</span><h2>冥想塑身</h2></div>
             <div class="lead">先安顿好情绪，才管得住嘴。</div>
             <div class="stat">
@@ -168,7 +154,7 @@
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">05 · S03 数字主导</div>
+      <div class="label">05 · data 数字主导</div>
     </div>
 
     <!-- 06 喝杯甜茶 -->
@@ -179,7 +165,7 @@
             <span class="h-left">晨间仪式</span>
             <span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></span>
           </div>
-          <div class="body">
+          <div class="data">
             <div class="topline"><span class="idx">06</span><h2>喝杯甜茶</h2></div>
             <div class="lead">把早餐饮料换成一杯加蜂蜜的白茶。</div>
             <div class="stat">
@@ -192,10 +178,10 @@
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">06 · S03 数字主导</div>
+      <div class="label">06 · data 数字主导</div>
     </div>
 
-    <!-- 尾页 M07 -->
+    <!-- 尾页 close（M07）-->
     <div class="frame">
       <div class="canvas">
         <div class="pad">
@@ -203,7 +189,7 @@
             <span class="h-left">晨间仪式</span>
             <span class="h-right">收束</span>
           </div>
-          <div class="end">
+          <div class="close">
             <div class="h">改变人生，不靠某个清晨的壮举，<br>而靠每个清晨重复同一个选择。</div>
             <div class="recap">
               <div class="it"><span class="n">01</span><span>去晒晨光 —— 晨光越多，BMI 越低</span></div>
@@ -218,7 +204,7 @@
           <div class="brandfoot">@津玉不良言</div>
         </div>
       </div>
-      <div class="label">尾页 · M07 收束</div>
+      <div class="label">尾页 · close 收束</div>
     </div>
 
   </div>
@@ -227,6 +213,7 @@
   document.querySelectorAll('.switch button').forEach(function(b){
     b.addEventListener('click',function(){
       document.body.className=b.dataset.theme;
+      document.documentElement.style.background = getComputedStyle(document.body).getPropertyValue('--c-page');
       document.querySelectorAll('.switch button').forEach(function(x){x.classList.remove('active');});
       b.classList.add('active');
     });

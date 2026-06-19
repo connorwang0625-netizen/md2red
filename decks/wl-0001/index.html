@@ -3,26 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WL-0001 · 越减越胖的 5 大原因 · L-LEDGER 深色</title>
+<title>WL-0001 · 越减越胖的 5 大原因 · ledger 深色</title>
 <link rel="stylesheet" href="../../templates/card-base.css">
+<link rel="stylesheet" href="../../templates/components.css">
 <style>
-/* ---- WL-0001 实例：L-LEDGER 重型账本 + 逐条详情，默认深色 acid ----
-   形态：编号清单（5条，每条 原因→后果），总览账本 + 逐条详情页。
+/* ---- WL-0001 实例：ledger 重型账本 + 逐条详情(.detail 为本 deck 专属版式)，默认深色 acid ----
+   ledger 组件来自 components.css，这里仅做本篇度量微调 + .detail 局部版式。
    数字仅在原文确有时出现，无则走文字+后果框，不造数。 */
 
-/* 账本总览（沿用 L-LEDGER 母版结构） */
-.ledger{display:flex;flex-direction:column;flex:1;}
-.ledger .lead{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.5;margin-bottom:var(--s4);max-width:860px;}
-.ledger .rows{display:flex;flex-direction:column;flex:1;justify-content:center;}
-.ledger .row{display:flex;gap:var(--s5);align-items:flex-start;padding:var(--s3) 0;min-height:140px;border-top:var(--hair-w) solid var(--c-hair);}
-.ledger .row:last-child{border-bottom:var(--hair-w) solid var(--c-hair);}
-.ledger .idx{font-family:var(--font-mono);font-size:76px;font-weight:var(--big-weight);line-height:.9;color:var(--c-anchor);min-width:110px;letter-spacing:-.02em;}
-.ledger .col{flex:1;display:flex;flex-direction:column;gap:var(--s2);}
-.ledger .lbl{font-size:38px;font-weight:500;line-height:1.2;color:var(--c-ink);}
-.ledger .csq{font-size:26px;font-weight:300;line-height:1.5;color:var(--c-ink-2);}
-.ledger .csq b{color:var(--c-anchor-ink);font-weight:500;}
+/* 账本总览：本篇度量微调（覆盖 components.css 基线） */
+.ledger{flex:1;}
+.ledger .rows{flex:1;justify-content:center;}
+.ledger .row{padding:var(--s3) 0;min-height:140px;}
+.ledger .idx{font-size:76px;min-width:110px;}
+.ledger .lbl{font-size:38px;}
+.ledger .csq{font-size:26px;}
 
-/* 逐条详情页 */
+/* 逐条详情页（本 deck 专属版式，暂不入 components.css） */
 .detail{display:flex;flex-direction:column;flex:1;}
 .detail .top{display:flex;gap:var(--s4);align-items:baseline;margin-bottom:var(--s4);}
 .detail .idx{font-family:var(--font-mono);font-size:86px;font-weight:var(--big-weight);line-height:.85;color:var(--c-anchor);letter-spacing:-.02em;}
@@ -35,15 +32,10 @@
 .detail .csq b{color:var(--c-anchor-ink);font-weight:600;}
 .detail .src-line{margin-top:auto;padding-top:var(--s3);border-top:var(--hair-w) solid var(--c-hair);font-size:var(--t-source);color:var(--c-ink-3);letter-spacing:.03em;}
 
-/* 尾页：标题不超大（冻结约束 ≤54px），不放署名块 */
-.end .h{font-size:54px;}
-
-/* acid 深色：序号/焦点数字描金渐变 + 发光 */
-body.theme-acid .ledger .idx,
+/* acid 深色：序号/焦点数字描金渐变 + 发光（.detail 专属，ledger 基线已在 components.css） */
 body.theme-acid .detail .idx,
 body.theme-acid .detail .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(198,255,58,.22));}
 body.theme-acid .detail .accent .u{-webkit-text-fill-color:var(--c-ink-2);background:none;filter:none;}
-body.theme-acid .ledger .csq b,
 body.theme-acid .detail .csq b{color:var(--c-anchor-2);}
 body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
 </style>
@@ -51,9 +43,9 @@ body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
 <body class="theme-acid">
 
 <div class="toolbar">
-  <div class="kicker">md2red · WL-0001 · L-LEDGER</div>
+  <div class="kicker">md2red · WL-0001 · ledger</div>
   <h1>越减越胖的 5 大原因</h1>
-  <p>体重管理 · 反共识/警示类厚文章。深色账本皮肤,与 HE-0001 的浅色 File Card 截然不同——同一套系统按语义路由出的不同手法。封面=大数字「5」,正文=账本总览 + 5 条逐条详情,尾页=收束。可切换主题预览。</p>
+  <p>体重管理 · 反共识/警示类厚文章。深色账本皮肤,与 HE-0001 的浅色 data File Card 截然不同——同一套系统按语义路由出的不同手法。组合 = cover 大数字封面 + ledger 账本总览 + 5 张 .detail 逐条详情 + close 收尾。可切换主题预览。</p>
   <div class="switch">
     <button data-theme="theme-acid" class="active">C · 酸性霓虹（深色）</button>
     <button data-theme="theme-mint">B · 清新薄荷</button>
@@ -76,10 +68,10 @@ body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
       </div>
       <div class="brandfoot">@津玉不良言</div>
     </div>
-  </div><div class="label">01 · 封面 Cover（大数字封面）</div></div>
+  </div><div class="label">01 · cover 封面（大数字封面）</div></div>
 
   <!-- 02 账本总览 -->
-  <div class="frame"><div class="canvas body"><div class="pad">
+  <div class="frame"><div class="canvas"><div class="pad">
     <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
     <div class="ledger">
       <div class="lead">先把账摊开:每一条,都在悄悄把「减脂」改写成「囤脂」。</div>
@@ -92,10 +84,10 @@ body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
       </div>
     </div>
     <div class="brandfoot">@津玉不良言</div>
-  </div></div><div class="label">02 · 账本总览（L-LEDGER 账本）</div></div>
+  </div></div><div class="label">02 · ledger 账本总览</div></div>
 
   <!-- 03 详情·食物敏感（无焦点数字，文字主导） -->
-  <div class="frame"><div class="canvas body"><div class="pad">
+  <div class="frame"><div class="canvas"><div class="pad">
     <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></span></div>
     <div class="detail">
       <div class="top"><div class="idx">01</div><h2>你对某些食物「上瘾」</h2></div>
@@ -107,7 +99,7 @@ body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
   </div></div><div class="label">03 · 详情 01 · 食物敏感</div></div>
 
   <!-- 04 详情·压力缺觉（焦点：少睡1小时） -->
-  <div class="frame"><div class="canvas body"><div class="pad">
+  <div class="frame"><div class="canvas"><div class="pad">
     <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></span></div>
     <div class="detail">
       <div class="top"><div class="idx">02</div><h2>压力和缺觉,直接催肥</h2></div>
@@ -120,7 +112,7 @@ body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
   </div></div><div class="label">04 · 详情 02 · 压力 / 缺觉</div></div>
 
   <!-- 05 详情·毒素（焦点：+75%） -->
-  <div class="frame"><div class="canvas body"><div class="pad">
+  <div class="frame"><div class="canvas"><div class="pad">
     <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></span></span></div>
     <div class="detail">
       <div class="top"><div class="idx">03</div><h2>你每天都在吃进「肥胖原」</h2></div>
@@ -133,7 +125,7 @@ body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
   </div></div><div class="label">05 · 详情 03 · 环境毒素</div></div>
 
   <!-- 06 详情·甲状腺（焦点：1/3） -->
-  <div class="frame"><div class="canvas body"><div class="pad">
+  <div class="frame"><div class="canvas"><div class="pad">
     <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></span></div>
     <div class="detail">
       <div class="top"><div class="idx">04</div><h2>甲状腺掉链子,白减</h2></div>
@@ -146,7 +138,7 @@ body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
   </div></div><div class="label">06 · 详情 04 · 甲状腺低下</div></div>
 
   <!-- 07 详情·激素停滞（焦点：第10周） -->
-  <div class="frame"><div class="canvas body"><div class="pad">
+  <div class="frame"><div class="canvas"><div class="pad">
     <div class="header"><span class="h-left">减脂误区</span><span class="h-right"><span class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></span></div>
     <div class="detail">
       <div class="top"><div class="idx">05</div><h2>节食本身,会触发反扑</h2></div>
@@ -158,20 +150,22 @@ body.theme-acid .detail .csq .k{color:var(--c-neon-1);}
     <div class="brandfoot">@津玉不良言</div>
   </div></div><div class="label">07 · 详情 05 · 激素停滞</div></div>
 
-  <!-- 08 尾页 -->
-  <div class="frame"><div class="canvas end"><div class="pad">
+  <!-- 08 尾页 close -->
+  <div class="frame"><div class="canvas"><div class="pad">
     <div class="header"><span class="h-left">减脂误区</span><span class="h-right">回顾 · RECAP</span></div>
-    <div class="h">先停掉这 5 件,<br>再谈怎么减。</div>
-    <div class="recap">
-      <div class="it"><span class="n">01</span>找出并避开你敏感的食物</div>
-      <div class="it"><span class="n">02</span>睡够觉,先把压力降下来</div>
-      <div class="it"><span class="n">03</span>少碰塑料瓶与加工毒素</div>
-      <div class="it"><span class="n">04</span>查一次甲状腺功能</div>
-      <div class="it"><span class="n">05</span>别极端节食,给激素留余地</div>
+    <div class="close">
+      <div class="h">先停掉这 5 件,<br>再谈怎么减。</div>
+      <div class="recap">
+        <div class="it"><span class="n">01</span>找出并避开你敏感的食物</div>
+        <div class="it"><span class="n">02</span>睡够觉,先把压力降下来</div>
+        <div class="it"><span class="n">03</span>少碰塑料瓶与加工毒素</div>
+        <div class="it"><span class="n">04</span>查一次甲状腺功能</div>
+        <div class="it"><span class="n">05</span>别极端节食,给激素留余地</div>
+      </div>
+      <div class="cta">对照中了几条?<b>收藏这份清单</b>,先停掉,再开始。</div>
     </div>
-    <div class="cta">对照中了几条?<b>收藏这份清单</b>,先停掉,再开始。</div>
     <div class="brandfoot">@津玉不良言</div>
-  </div></div><div class="label">08 · 尾页 End</div></div>
+  </div></div><div class="label">08 · close 收尾</div></div>
 
 </div>
 

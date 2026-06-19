@@ -1,10 +1,11 @@
 /* =========================================================
-   md2red — card-base.css （共享样式基座 / 皮肤）
-   结构一套，配色可换。主题由 body 的 class 控制：
-   theme-mint / theme-acid / theme-maillard
-   每个变体文件 (templates/*.html) 通过 <link> 引用本文件，
-   仅在各自 <style> 内追加该变体特有结构样式。
-   详见 docs/01-design-system.md 与 docs/02-palettes.md
+   md2red — card-base.css （皮肤 / SKIN）
+   只放：结构 token + 三套主题配色 + 预览外壳 + 共享页眉/页脚。
+   主题由 body 的 class 控制：theme-mint / theme-acid / theme-maillard。
+   ——「内容组件」（cover/ledger/check/data/step/finding/matrix/close）
+     全部在 templates/components.css，与本文件正交。
+   每篇成品 deck = 同时 <link> card-base.css + components.css。
+   详见 docs/04-layouts.md / docs/05-components.md / docs/02-palettes.md
    ========================================================= */
 
 /* ---- 结构 token（配色无关）---- */
@@ -47,7 +48,7 @@ body.theme-maillard{
 html{background:var(--c-page);}
 body{background:var(--c-page);font-family:"Helvetica Neue","PingFang SC",-apple-system,"Segoe UI","Noto Sans SC",Arial,sans-serif;color:var(--c-ink);-webkit-font-smoothing:antialiased;padding:48px 32px 96px;transition:background .3s;}
 
-/* ---- 顶部工具栏 + 主题切换 ---- */
+/* ---- 顶部工具栏 + 主题切换（仅预览外壳）---- */
 .toolbar{max-width:1200px;margin:0 auto 40px;}
 .toolbar .kicker{font-size:13px;letter-spacing:.22em;color:var(--c-anchor-ink);font-weight:600;text-transform:uppercase;}
 .toolbar h1{font-size:30px;font-weight:300;margin:10px 0 6px;}
@@ -61,9 +62,12 @@ body.theme-acid .toolbar .kicker{background:var(--grad);-webkit-background-clip:
 .gallery{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:36px;}
 .frame{width:calc(var(--canvas-w) * var(--s));height:calc(var(--canvas-h) * var(--s));position:relative;flex:0 0 auto;}
 .frame .label{position:absolute;top:calc(100% + 8px);left:0;font-size:12px;color:var(--c-ink-2);letter-spacing:.06em;}
+
+/* ---- 卡片实体（导出只需要 .canvas 及其内部）---- */
 .canvas{width:var(--canvas-w);height:var(--canvas-h);transform:scale(var(--s));transform-origin:top left;background:var(--c-card);overflow:hidden;position:relative;display:flex;flex-direction:column;transition:background .3s;}
 .pad{padding:var(--margin);flex:1;display:flex;flex-direction:column;}
 
+/* ---- 共享页眉 ---- */
 .header{display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--s3);margin-bottom:var(--s5);border-bottom:var(--hair-w) solid var(--c-hair);}
 .h-left{font-size:var(--t-eyebrow);letter-spacing:.2em;font-weight:600;color:var(--c-anchor-ink);text-transform:uppercase;}
 .h-right{font-size:var(--t-source);letter-spacing:.12em;color:var(--c-ink-3);display:flex;align-items:center;gap:14px;}
@@ -71,54 +75,6 @@ body.theme-acid .toolbar .kicker{background:var(--grad);-webkit-background-clip:
 .dots i{width:10px;height:10px;border-radius:50%;background:var(--c-hair);display:block;}
 .dots i.on{background:var(--c-dot-on);width:30px;border-radius:0;}
 
+/* ---- 共享品牌脚 / 撑高 ---- */
 .brandfoot{margin-top:auto;text-align:right;padding-top:var(--s3);border-top:var(--hair-w) solid var(--c-hair);font-size:var(--t-cap);font-weight:500;color:var(--c-ink-2);letter-spacing:.04em;}
 .spacer{flex:1;}
-
-/* ---- 封面 ---- */
-.cover{position:relative;}
-.cover .pad{position:relative;z-index:2;}
-.cover .aura{display:none;position:absolute;inset:-12%;z-index:0;background:radial-gradient(36% 30% at 14% 20%,rgba(198,255,58,.46),transparent 70%),radial-gradient(40% 36% at 26% 86%,rgba(255,45,155,.48),transparent 70%),radial-gradient(34% 30% at 90% 28%,rgba(22,224,255,.26),transparent 70%);filter:blur(42px);}
-.cover .ghost{display:none;position:absolute;z-index:1;right:-150px;bottom:-285px;font-family:var(--font-mono);font-weight:700;font-size:1220px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.20;filter:drop-shadow(0 0 70px rgba(22,224,255,.30));}
-.cover .content{flex:1;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:var(--s5);}
-.cover .topic{font-size:var(--t-cap);color:var(--c-ink-2);letter-spacing:.04em;margin-bottom:var(--s4);}
-.cover .title{font-size:128px;font-weight:250;line-height:1.24;letter-spacing:-.015em;margin-bottom:var(--s5);}
-.cover .title .d{font-family:var(--font-mono);font-weight:400;font-size:1.8em;line-height:1;color:var(--c-anchor);margin-right:.08em;position:relative;top:.05em;}
-.cover .sub{font-size:var(--t-lead);color:var(--c-ink-2);font-weight:300;line-height:1.55;max-width:760px;padding-top:var(--s4);border-top:var(--hair-w) solid var(--c-hair);}
-
-/* ---- 正文 ---- */
-.body .index{font-size:var(--t-index);font-weight:var(--big-weight);line-height:.9;color:var(--c-anchor);letter-spacing:-.02em;margin-bottom:var(--s4);}
-.body h2{font-size:var(--t-h1);font-weight:500;line-height:1.18;letter-spacing:.005em;margin-bottom:var(--s4);}
-.body .point{font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);line-height:1.55;max-width:860px;}
-.stat{background:var(--c-card-2);padding:var(--s5) var(--s5) var(--s4);margin-bottom:var(--s5);display:flex;flex-direction:column;gap:var(--s2);}
-.stat .num{font-size:var(--t-num);font-weight:var(--big-weight);line-height:.9;color:var(--c-ink);letter-spacing:-.02em;display:flex;align-items:baseline;gap:14px;}
-.stat .num em{font-size:46px;font-style:normal;font-weight:500;color:var(--c-anchor);}
-.stat .cap{font-size:var(--t-cap);color:var(--c-ink-2);line-height:1.5;max-width:820px;}
-.stat .src{font-size:var(--t-source);color:var(--c-ink-3);letter-spacing:.03em;}
-
-/* ---- 尾页 ---- */
-.end .h{font-size:72px;font-weight:250;line-height:1.1;letter-spacing:-.01em;}
-.end .recap{display:flex;flex-direction:column;margin-top:var(--s5);}
-.end .recap .it{display:flex;align-items:center;gap:var(--s4);padding:var(--s3) 0;border-top:var(--hair-w) solid var(--c-hair-2);font-size:32px;font-weight:400;}
-.end .recap .it:last-child{border-bottom:var(--hair-w) solid var(--c-hair-2);}
-.end .recap .n{font-size:26px;color:var(--c-anchor);font-weight:600;width:46px;letter-spacing:.06em;}
-.end .cta{margin-top:var(--s5);font-size:var(--t-lead);font-weight:300;color:var(--c-ink-2);display:flex;align-items:center;gap:16px;}
-.end .cta b{color:var(--c-anchor-ink);font-weight:500;}
-
-/* ---- B 清新薄荷：单位略细、用深蓝 ---- */
-body.theme-mint .stat .num em{font-weight:400;color:var(--c-anchor-ink);}
-
-/* ---- D 美拉德：鼠尾草色数据条 ---- */
-body.theme-maillard .stat{border-left:4px solid var(--c-anchor-2);}
-
-/* ---- C 酸性霿虹专属：深底封面 + 渐变描字 + 发光 ---- */
-body.theme-acid .canvas.cover{background:var(--c-page);}
-body.theme-acid .cover .aura,body.theme-acid .cover .ghost{display:block;}
-body.theme-acid .cover .topic{color:var(--c-ink);}
-body.theme-acid .cover .sub{color:var(--c-ink);border-top-color:rgba(245,245,247,.28);}
-body.theme-acid .cover .title .d{font-weight:500;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 34px rgba(22,224,255,.55));}
-body.theme-acid .stat{border-left:4px solid var(--c-neon-2);}
-body.theme-acid .body .index{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(198,255,58,.25));}
-body.theme-acid .stat .num{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-body.theme-acid .stat .num em{-webkit-text-fill-color:var(--c-anchor-2);color:var(--c-anchor-2);background:none;filter:none;font-weight:500;}
-body.theme-acid .end .recap .n{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-body.theme-acid .end .cta b{font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
