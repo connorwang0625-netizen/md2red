@@ -103,11 +103,8 @@
       o.value = v.id; o.textContent = v.label;
       sel.appendChild(o);
     });
-    const noneO = document.createElement("option");
-    noneO.value = "none"; noneO.textContent = "封面无图";
-    sel.appendChild(noneO);
     const hasPrev = Array.prototype.some.call(sel.options, (o) => o.value === prev);
-    sel.value = hasPrev ? prev : (list.length ? list[0].id : "none");
+    sel.value = hasPrev ? prev : (list.length ? list[0].id : "");
   }
 
   /* ---------- 颜色工具 ---------- */
@@ -230,12 +227,17 @@
     const theme = $("theme").value;
     const imgUrl = $("imageUrl").value.trim();
     const isCover = index === 0;
+    const noImg = $("noImage").checked;
 
     const list = variantsFor(theme);
     const variantId = $("imageLayout").value;
     const variant = list.find((v) => v.id === variantId);
-    const base = variant ? variant.base : "none";
+    const base = (!noImg && variant) ? variant.base : "none";
     const useImg = base !== "none" && !!imgUrl && isCover;
+
+    // 同步控件可用状态：无图时禁用方案/地址
+    $("imageLayout").disabled = noImg || list.length === 0;
+    $("imageUrl").disabled = noImg;
 
     const cls = ["card", isCover ? "role-cover" : "role-body"];
     if (useImg) { cls.push("has-img", "layout-" + base, "cv-" + theme + "-" + variantId); }
@@ -344,6 +346,7 @@
   input.addEventListener("input", () => rebuild(true));
   $("theme").addEventListener("change", onThemeChange);
   $("imageLayout").addEventListener("change", () => renderPage(index));
+  $("noImage").addEventListener("change", () => renderPage(index));
   $("imageUrl").addEventListener("input", () => refresh());
   $("autoColor").addEventListener("change", () => refresh());
   $("eyebrow").addEventListener("input", () => renderPage(index));
