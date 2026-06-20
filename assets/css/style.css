@@ -47,6 +47,7 @@ body {
   padding: 7px 10px; font-size: 13px; font-family: var(--font-sans); min-width: 150px;
 }
 .field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+.field select:disabled, .field input:disabled { opacity: 0.4; cursor: not-allowed; }
 .field-check { justify-content: flex-end; }
 .field-check input { min-width: 0; width: 22px; height: 22px; margin-bottom: 8px; accent-color: var(--accent); cursor: pointer; }
 .btn {
@@ -410,7 +411,7 @@ body {
 .card[data-theme="acid"].layout-bg .li-panel { background:rgba(7,7,12,0.78); border:1px solid rgba(255,255,255,0.18); }
 
 /* ====================================================================
-   PER-THEME COVER VARIANTS — 各风格专属封面方案
+   PER-THEME COVER VARIANTS — 各风格专属封面方案（构图/图处理）
    ==================================================================== */
 
 /* Gallery 画廊 */
@@ -418,8 +419,6 @@ body {
 .cv-gallery-museum .card-media { width:64%; height:560px; margin:0 auto 44px; border:14px solid #fff; box-shadow:0 16px 44px rgba(0,0,0,0.18), 0 0 0 1px var(--card-rule); }
 .cv-gallery-museum .card-eyebrow { justify-content:center; }
 .cv-gallery-museum .card-eyebrow, .cv-gallery-museum .card-body { text-align:center; }
-.cv-gallery-fullbleed.layout-top .card-media { height:54%; }
-.cv-gallery-fullbleed .card-body h1 { font-size:104px; }
 .cv-gallery-diptych.layout-split .card-media { width:50%; }
 .cv-gallery-diptych.layout-split .li-content { border-left:1px solid var(--card-rule); padding-left:64px; }
 
@@ -442,21 +441,18 @@ body {
 .cv-swiss-bw.layout-bg .li-panel { background:#e2231a; }
 .cv-swiss-toptype.layout-top .card-media { height:50%; }
 .cv-swiss-toptype.layout-top .card-media img { filter:grayscale(1) contrast(1.05); }
-.cv-swiss-toptype .card-body h1 { font-weight:800; letter-spacing:-2px; }
 
 /* Editorial 时尚杂志 */
 .cv-editorial-cover.layout-bg .card-media img { filter:brightness(0.58) contrast(1.05); }
-.cv-editorial-cover.layout-bg .li-content { justify-content:center; text-align:center; }
 .cv-editorial-cover.layout-bg .li-panel { background:transparent; padding:0; }
 .cv-editorial-cover.layout-bg .li-panel .card-eyebrow { justify-content:center; }
-.cv-editorial-cover.layout-bg .card-body h1 { font-size:104px; }
 .cv-editorial-plate.layout-frame { padding:118px 104px; }
 .cv-editorial-plate .card-media { height:600px; }
 .cv-editorial-plate .card-media img { filter:grayscale(1) contrast(1.03); }
 .cv-editorial-quote.layout-bottom .card-media { height:42%; }
 .cv-editorial-quote.layout-bottom .card-media img { filter:grayscale(1); }
 
-/* Wabi 侗寂 */
+/* Wabi 侘寂 */
 .cv-wabi-scroll.layout-split .card-media { width:38%; order:2; }
 .cv-wabi-scroll.layout-split .li-content { order:1; padding:120px 60px; }
 .cv-wabi-scroll .card-media img { filter:saturate(0.85) brightness(1.02); }
@@ -528,6 +524,60 @@ body {
 .card[data-theme="glass"].role-body .card-body blockquote { color:#5a6685; border-left-color:#5b6cff; }
 .card[data-theme="glass"].role-body .card-foot { color:#5a6685; }
 .card[data-theme="glass"].role-body .card-foot .page-no { color:#1c2233; }
+
+/* ====================================================================
+   PER-VARIANT TYPOGRAPHY — 各封面方案专属文字排列/字号/竖向位置
+   （置于 PAGE ROLE 之后以确保优先级；重点区分左右图 split）
+   ==================================================================== */
+
+/* Gallery */
+.card.role-cover.cv-gallery-museum .card-body h1 { font-size:78px; letter-spacing:0.5px; margin-bottom:26px; }
+.card.role-cover.cv-gallery-museum .card-body p { font-size:30px; }
+.card.role-cover.cv-gallery-fullbleed .card-body h1 { font-size:112px; line-height:0.98; letter-spacing:-1.5px; }
+.card.cv-gallery-diptych .li-content { justify-content:center; }
+.card.role-cover.cv-gallery-diptych .card-body h1 { font-size:72px; line-height:1.08; }
+
+/* Kinfolk — 轻、稀疏、大字距 */
+.card.role-cover.cv-kinfolk-airy .card-body h1 { font-size:62px; font-weight:400; letter-spacing:3px; line-height:1.22; }
+.card.role-cover.cv-kinfolk-airy .card-eyebrow { letter-spacing:9px; }
+.card.role-cover.cv-kinfolk-square .card-body h1 { font-size:54px; font-weight:400; letter-spacing:2px; }
+.card.cv-kinfolk-half .li-content { justify-content:center; }
+.card.role-cover.cv-kinfolk-half .card-body h1 { font-size:52px; font-weight:400; letter-spacing:1px; line-height:1.25; }
+.card.role-cover.cv-kinfolk-half .card-body p { font-size:30px; font-weight:300; }
+
+/* Swiss — 顶对齐、巨大粗体、紧字距 */
+.card.cv-swiss-grid .li-content { justify-content:flex-start; }
+.card.role-cover.cv-swiss-grid .card-body h1 { font-size:88px; font-weight:800; letter-spacing:-2px; line-height:0.97; }
+.card.role-cover.cv-swiss-bw .card-body h1 { font-size:96px; font-weight:800; letter-spacing:-2.5px; line-height:0.95; }
+.card.role-cover.cv-swiss-toptype .card-body h1 { font-size:100px; font-weight:800; letter-spacing:-3px; line-height:0.94; }
+
+/* Editorial — 斜体刊封 */
+.card.cv-editorial-cover .li-content { justify-content:center; text-align:center; }
+.card.role-cover.cv-editorial-cover .card-body h1 { font-size:108px; font-style:italic; line-height:1.04; }
+.card.role-cover.cv-editorial-plate .card-body h1 { font-size:74px; font-style:italic; font-weight:500; }
+.card.cv-editorial-quote .li-content { justify-content:flex-start; }
+.card.role-cover.cv-editorial-quote .card-body h1 { font-size:64px; font-style:italic; }
+.card.role-cover.cv-editorial-quote .card-body blockquote { font-size:50px; }
+
+/* Wabi — 竖向分布、中等字号 */
+.card.cv-wabi-scroll .li-content { justify-content:space-between; }
+.card.role-cover.cv-wabi-scroll .card-body h1 { font-size:66px; font-weight:600; line-height:1.32; letter-spacing:1px; }
+.card.role-cover.cv-wabi-inset .card-body h1 { font-size:72px; font-weight:600; }
+.card.cv-wabi-low .li-content { justify-content:flex-start; }
+.card.role-cover.cv-wabi-low .card-body h1 { font-size:74px; font-weight:600; }
+
+/* Aero */
+.card.role-cover.cv-aero-hero .card-body h1 { font-size:82px; }
+.card.role-cover.cv-aero-glossytop .card-body h1 { font-size:80px; }
+.card.role-cover.cv-aero-bubble .card-body h1 { font-size:68px; text-align:center; }
+.card.cv-aero-bubble .card-eyebrow { justify-content:center; }
+
+/* Glass */
+.card.cv-glass-frosted .li-content { justify-content:center; }
+.card.role-cover.cv-glass-frosted .card-body h1 { font-size:88px; }
+.card.cv-glass-split .li-content { justify-content:center; }
+.card.role-cover.cv-glass-split .card-body h1 { font-size:74px; line-height:1.08; }
+.card.role-cover.cv-glass-card .card-body h1 { font-size:66px; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
