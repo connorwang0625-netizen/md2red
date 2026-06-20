@@ -6,7 +6,7 @@
 
   function inline(s) {
     s = escapeHtml(s);
-    s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1">');
+    s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1" crossorigin="anonymous">');
     s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
     s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
     s = s.replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
@@ -35,7 +35,9 @@
         html += `<h${lv}>${inline(m[2])}</h${lv}>`;
       } else if ((m = line.match(/^!\[([^\]]*)\]\(([^)\s]+)\)\s*$/))) {
         closeList();
-        html += `<figure><img src="${m[2]}" alt="${escapeHtml(m[1])}"></figure>`;
+        const alt = m[1].trim();
+        const band = /^(通栏|band|full|fullbleed)$/i.test(alt);
+        html += `<figure class="card-fig${band ? " fig-band" : ""}"><img src="${m[2]}" alt="${escapeHtml(m[1])}" crossorigin="anonymous"></figure>`;
       } else if ((m = line.match(/^>\s?(.*)$/))) {
         closeList();
         html += `<blockquote>${inline(m[1])}</blockquote>`;
