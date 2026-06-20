@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>HE-0001 · 改变人生的 6 个晨间仪式（v2 编辑设计版）</title>
+<style>
+  :root{
+    --page:#D7E1EC; --card:#F4F8FC; --card2:#EAF1F9;
+    --ink:#161B22; --ink2:#5A6675; --ink3:#8B97A6;
+    --anchor:#2D7FF9; --anchor-d:#1F6FE5; --hair:#C9D5E3;
+    --s:0.46;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--page);}
+  body{font-family:'Helvetica Neue','PingFang SC',-apple-system,'Segoe UI','Noto Sans SC',Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;padding:48px 32px 96px;}
+  .wrap{max-width:1120px;margin:0 auto;}
+  .bar{margin-bottom:40px;}
+  .bar .k{font-size:13px;letter-spacing:.24em;color:var(--anchor-d);font-weight:600;text-transform:uppercase;}
+  .bar h1{font-size:28px;font-weight:300;margin:10px 0 6px;}
+  .bar p{font-size:14px;color:var(--ink2);line-height:1.7;max-width:760px;}
+  .gallery{display:flex;flex-wrap:wrap;gap:48px 40px;}
+  .frame{width:calc(1080px*var(--s));height:calc(1440px*var(--s));position:relative;}
+  .frame .lab{position:absolute;top:calc(100% + 8px);left:0;font-size:12px;color:var(--ink2);letter-spacing:.06em;}
+  .card{width:1080px;height:1440px;transform:scale(var(--s));transform-origin:top left;background:var(--card);overflow:hidden;display:flex;flex-direction:column;padding:88px;}
+
+  .hd{display:flex;justify-content:space-between;align-items:center;padding-bottom:24px;border-bottom:2px solid var(--hair);}
+  .eyebrow{font-size:25px;letter-spacing:.2em;font-weight:600;color:var(--anchor-d);text-transform:uppercase;}
+  .meta{display:flex;align-items:center;gap:24px;}
+  .idx-num{font-size:25px;letter-spacing:.08em;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;}
+  .idx-num i{color:var(--ink3);font-style:normal;font-weight:400;}
+  .cv-r{font-size:22px;color:var(--ink3);letter-spacing:.14em;}
+  .dots{display:flex;gap:10px;align-items:center;}
+  .dots i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block;}
+  .dots i.on{background:var(--anchor);width:30px;border-radius:5px;}
+
+  .lead-row{display:flex;align-items:center;gap:24px;margin-top:72px;}
+  .chip{font-size:30px;font-weight:600;color:#fff;background:var(--anchor);padding:6px 18px;letter-spacing:.04em;font-variant-numeric:tabular-nums;}
+  .ttl{font-size:80px;font-weight:300;letter-spacing:-.02em;line-height:1;}
+  .lead{font-size:36px;color:var(--ink2);line-height:1.55;margin-top:28px;max-width:840px;}
+
+  .core{display:flex;gap:56px;align-items:stretch;margin-top:72px;}
+  .statwrap{flex:0 0 auto;display:flex;align-items:center;min-width:0;}
+  .stat{font-weight:250;line-height:.9;letter-spacing:-.04em;color:var(--ink);font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:16px;}
+  .stat em{font-size:50px;font-weight:500;font-style:normal;color:var(--anchor-d);letter-spacing:0;}
+  .why{flex:1;border-left:2px solid var(--hair);padding-left:48px;display:flex;flex-direction:column;justify-content:center;}
+  .why-label{font-size:22px;letter-spacing:.24em;color:var(--ink3);font-weight:600;margin-bottom:24px;}
+  .mech{font-size:32px;color:var(--ink2);line-height:1.62;}
+
+  .core-q{margin-top:72px;display:flex;flex-direction:column;gap:44px;}
+  .bigq{font-size:64px;font-weight:300;line-height:1.34;letter-spacing:-.01em;color:var(--ink);padding-left:44px;border-left:8px solid var(--anchor);}
+  .core-q .mech{padding-left:44px;max-width:800px;}
+
+  .action{display:flex;align-items:baseline;gap:24px;margin-top:72px;background:var(--card2);border-left:8px solid var(--anchor);padding:36px 44px;}
+  .action .ar{color:var(--anchor-d);font-size:34px;font-weight:600;line-height:1;}
+  .action .al{font-size:28px;font-weight:600;letter-spacing:.1em;color:var(--ink);white-space:nowrap;}
+  .action .at{font-size:30px;color:var(--ink2);line-height:1.5;flex:1;}
+
+  .bf{margin-top:auto;text-align:right;padding-top:28px;border-top:2px solid var(--hair);font-size:26px;font-weight:500;color:var(--ink2);letter-spacing:.04em;}
+
+  .cv-body{flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .cv-t1{font-size:90px;font-weight:250;letter-spacing:-.02em;line-height:1;}
+  .cv-lock{display:flex;align-items:flex-end;gap:36px;margin-top:4px;}
+  .cv-6{font-size:400px;font-weight:250;line-height:.74;letter-spacing:-.05em;color:var(--anchor);font-variant-numeric:tabular-nums;}
+  .cv-t2{font-size:90px;font-weight:250;letter-spacing:-.02em;line-height:1;padding-bottom:44px;}
+  .cv-rule{width:120px;height:6px;background:var(--anchor);margin-top:56px;}
+  .cv-sub{font-size:36px;color:var(--ink2);line-height:1.62;max-width:680px;margin-top:40px;}
+
+  .cl-body{flex:1;display:flex;flex-direction:column;margin-top:64px;}
+  .cl-h{font-size:58px;font-weight:300;line-height:1.4;letter-spacing:-.01em;}
+  .recap{margin-top:56px;border-top:2px solid var(--hair);}
+  .recap .it{display:flex;align-items:baseline;gap:26px;padding:24px 0;border-bottom:2px solid var(--hair);}
+  .recap .n{font-size:30px;font-weight:600;color:var(--anchor-d);font-variant-numeric:tabular-nums;min-width:46px;}
+  .recap .tx{font-size:30px;color:var(--ink2);}
+  .cta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;background:var(--card2);border-left:8px solid var(--anchor);padding:38px 44px;}
+  .cta .t{font-size:34px;font-weight:500;color:var(--ink);}
+  .cta .a{font-size:40px;color:var(--anchor-d);font-weight:700;}
+</style>
+</head>
+<body>
+<div class='wrap'>
+  <div class='bar'>
+    <div class='k'>md2red · DECK · HE-0001 · v2 编辑设计版</div>
+    <h1>改变人生的 6 个晨间仪式</h1>
+    <p>在不破坏冻结金样板（decks/he-0001.html）的前提下另存的一版：保留 mint 主题与全部已核文案，只重做构图——巨幅数字 + 不对称网格 + 机制侧栏 + 结构发丝线，用尺度与版式制造设计感；强调蓝严格 60-30-10，只点焦点。可与原版并列对比。</p>
+  </div>
+  <div class='gallery'>
+
+    <div class='frame'><div class='card cover'>
+      <div class='hd'><span class='eyebrow'>HE-0001 · 晨间仪式</span><span class='cv-r'>向右滑 →</span></div>
+      <div class='cv-body'>
+        <div class='cv-t1'>改变人生的</div>
+        <div class='cv-lock'><span class='cv-6'>6</span><span class='cv-t2'>个晨间仪式</span></div>
+        <div class='cv-rule'></div>
+        <div class='cv-sub'>夜猫子也能变早起鸟。一套有科学支撑的早晨例程，能一口气拉高你的身体、情绪、体重和收入。</div>
+      </div>
+      <div class='bf'>@津玉不良言</div>
+    </div><div class='lab'>封面 · cover</div></div>
+
+    <div class='frame'><div class='card'>
+      <div class='hd'><span class='eyebrow'>晨间仪式</span><span class='meta'><span class='idx-num'>01<i> / 06</i></span><span class='dots'><i class='on'></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
+      <div class='lead-row'><span class='chip'>01</span><h2 class='ttl'>去晒晨光</h2></div>
+      <div class='lead'>醒来后第一件事，是把自己泡进自然光里。</div>
+      <div class='core'>
+        <div class='statwrap'><div class='stat' style='font-size:132px'>20–30<em>分钟</em></div></div>
+        <div class='why'><div class='why-label'>为什么</div><div class='mech'>晨间光照越多，体重指数（BMI）越低，而且这一关联独立于运动量、年龄和热量摄入；即便是阴天一半强度的光也有效。</div></div>
+      </div>
+      <div class='action'><span class='ar'>→</span><span class='al'>怎么做</span><span class='at'>早餐前先散个步、把通勤改成步行，或把工位挪到靠窗，让一天的头 20–30 分钟照够自然光。</span></div>
+      <div class='bf'>@津玉不良言</div>
+    </div><div class='lab'>01 · 去晒晨光</div></div>
+
+    <div class='frame'><div class='card'>
+      <div class='hd'><span class='eyebrow'>晨间仪式</span><span class='meta'><span class='idx-num'>02<i> / 06</i></span><span class='dots'><i></i><i class='on'></i><i></i><i></i><i></i><i></i></span></span></div>
+      <div class='lead-row'><span class='chip'>02</span><h2 class='ttl'>提早起床</h2></div>
+      <div class='lead'>不必早到痛苦，只要给清晨多留一点从容。</div>
+      <div class='core'>
+        <div class='statwrap'><div class='stat' style='font-size:210px'>15<em>分钟</em></div></div>
+        <div class='why'><div class='why-label'>为什么</div><div class='mech'>习惯早起的人更主动、目标感更强，职业成就与收入也往往更高；约一半的「早鸟 / 夜猫」属性由基因决定，但作息可逐步前移约 1 小时。</div></div>
+      </div>
+      <div class='action'><span class='ar'>→</span><span class='al'>怎么做</span><span class='at'>别想一步到位，每周把闹钟往前拨几分钟，循序渐进把起床时间提早，先从 15 分钟开始。</span></div>
+      <div class='bf'>@津玉不良言</div>
+    </div><div class='lab'>02 · 提早起床</div></div>
+
+    <div class='frame'><div class='card'>
+      <div class='hd'><span class='eyebrow'>晨间仪式</span><span class='meta'><span class='idx-num'>03<i> / 06</i></span><span class='dots'><i></i><i></i><i class='on'></i><i></i><i></i><i></i></span></span></div>
+      <div class='lead-row'><span class='chip'>03</span><h2 class='ttl'>提醒饮食目标</h2></div>
+      <div class='lead'>早餐的选择，往往定下一整天的饮食基调。</div>
+      <div class='core-q'>
+        <div class='bigq'>把当天的热量预算写下来、贴在浴室镜子上。</div>
+        <div class='mech'>定期收到「热量预算」提醒的人，一整天都更容易做出健康的食物选择。</div>
+      </div>
+      <div class='action'><span class='ar'>→</span><span class='al'>怎么做</span><span class='at'>用便签或手机闹钟标签反复提醒，把饮食目标放在每天一定会看到的地方。</span></div>
+      <div class='bf'>@津玉不良言</div>
+    </div><div class='lab'>03 · 提醒饮食目标（文字主导）</div></div>
+
+    <div class='frame'><div class='card'>
+      <div class='hd'><span class='eyebrow'>晨间仪式</span><span class='meta'><span class='idx-num'>04<i> / 06</i></span><span class='dots'><i></i><i></i><i></i><i class='on'></i><i></i><i></i></span></span></div>
+      <div class='lead-row'><span class='chip'>04</span><h2 class='ttl'>燕麦加维C</h2></div>
+      <div class='lead'>一碗燕麦本就护心，再加一样东西效果翻倍。</div>
+      <div class='core'>
+        <div class='statwrap'><div class='stat' style='font-size:240px'>2<em>倍</em></div></div>
+        <div class='why'><div class='why-label'>为什么</div><div class='mech'>给燕麦配上维生素 C，酚类物质协同稳定 LDL（坏胆固醇），让燕麦「降坏胆固醇」的护心效果翻倍。</div></div>
+      </div>
+      <div class='action'><span class='ar'>→</span><span class='al'>怎么做</span><span class='at'>早餐燕麦里拌入猕猴桃、草莓、橙子，或配一小杯鲜橙汁。</span></div>
+      <div class='bf'>@津玉不良言</div>
+    </div><div class='lab'>04 · 燕麦加维C</div></div>
+
+    <div class='frame'><div class='card'>
+      <div class='hd'><span class='eyebrow'>晨间仪式</span><span class='meta'><span class='idx-num'>05<i> / 06</i></span><span class='dots'><i></i><i></i><i></i><i></i><i class='on'></i><i></i></span></span></div>
+      <div class='lead-row'><span class='chip'>05</span><h2 class='ttl'>冥想塑身</h2></div>
+      <div class='lead'>先安顿好情绪，才管得住嘴。</div>
+      <div class='core'>
+        <div class='statwrap'><div class='stat' style='font-size:240px'>8<em>周</em></div></div>
+        <div class='why'><div class='why-label'>为什么</div><div class='mech'>每天 20 分钟专注呼吸能降低促脂的压力激素；坚持 8 周足以重塑大脑结构、降低与压力相关的杏仁核灰质密度，帮你管住情绪性进食。</div></div>
+      </div>
+      <div class='action'><span class='ar'>→</span><span class='al'>怎么做</span><span class='at'>起床后给自己 20 分钟，安静坐着专注呼吸，让大脑先于身体醒来。</span></div>
+      <div class='bf'>@津玉不良言</div>
+    </div><div class='lab'>05 · 冥想塑身</div></div>
+
+    <div class='frame'><div class='card'>
+      <div class='hd'><span class='eyebrow'>晨间仪式</span><span class='meta'><span class='idx-num'>06<i> / 06</i></span><span class='dots'><i></i><i></i><i></i><i></i><i></i><i class='on'></i></span></span></div>
+      <div class='lead-row'><span class='chip'>06</span><h2 class='ttl'>喝杯甜茶</h2></div>
+      <div class='lead'>把早餐饮料换成一杯加蜂蜜的白茶。</div>
+      <div class='core'>
+        <div class='statwrap'><div class='stat' style='font-size:240px'>3<em>倍</em></div></div>
+        <div class='why'><div class='why-label'>为什么</div><div class='mech'>白茶的抗氧化物约是绿茶的 3 倍，能同时促进脂肪分解、抑制脂肪生成；再加一勺蜂蜜，葡萄糖配咖啡因还能提升专注力。</div></div>
+      </div>
+      <div class='action'><span class='ar'>→</span><span class='al'>怎么做</span><span class='at'>用白茶替代含糖饮料，想加甜就加一勺蜂蜜，趁早晨喝。</span></div>
+      <div class='bf'>@津玉不良言</div>
+    </div><div class='lab'>06 · 喝杯甜茶</div></div>
+
+    <div class='frame'><div class='card close'>
+      <div class='hd'><span class='eyebrow'>晨间仪式</span><span class='cv-r'>收束</span></div>
+      <div class='cl-body'>
+        <div class='cl-h'>这六件事单独看都不大，<br>难在每个清晨都重复去做。</div>
+        <div class='recap'>
+          <div class='it'><span class='n'>01</span><span class='tx'>去晒晨光 · 晨光越多，BMI 越低</span></div>
+          <div class='it'><span class='n'>02</span><span class='tx'>提早起床 · 更主动、收入更高</span></div>
+          <div class='it'><span class='n'>03</span><span class='tx'>提醒目标 · 把目标贴在眼前</span></div>
+          <div class='it'><span class='n'>04</span><span class='tx'>燕麦加维C · 降坏胆固醇翻倍</span></div>
+          <div class='it'><span class='n'>05</span><span class='tx'>冥想塑身 · 8 周重塑大脑</span></div>
+          <div class='it'><span class='n'>06</span><span class='tx'>喝杯甜茶 · 抗氧化、助代谢</span></div>
+        </div>
+        <div class='cta'><span class='t'>收藏这 6 件小事，明早就开始。</span><span class='a'>→</span></div>
+      </div>
+      <div class='bf'>@津玉不良言</div>
+    </div><div class='lab'>尾页 · close</div></div>
+
+  </div>
+</div>
+</body>
+</html>
