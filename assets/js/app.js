@@ -62,7 +62,9 @@
     }
     const useImg = layout !== "none" && !!imgUrl && isCover;
 
-    card.className = "card" + (useImg ? ` has-img layout-${layout}` : "");
+    const cls = ["card", isCover ? "role-cover" : "role-body"];
+    if (useImg) { cls.push("has-img", "layout-" + layout); }
+    card.className = cls.join(" ");
     card.setAttribute("data-theme", theme);
 
     const eyebrow = $("eyebrow").value.trim();
