@@ -39,17 +39,55 @@
       { id: "card", label: "玻璃卡片图", base: "frame" },
       { id: "split", label: "分栏玻璃", base: "split" },
     ],
-    bauhaus: [{ id: "default", label: "几何分栏", base: "split" }],
-    mondrian: [{ id: "default", label: "色块嵌图", base: "module" }],
-    brutalism: [{ id: "default", label: "粗框嵌图", base: "module" }],
-    artdeco: [{ id: "default", label: "金边相框", base: "frame" }],
-    memphis: [],
-    vaporwave: [{ id: "default", label: "满版霓虹", base: "bg" }],
-    cyberpunk: [{ id: "default", label: "满版霓虹", base: "bg" }],
-    riso: [{ id: "default", label: "套色顶图", base: "top" }],
-    acid: [{ id: "default", label: "满版酸性", base: "bg" }],
-    y2k: [],
-    anti: [],
+    bauhaus: [
+      { id: "block", label: "几何分栏", base: "split" },
+      { id: "circle", label: "圆点相框", base: "frame" },
+      { id: "band", label: "色带顶图", base: "top" },
+    ],
+    mondrian: [
+      { id: "module", label: "色块嵌图", base: "module" },
+      { id: "gridframe", label: "网格相框", base: "frame" },
+      { id: "topband", label: "顶部色块", base: "top" },
+    ],
+    brutalism: [
+      { id: "slab", label: "粗框嵌图", base: "module" },
+      { id: "raw", label: "出血顶图", base: "top" },
+      { id: "mono", label: "满版灰阶", base: "bg" },
+    ],
+    artdeco: [
+      { id: "goldframe", label: "金边相框", base: "frame" },
+      { id: "plate", label: "全幅刊封", base: "bg" },
+      { id: "symtop", label: "对称顶图", base: "top" },
+    ],
+    memphis: [
+      { id: "pop", label: "圆角嵌图", base: "frame" },
+      { id: "band", label: "撞色顶图", base: "top" },
+    ],
+    vaporwave: [
+      { id: "neon", label: "满版霓虹", base: "bg" },
+      { id: "glitchtop", label: "故障顶图", base: "top" },
+    ],
+    cyberpunk: [
+      { id: "hud", label: "满版 HUD", base: "bg" },
+      { id: "splitscan", label: "分屏扫描", base: "split" },
+    ],
+    riso: [
+      { id: "duotop", label: "套色顶图", base: "top" },
+      { id: "duoframe", label: "套色相框", base: "frame" },
+      { id: "collage", label: "拼贴小图", base: "module" },
+    ],
+    acid: [
+      { id: "flood", label: "满版酸性", base: "bg" },
+      { id: "glowtop", label: "荧光顶图", base: "top" },
+    ],
+    y2k: [
+      { id: "chrome", label: "铬感满版", base: "bg" },
+      { id: "glossycard", label: "光泽卡片", base: "frame" },
+    ],
+    anti: [
+      { id: "skew", label: "歪斜嵌图", base: "module" },
+      { id: "tear", label: "撞色顶图", base: "top" },
+    ],
   };
 
   const SAMPLE = `# 少吃一口糖\n你的身体会谢谢你\n\n> 真正的自律，不是和食物对抗，而是重新认识它。\n\n## 三个温柔的开始\n\n- 把含糖饮料换成**气泡水 + 柠檬**\n- 主食里掺一半**糙米与豆类**\n- 嘴馋时先喝一杯水，==等十分钟==\n\n---\n\n## 为什么有效\n\n血糖平稳了，*情绪和精力*也会跟着稳。\n\n1. 减少胰岛素的剧烈波动\n2. 延长饱腹感，自然少吃\n3. 让味觉慢慢变得敏锐\n\n> 改变不必剧烈，坚持才会发光。`;
