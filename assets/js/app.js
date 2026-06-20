@@ -1,9 +1,5 @@
 (function () {
-  const RATIOS = {
-    "3-4": { w: 1080, h: 1440 },
-    "1-1": { w: 1080, h: 1080 },
-    "9-16": { w: 1080, h: 1920 },
-  };
+  const CARD = { w: 1080, h: 1440 }; // 固定 3:4 竖版
 
   const SAMPLE = `# 少吃一口糖\n你的身体会谢谢你\n\n> 真正的自律，不是和食物对抗，而是重新认识它。\n\n## 三个温柔的开始\n\n- 把含糖饮料换成**气泡水 + 柠檬**\n- 主食里掺一半**糙米与豆类**\n- 嘴馋时先喝一杯水，==等十分钟==\n\n---\n\n## 为什么有效\n\n血糖平稳了，*情绪和精力*也会跟着稳。\n\n1. 减少胰岛素的剧烈波动\n2. 延长饱腹感，自然少吃\n3. 让味觉慢慢变得敏锐\n\n> 改变不必剧烈，坚持才会发光。`;
 
@@ -22,28 +18,29 @@
     return parts.length ? parts : [""];
   }
 
-  function applyRatio() {
-    const r = RATIOS[$("ratio").value] || RATIOS["3-4"];
-    card.style.setProperty("--card-w", r.w + "px");
-    card.style.setProperty("--card-h", r.h + "px");
-    return r;
+  function setSize() {
+    card.style.setProperty("--card-w", CARD.w + "px");
+    card.style.setProperty("--card-h", CARD.h + "px");
   }
 
   function fit() {
-    const r = RATIOS[$("ratio").value] || RATIOS["3-4"];
     const pad = 48;
     const availW = stage.clientWidth - pad;
     const availH = stage.clientHeight - pad;
-    const scale = Math.min(availW / r.w, availH / r.h, 1);
+    const scale = Math.min(availW / CARD.w, availH / CARD.h, 1);
     card.style.transform = `scale(${scale})`;
-    frame.style.width = r.w * scale + "px";
-    frame.style.height = r.h * scale + "px";
+    frame.style.width = CARD.w * scale + "px";
+    frame.style.height = CARD.h * scale + "px";
+  }
+
+  function escapeAttr(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
   function renderPage(i) {
     const total = pages.length;
     index = Math.max(0, Math.min(i, total - 1));
-    applyRatio();
+    setSize();
     card.setAttribute("data-theme", $("theme").value);
 
     const eyebrow = $("eyebrow").value.trim();
@@ -58,10 +55,6 @@
 
     counter.textContent = `${no} / ${tot}`;
     fit();
-  }
-
-  function escapeAttr(s) {
-    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
   function rebuild(keepIndex) {
@@ -111,10 +104,8 @@
     renderPage(start);
   }
 
-  // Events
   input.addEventListener("input", () => rebuild(true));
   $("theme").addEventListener("change", () => renderPage(index));
-  $("ratio").addEventListener("change", () => renderPage(index));
   $("eyebrow").addEventListener("input", () => renderPage(index));
   $("brand").addEventListener("input", () => renderPage(index));
   $("prev").addEventListener("click", () => renderPage(index - 1));
@@ -124,7 +115,6 @@
   $("loadSample").addEventListener("click", () => { input.value = SAMPLE; rebuild(false); });
   window.addEventListener("resize", fit);
 
-  // Init
   input.value = SAMPLE;
   rebuild(false);
 })();
