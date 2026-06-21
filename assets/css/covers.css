@@ -1,6 +1,7 @@
 /* ====================================================================
    PER-THEME COVER VARIANTS — 各风格专属封面方案（构图/图处理）
    link 顺序最后加载，以确保覆盖 base 与 themes
+   注：Kinfolk 专属规则已拆到 kinfolk.css（在本文件之后加载）
    ==================================================================== */
 
 /* Gallery 画廊 */
@@ -10,17 +11,6 @@
 .cv-gallery-museum .card-eyebrow, .cv-gallery-museum .card-body { text-align:center; }
 .cv-gallery-diptych.layout-split .card-media { width:50%; }
 .cv-gallery-diptych.layout-split .li-content { border-left:1px solid var(--card-rule); padding-left:64px; }
-
-/* Kinfolk 北欧极简 */
-.cv-kinfolk-airy.layout-top .card-media { height:36%; }
-.cv-kinfolk-airy .li-content { padding:96px 104px 84px; }
-.cv-kinfolk-airy .card-media img { filter:brightness(1.05) saturate(0.82); }
-.cv-kinfolk-square.layout-frame { padding:130px 120px; }
-.cv-kinfolk-square .card-media { width:520px; height:520px; margin:0 auto 56px; }
-.cv-kinfolk-square .card-eyebrow { justify-content:center; }
-.cv-kinfolk-square .card-eyebrow, .cv-kinfolk-square .card-body { text-align:center; }
-.cv-kinfolk-half.layout-split .card-media { width:48%; }
-.cv-kinfolk-half.layout-split .li-content { padding:120px 76px; }
 
 /* Swiss 瑞士国际主义 */
 .cv-swiss-grid.layout-split .card-media { width:50%; }
@@ -212,6 +202,7 @@
 
 /* ====================================================================
    PER-VARIANT TYPOGRAPHY — 各封面方案专属文字排列/字号/竖向位置
+   （Kinfolk 专属排版已迁入 kinfolk.css）
    ==================================================================== */
 
 /* Gallery */
@@ -220,14 +211,6 @@
 .card.role-cover.cv-gallery-fullbleed .card-body h1 { font-size:112px; line-height:0.98; letter-spacing:-1.5px; }
 .card.cv-gallery-diptych .li-content { justify-content:center; }
 .card.role-cover.cv-gallery-diptych .card-body h1 { font-size:72px; line-height:1.08; }
-
-/* Kinfolk — 轻、稀疏、大字距 */
-.card.role-cover.cv-kinfolk-airy .card-body h1 { font-size:62px; font-weight:400; letter-spacing:3px; line-height:1.22; }
-.card.role-cover.cv-kinfolk-airy .card-eyebrow { letter-spacing:9px; }
-.card.role-cover.cv-kinfolk-square .card-body h1 { font-size:54px; font-weight:400; letter-spacing:2px; }
-.card.cv-kinfolk-half .li-content { justify-content:center; }
-.card.role-cover.cv-kinfolk-half .card-body h1 { font-size:52px; font-weight:400; letter-spacing:1px; line-height:1.25; }
-.card.role-cover.cv-kinfolk-half .card-body p { font-size:30px; font-weight:300; }
 
 /* Swiss — 顶对齐、巨大粗体、紧字距 */
 .card.cv-swiss-grid .li-content { justify-content:flex-start; }
@@ -266,6 +249,7 @@
 /* ====================================================================
    END PAGE — 尾页（收尾 / 行动号召），与 role-body 叠加使用
    尾页 = role-body（继承各主题正文配色）+ role-end（居中收尾排版）
+   （Kinfolk 尾页主题专属样式已迁入 kinfolk.css）
    ==================================================================== */
 .card.role-end .card-body {
   display:flex; flex-direction:column; justify-content:center;
@@ -278,41 +262,6 @@
 .card.role-end .card-body strong { color:var(--card-accent); }
 .card.role-end .card-body blockquote { font-size:36px; font-style:italic; border:none; padding:0; margin:28px 0 0; }
 .card.role-end .card-foot { justify-content:flex-end; }
-
-/* ====================================================================
-   KINFOLK FINE-TUNING — 北欧极简专属排版精调
-   依据实际生成内容（封面 h1+h2+p / 正文 h2+列表+引用 / 尾页）
-   理念：轻字重、宽行距、大留白、柔和层级
-   ==================================================================== */
-
-/* 封面 · 轻盈克制 */
-.card[data-theme="kinfolk"].role-cover .card-eyebrow { letter-spacing:8px; font-size:17px; margin-bottom:0; }
-.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body h1 { font-size:76px; font-weight:400; line-height:1.24; letter-spacing:2px; margin:0 0 36px; }
-.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body h2 { font-size:37px; font-weight:300; line-height:1.45; letter-spacing:1px; margin:0 0 40px; color:var(--card-dim); }
-.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body p { font-size:30px; font-weight:300; line-height:1.72; letter-spacing:0.5px; color:var(--card-dim); margin:0; }
-
-/* 正文 · 宽松呼吸感 */
-.card[data-theme="kinfolk"].role-body .card-head { margin-bottom:46px; }
-.card[data-theme="kinfolk"].role-body .card-eyebrow { font-size:16px; letter-spacing:5px; }
-.card[data-theme="kinfolk"].role-body .card-body h2 { font-size:48px; font-weight:400; line-height:1.26; letter-spacing:1px; margin:0 0 38px; }
-.card[data-theme="kinfolk"].role-body .card-body h2:first-child { margin-top:0; }
-.card[data-theme="kinfolk"].role-body .card-body p { font-size:31px; font-weight:300; line-height:1.86; letter-spacing:0.3px; margin:0 0 30px; }
-.card[data-theme="kinfolk"].role-body .card-body ul,
-.card[data-theme="kinfolk"].role-body .card-body ol { margin:0 0 32px; }
-.card[data-theme="kinfolk"].role-body .card-body li { font-size:30px; font-weight:300; line-height:1.7; margin-bottom:22px; }
-/* 列表标识 · 空心小圆环（轻、透气，与首行对齐） */
-.card[data-theme="kinfolk"].role-body .card-body ul li::before { top:13px; left:3px; width:10px; height:10px; background:transparent; border:1.5px solid var(--card-accent); border-radius:50%; }
-.card[data-theme="kinfolk"].role-body .card-body blockquote { font-size:35px; font-weight:400; font-style:italic; line-height:1.55; margin:38px 0 0; padding-left:30px; border-left-width:2px; color:var(--card-dim); }
-/* 引用标识 · 顶部细短横线代替左侧竖条（极简分隔；尾页居中引用除外） */
-.card[data-theme="kinfolk"].role-body:not(.role-end) .card-body blockquote { padding:30px 0 0; border:none; position:relative; }
-.card[data-theme="kinfolk"].role-body:not(.role-end) .card-body blockquote::before { content:""; position:absolute; left:0; top:0; width:48px; height:1px; background:var(--card-accent); opacity:0.7; }
-.card[data-theme="kinfolk"].role-body .card-body mark { background:linear-gradient(transparent 62%, color-mix(in srgb, var(--card-accent) 22%, transparent) 62%); }
-
-/* 尾页 · 收束轻盈 */
-.card[data-theme="kinfolk"].role-end .card-body h1 { font-size:70px; font-weight:400; line-height:1.22; letter-spacing:2px; margin:0 0 30px; }
-.card[data-theme="kinfolk"].role-end .card-body h2 { font-size:34px; font-weight:300; letter-spacing:1px; line-height:1.4; margin:0 0 34px; }
-.card[data-theme="kinfolk"].role-end .card-body p { font-size:30px; font-weight:300; line-height:1.8; margin:0 0 16px; }
-.card[data-theme="kinfolk"].role-end .card-body blockquote { font-size:31px; font-weight:300; font-style:italic; margin:34px 0 0; }
 
 /* ====================================================================
    BODY WHITESPACE — 正文留白处理（自动规则）
@@ -342,41 +291,3 @@
   transform-origin:center center; will-change:transform; cursor:grab;
 }
 .card.role-body.bf .card-body .body-figure img:active { cursor:grabbing; }
-
-/* ====================================================================
-   COVER FLOW (C) — 封面动线：栏目(顶) → 标题(中) → 导语(底)
-   仅 Kinfolk 封面启用；纯排版节奏，无装饰元素
-   栏目留在顶部，标题下沉至版心，末段作导语沉底，形成竖向动线
-   ==================================================================== */
-
-/* 无图封面：标题下沉至版心中部（拉开与栏目间距），末段导语沉底 */
-.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body { justify-content:flex-start; }
-.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body h1 { margin-top:240px; }
-
-/* 有图封面（airy 顶图）：标题与顶图拉开间距，导语沉底消费下方留白 */
-.card[data-theme="kinfolk"].role-cover.has-img .li-content { display:flex; flex-direction:column; }
-.card[data-theme="kinfolk"].role-cover.has-img .card-body { flex:1 1 auto; display:flex; flex-direction:column; }
-.card[data-theme="kinfolk"].role-cover.has-img .card-body h1 { margin-top:80px; }
-
-/* 末段作导语：沉底、弱化、限定宽度，形成收束节奏 */
-.card[data-theme="kinfolk"].role-cover .card-body p:last-child {
-  margin-top:auto; margin-bottom:6px; max-width:82%;
-  font-size:29px; font-weight:300; line-height:1.7; letter-spacing:0.5px;
-  color:var(--card-dim);
-}
-
-/* ====================================================================
-   KINFOLK 封面（极简留白）— airy 改版
-   顶图 55%（可拖拽缩放）+ 大标题 + 标题下方正文，去页眉页脚
-   （与上方 COVER FLOW C 仅对 airy 覆盖，不影响 square/half 与无图封面）
-   ==================================================================== */
-.card.role-cover.cv-kinfolk-airy.layout-top .card-media { height:55%; }
-.card.role-cover.cv-kinfolk-airy .card-eyebrow,
-.card.role-cover.cv-kinfolk-airy .card-foot { display:none; }
-.card.role-cover.cv-kinfolk-airy.has-img .card-media img { cursor:grab; transform-origin:center center; will-change:transform; }
-.card.role-cover.cv-kinfolk-airy.has-img .card-media img:active { cursor:grabbing; }
-.card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy.has-img .li-content { justify-content:flex-start; padding:60px 88px 72px; }
-.card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy.has-img .card-body { flex:0 1 auto; display:block; }
-.card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy.has-img .card-body h1 { margin:0 0 32px; font-size:88px; font-weight:400; letter-spacing:1px; line-height:1.16; }
-.card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy.has-img .card-body h2 { margin:0 0 26px; }
-.card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy.has-img .card-body p:last-child { margin-top:0; max-width:100%; font-size:32px; line-height:1.7; }
