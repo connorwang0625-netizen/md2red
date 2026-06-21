@@ -128,8 +128,8 @@ body {
 .card-progress .pg { color: var(--card-dim); opacity: 0.6; display: inline-flex; align-items: center; justify-content: center; }
 .card-progress .pg.active { color: var(--card-accent); opacity: 1; }
 /* 圆点 */
-.card-progress.kind-dots .pg { width: 12px; height: 12px; border-radius: 50%; background: currentColor; }
-.card-progress.kind-dots .pg.active { width: 15px; height: 15px; }
+.card-progress.kind-dots .pg { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+.card-progress.kind-dots .pg.active { width: 11px; height: 11px; }
 /* 点线 */
 .card-progress.kind-dashes { gap: 7px; }
 .card-progress.kind-dashes .pg { width: 16px; height: 3px; border-radius: 2px; background: currentColor; }
