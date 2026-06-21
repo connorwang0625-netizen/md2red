@@ -348,7 +348,6 @@
 
     const eyebrow = $("eyebrow").value.trim();
     const brand = $("brand").value.trim();
-    const issue = $("issue").value.trim();
     const no = String(index + 1).padStart(2, "0");
     const tot = String(total).padStart(2, "0");
 
@@ -368,20 +367,6 @@
       ? `<div class="card-anchor">${String(bodyNo).padStart(2, "0")}</div>`
       : "";
 
-    // 封面动线（B）：大期号 + 竖排引导 + meta 信息线（仅首页生成，样式仅 Kinfolk 启用）
-    let coverFlowHtml = "";
-    if (isCover) {
-      const vside = eyebrow.includes("/") ? eyebrow.split("/")[0].trim() : eyebrow.trim();
-      const eyeTail = eyebrow.includes("/") ? eyebrow.split("/").slice(1).join("/").trim() : "";
-      const metaParts = [String(new Date().getFullYear())];
-      if (eyeTail) metaParts.push(eyeTail);
-      if (issue) metaParts.push(issue);
-      const issueHtml = issue ? `<div class="cv-issue">${escapeAttr(issue)}</div>` : "";
-      const vsideHtml = vside ? `<div class="cv-vside">${escapeAttr(vside)}</div>` : "";
-      const metaHtml = metaParts.length ? `<div class="cv-meta">${escapeAttr(metaParts.join("  \u00b7  "))}</div>` : "";
-      coverFlowHtml = `<div class="cover-flow" aria-hidden="true">${issueHtml}${vsideHtml}${metaHtml}</div>`;
-    }
-
     const media = useImg
       ? `<div class="card-media"><img src="${escapeAttr(imgUrl)}" crossorigin="anonymous" alt="" /></div>`
       : "";
@@ -400,7 +385,7 @@
     } else {
       inner = media + `<div class="li-content">${headHtml}${bodyHtml}${footHtml}</div>`;
     }
-    card.innerHTML = inner + coverFlowHtml + anchorHtml + buildGrid(theme, base);
+    card.innerHTML = inner + anchorHtml + buildGrid(theme, base);
     applyColorsToCard();
 
     counter.textContent = `${no} / ${tot}`;
@@ -483,7 +468,6 @@
   $("showGrid").addEventListener("change", () => renderPage(index));
   $("eyebrow").addEventListener("input", () => renderPage(index));
   $("brand").addEventListener("input", () => renderPage(index));
-  $("issue").addEventListener("input", () => renderPage(index));
   $("prev").addEventListener("click", () => renderPage(index - 1));
   $("next").addEventListener("click", () => renderPage(index + 1));
   $("exportOne").addEventListener("click", exportOne);

@@ -41,7 +41,7 @@
 .cv-editorial-quote.layout-bottom .card-media { height:42%; }
 .cv-editorial-quote.layout-bottom .card-media img { filter:grayscale(1); }
 
-/* Wabi 侘寂 */
+/* Wabi 侗寂 */
 .cv-wabi-scroll.layout-split .card-media { width:38%; order:2; }
 .cv-wabi-scroll.layout-split .li-content { order:1; padding:120px 60px; }
 .cv-wabi-scroll .card-media img { filter:saturate(0.85) brightness(1.02); }
@@ -329,36 +329,5 @@
 .card.role-body.bf .card-body figure.card-fig.fig-band:last-child img { height:540px; object-fit:cover; border-radius:0; box-shadow:none; }
 
 /* ====================================================================
-   COVER FLOW (B) — 封面动线：大期号 + 竖排引导 + meta 信息线
-   仅 Kinfolk 封面启用；动线元素垫底（z-index:0），正文内容浮于其上
-   形成 标题(左上) → 竖排引导(左缘下行) → 大期号(右下) 的对角动线
-   ==================================================================== */
-.cover-flow { display:none; }
-.card[data-theme="kinfolk"].role-cover .cover-flow { display:block; }
-/* 正文内容浮于动线元素之上，避免大期号压住文字 */
-.card[data-theme="kinfolk"].role-cover .li-content,
-.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body { position:relative; z-index:1; }
-
-/* 大期号 · 右下锚点（衬线、巨大、半透明强调色） */
-.card[data-theme="kinfolk"].role-cover .cv-issue {
-  position:absolute; right:92px; bottom:150px; z-index:0;
-  font-family:var(--font-serif); font-weight:400; font-style:normal;
-  font-size:170px; line-height:0.76; letter-spacing:-2px;
-  color:var(--card-accent); opacity:0.16; pointer-events:none; user-select:none;
-}
-/* 竖排引导 · 左缘自上而下，尾随一条引导细线 */
-.card[data-theme="kinfolk"].role-cover .cv-vside {
-  position:absolute; left:52px; top:46%; z-index:2;
-  writing-mode:vertical-rl; text-orientation:mixed;
-  font-family:var(--font-sans); font-size:21px; font-weight:400;
-  letter-spacing:10px; text-transform:uppercase; color:var(--card-dim); opacity:0.85;
-}
-.card[data-theme="kinfolk"].role-cover .cv-vside::after {
-  content:""; display:block; width:1px; height:96px; margin:18px auto 0; background:var(--card-rule);
-}
-/* meta 信息线 · 左下，与大期号同基线呼应 */
-.card[data-theme="kinfolk"].role-cover .cv-meta {
-  position:absolute; left:104px; bottom:152px; z-index:2;
-  font-family:var(--font-sans); font-size:20px; letter-spacing:4px;
-  text-transform:uppercase; color:var(--card-dim); opacity:0.85;
-}
+   COVER FLOW (C) — 封面动线：栏目(顶) → 标题(中) → 导语(底)
+   仅 Kinfolk 封面
