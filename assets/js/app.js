@@ -178,18 +178,22 @@
     return `<div class="card-progress kind-${kind}">${marks}</div>`;
   }
 
-  // 构图/网格参考层：按风格决定列数，叠加三分构图线（仅编辑可见）
+  // 构图/网格参考层：按风格决定列数，根据 3:4 比例推导行数，叠加三分构图线（仅编辑可见）
   function buildGrid(theme, base) {
     const cols = GRID_COLS[theme] || 6;
     const gap = cols >= 12 ? 12 : cols >= 8 ? 18 : 24;
-    let spans = "";
-    for (let i = 0; i < cols; i++) spans += "<span></span>";
+    const rows = Math.max(2, Math.round(cols * CARD.h / CARD.w));
+    let cspans = "";
+    for (let i = 0; i < cols; i++) cspans += "<span></span>";
+    let rspans = "";
+    for (let i = 0; i < rows; i++) rspans += "<span></span>";
     const baseLabel = base === "none" ? "纯文字" : base.toUpperCase();
     return `<div class="card-grid" aria-hidden="true">` +
       `<div class="cg-thirds"></div>` +
       `<div class="cg-margin"></div>` +
-      `<div class="cg-cols" style="gap:${gap}px">${spans}</div>` +
-      `<div class="cg-label">${theme.toUpperCase()} · ${cols} COL · ${baseLabel}</div>` +
+      `<div class="cg-cols" style="gap:${gap}px">${cspans}</div>` +
+      `<div class="cg-rows" style="gap:${gap}px">${rspans}</div>` +
+      `<div class="cg-label">${theme.toUpperCase()} · ${cols}×${rows} · ${baseLabel}</div>` +
       `</div>`;
   }
 

@@ -278,3 +278,34 @@
 .card.role-end .card-body strong { color:var(--card-accent); }
 .card.role-end .card-body blockquote { font-size:36px; font-style:italic; border:none; padding:0; margin:28px 0 0; }
 .card.role-end .card-foot { justify-content:flex-end; }
+
+/* ====================================================================
+   KINFOLK FINE-TUNING — 北欧极简专属排版精调
+   依据实际生成内容（封面 h1+h2+p / 正文 h2+列表+引用 / 尾页）
+   理念：轻字重、宽行距、大留白、柔和层级
+   ==================================================================== */
+
+/* 封面 · 轻盈克制 */
+.card[data-theme="kinfolk"].role-cover .card-eyebrow { letter-spacing:8px; font-size:17px; margin-bottom:0; }
+.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body h1 { font-size:76px; font-weight:400; line-height:1.24; letter-spacing:2px; margin:0 0 36px; }
+.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body h2 { font-size:37px; font-weight:300; line-height:1.45; letter-spacing:1px; margin:0 0 40px; color:var(--card-dim); }
+.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body p { font-size:30px; font-weight:300; line-height:1.72; letter-spacing:0.5px; color:var(--card-dim); margin:0; }
+
+/* 正文 · 宽松呼吸感 */
+.card[data-theme="kinfolk"].role-body .card-head { margin-bottom:46px; }
+.card[data-theme="kinfolk"].role-body .card-eyebrow { font-size:16px; letter-spacing:5px; }
+.card[data-theme="kinfolk"].role-body .card-body h2 { font-size:48px; font-weight:400; line-height:1.26; letter-spacing:1px; margin:0 0 38px; }
+.card[data-theme="kinfolk"].role-body .card-body h2:first-child { margin-top:0; }
+.card[data-theme="kinfolk"].role-body .card-body p { font-size:31px; font-weight:300; line-height:1.86; letter-spacing:0.3px; margin:0 0 30px; }
+.card[data-theme="kinfolk"].role-body .card-body ul,
+.card[data-theme="kinfolk"].role-body .card-body ol { margin:0 0 32px; }
+.card[data-theme="kinfolk"].role-body .card-body li { font-size:30px; font-weight:300; line-height:1.7; margin-bottom:22px; }
+.card[data-theme="kinfolk"].role-body .card-body ul li::before { top:22px; width:22px; }
+.card[data-theme="kinfolk"].role-body .card-body blockquote { font-size:35px; font-weight:400; font-style:italic; line-height:1.55; margin:38px 0 0; padding-left:30px; border-left-width:2px; color:var(--card-dim); }
+.card[data-theme="kinfolk"].role-body .card-body mark { background:linear-gradient(transparent 62%, color-mix(in srgb, var(--card-accent) 22%, transparent) 62%); }
+
+/* 尾页 · 收束轻盈 */
+.card[data-theme="kinfolk"].role-end .card-body h1 { font-size:70px; font-weight:400; line-height:1.22; letter-spacing:2px; margin:0 0 30px; }
+.card[data-theme="kinfolk"].role-end .card-body h2 { font-size:34px; font-weight:300; letter-spacing:1px; line-height:1.4; margin:0 0 34px; }
+.card[data-theme="kinfolk"].role-end .card-body p { font-size:30px; font-weight:300; line-height:1.8; margin:0 0 16px; }
+.card[data-theme="kinfolk"].role-end .card-body blockquote { font-size:31px; font-weight:300; font-style:italic; margin:34px 0 0; }

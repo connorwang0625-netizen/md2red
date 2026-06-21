@@ -228,7 +228,7 @@ body {
 
 /* ====================================================================
    GRID OVERLAY — 构图 / 网格参考（编辑可见，导出隐藏）
-   蓝色 = 版心边距 + 列网格；粉色 = 三分构图线；虚线描边 = 各方案实际区域
+   蓝色 = 版心边距 + 列行网格；粉色 = 三分构图线；虚线描边 = 各方案实际区域
    grid-on 控制显隐；exporting 时强制隐藏，确保导出图不含网格
    ==================================================================== */
 .card-grid { position: absolute; inset: 0; z-index: 60; pointer-events: none; display: none; font-family: var(--font-sans); }
@@ -245,9 +245,12 @@ body {
 }
 /* 版心边距框 */
 .card-grid .cg-margin { position: absolute; top: 96px; left: 88px; right: 88px; bottom: 120px; border: 1px solid rgba(54,166,255,0.5); }
-/* 列网格 */
+/* 列网格（纵向） */
 .card-grid .cg-cols { position: absolute; top: 96px; left: 88px; right: 88px; bottom: 120px; display: flex; }
 .card-grid .cg-cols span { flex: 1; background: rgba(54,166,255,0.08); border-left: 1px solid rgba(54,166,255,0.22); border-right: 1px solid rgba(54,166,255,0.22); }
+/* 行网格（横向） */
+.card-grid .cg-rows { position: absolute; top: 96px; left: 88px; right: 88px; bottom: 120px; display: flex; flex-direction: column; }
+.card-grid .cg-rows span { flex: 1; border-top: 1px solid rgba(54,166,255,0.16); border-bottom: 1px solid rgba(54,166,255,0.16); }
 /* 标签 */
 .card-grid .cg-label { position: absolute; top: 0; left: 0; background: rgba(54,166,255,0.92); color: #fff; font-size: 18px; letter-spacing: 1px; padding: 6px 12px; border-radius: 0 0 8px 0; }
 
