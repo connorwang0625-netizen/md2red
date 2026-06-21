@@ -64,7 +64,7 @@
       { id: "band", label: "撞色顶图", base: "top" },
     ],
     vaporwave: [
-      { id: "neon", label: "满版霍虹", base: "bg" },
+      { id: "neon", label: "满版霓虹", base: "bg" },
       { id: "glitchtop", label: "故障顶图", base: "top" },
     ],
     cyberpunk: [
@@ -107,7 +107,7 @@
     memphis: 4, vaporwave: 4, acid: 4, y2k: 4, anti: 4, brutalism: 4,
   };
 
-  // 示例：首页=封面（主标题/副标题/描述），中间=正文（无图→展示大序号锁点），末页=尾页
+  // 示例：首页=封面（主标题/副标题/描述），中间=正文，末页=尾页
   const SAMPLE = `# 少吃一口糖，身体会谢谢你\n## 21 天温和减糖计划\n不靠硬扑，而是重新认识食物。三个不费力的小改变，从今天开始。\n\n---\n\n## 三个温柔的开始\n\n- 把含糖饮料换成**气泡水 + 柠檬**\n- 主食里泥一半**糙米与豆类**\n- 嘴馅时先喝一杯水，==等十分钟==\n\n---\n\n## 为什么有效\n\n血糖平稳了，*情绪和精力*也会跟着稳。\n\n1. 减少胰岛素的剧烈波动\n2. 延长饱腹感，自然少吃\n3. 让味觉慢慢变得敏锐\n\n> 改变不必剧烈，坚持才会发光。\n\n---\n\n# 从今天开始\n## 给身体多一点温柔\n少吃一口糖，不是剥夺，而是更懂得照顾自己。\n\n如果这份计划帮到你，点亮**收藏**，明天接着看。\n\n> 关注 · 一起慢慢变好`;
 
   const $ = (id) => document.getElementById(id);
@@ -204,7 +204,7 @@
   }
   // 正文末尾固定图框
   function setupBodyFigure(idx) { bindPanZoom(card.querySelector(".body-figure"), idx); }
-  // 封面顶图（Kinfolk 极简留白）
+  // 封面图（Kinfolk 统一有图）
   function setupCoverImage(idx) { bindPanZoom(card.querySelector(".card-media"), idx); }
 
   /* ---------- 下拉：按风格填充专属封面方案 ---------- */
@@ -385,24 +385,29 @@
     const list = variantsFor(theme);
     const variantId = $("imageLayout").value;
     const variant = list.find((v) => v.id === variantId);
-    const base = (!noImg && variant) ? variant.base : "none";
-    const useImg = base !== "none" && !!imgUrl && isCover;
+    // Kinfolk 统一有图：封面/正文/尾页始终走有图版式，忽略“无图”开关
+    const isKin = theme === "kinfolk";
+    const base = variant ? ((isKin || !noImg) ? variant.base : "none") : "none";
+    const useImg = base !== "none" && isCover && (isKin || !!imgUrl);
 
-    // 提前渲染正文 HTML，以便判断正文页是否含图
+    // 提前渲染 HTML，并抽出末尾图片（Kinfolk：正文+尾页都用图框，无图则占位）
     const md = window.mdToHtml(pages[index]);
-    const bodyFig = isBody ? splitTrailingFigure(md) : null;
-    const hasBodyFig = !!(bodyFig && bodyFig.imgHtml);
+    const figRole = isKin ? (isBody || isEnd) : isBody;
+    const fig = figRole ? splitTrailingFigure(md) : null;
+    const hasFig = !!(fig && fig.imgHtml);
+    // 文字 + 固定图框结构：Kinfolk 正文/尾页始终用；其他主题仅正文且含图时
+    const useBox = isKin ? figRole : (isBody && hasFig);
 
-    // 同步控件可用状态：无图时禁用方案/地址
-    $("imageLayout").disabled = noImg || list.length === 0;
-    $("imageUrl").disabled = noImg;
+    // 同步控件可用状态：无图时禁用方案/地址（Kinfolk 统一有图，保持可用）
+    $("imageLayout").disabled = (noImg && !isKin) || list.length === 0;
+    $("imageUrl").disabled = noImg && !isKin;
 
     const cls = ["card"];
     if (isCover) cls.push("role-cover");
     else if (isEnd) cls.push("role-body", "role-end");
     else cls.push("role-body");
     if (useImg) { cls.push("has-img", "layout-" + base, "cv-" + theme + "-" + variantId); }
-    if (hasBodyFig) cls.push("bf");
+    if (useBox) cls.push("bf");
     if (showGrid) cls.push("grid-on");
     card.className = cls.join(" ");
     card.setAttribute("data-theme", theme);
@@ -421,18 +426,18 @@
     const headHtml = isBody
       ? `<div class="card-head">${eyebrowHtml}${progressHtml}</div>`
       : eyebrowHtml;
-    const bodyInner = hasBodyFig
-      ? `<div class="body-text">${bodyFig.textHtml}</div><div class="body-figure">${bodyFig.imgHtml}</div>`
+    const bodyInner = useBox
+      ? `<div class="body-text">${fig ? fig.textHtml : md}</div><div class="body-figure${hasFig ? "" : " is-empty"}">${hasFig ? fig.imgHtml : ""}</div>`
       : md;
     const bodyHtml = `<div class="card-body">${bodyInner}</div>`;
     const footHtml = `<div class="card-foot"><span class="card-brand">${escapeAttr(brand)}</span></div>`;
-    // 无图正文页：底部大序号锁点，消费下方留白
-    const anchorHtml = (isBody && !hasBodyFig)
+    // 无图正文页（非 Kinfolk）：底部大序号锁点，消费下方留白
+    const anchorHtml = (isBody && !useBox)
       ? `<div class="card-anchor">${String(bodyNo).padStart(2, "0")}</div>`
       : "";
 
     const media = useImg
-      ? `<div class="card-media"><img src="${escapeAttr(imgUrl)}" crossorigin="anonymous" alt="" /></div>`
+      ? `<div class="card-media${imgUrl ? "" : " is-empty"}">${imgUrl ? `<img src="${escapeAttr(imgUrl)}" crossorigin="anonymous" alt="" />` : ""}</div>`
       : "";
 
     let inner;
@@ -451,9 +456,9 @@
     }
     card.innerHTML = inner + anchorHtml + buildGrid(theme, base);
     applyColorsToCard();
-    if (hasBodyFig) setupBodyFigure(index);
-    // 封面顶图可拖拽缩放（仅 Kinfolk 极简留白 airy）
-    if (isCover && useImg && theme === "kinfolk" && variantId === "airy") setupCoverImage(index);
+    if (useBox) setupBodyFigure(index);
+    // 封面图可拖拽缩放（Kinfolk 统一有图，有真实图片时）
+    if (isCover && useImg && isKin && imgUrl) setupCoverImage(index);
 
     counter.textContent = `${no} / ${tot}`;
     fit();
