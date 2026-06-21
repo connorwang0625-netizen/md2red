@@ -10,13 +10,12 @@
 /* airy 极简留白：顶图 55% */
 .cv-kinfolk-airy.layout-top .card-media { height:55%; }
 .cv-kinfolk-airy .card-media img { filter:brightness(1.05) saturate(0.82); }
-/* square 居中方图 */
+/* square 居中方图：图在上、标题在下，居中 */
 .cv-kinfolk-square.layout-frame { padding:130px 120px; }
 .cv-kinfolk-square .card-media { width:520px; height:520px; margin:0 auto 56px; }
-.cv-kinfolk-square .card-eyebrow { justify-content:center; }
-.cv-kinfolk-square .card-eyebrow, .cv-kinfolk-square .card-body { text-align:center; }
-/* half 左右半幅 */
-.cv-kinfolk-half.layout-split .card-media { width:33%; }
+.cv-kinfolk-square .card-body { text-align:center; }
+/* half 左右半幅：图宽 36% */
+.cv-kinfolk-half.layout-split .card-media { width:36%; }
 .cv-kinfolk-half.layout-split .li-content { padding:120px 76px; }
 .card.cv-kinfolk-half .li-content { justify-content:center; }
 
@@ -27,14 +26,16 @@
 }
 
 /* -------------------- 封面排版 -------------------- */
-.card[data-theme="kinfolk"].role-cover .card-eyebrow { letter-spacing:8px; font-size:17px; margin-bottom:0; }
+/* 所有 Kinfolk 封面（airy / square / half）：统一去页眉页脚 */
+.card[data-theme="kinfolk"].role-cover .card-eyebrow,
+.card[data-theme="kinfolk"].role-cover .card-foot { display:none; }
 
-/* airy：去页眉页脚 + 顶图可拖拽 + 大标题 + 标题下方正文 */
-.card.role-cover.cv-kinfolk-airy .card-eyebrow,
-.card.role-cover.cv-kinfolk-airy .card-foot { display:none; }
-.card.role-cover.cv-kinfolk-airy .card-media img { cursor:grab; transform-origin:center center; will-change:transform; }
-.card.role-cover.cv-kinfolk-airy .card-media img:active { cursor:grabbing; }
-.card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy .card-media.is-empty { cursor:default; }
+/* 封面图统一可拖拽缩放（有真实图片时；占位框不可拖） */
+.card[data-theme="kinfolk"].role-cover .card-media img { cursor:grab; transform-origin:center center; will-change:transform; }
+.card[data-theme="kinfolk"].role-cover .card-media img:active { cursor:grabbing; }
+.card[data-theme="kinfolk"].role-cover .card-media.is-empty { cursor:default; }
+
+/* airy：大标题 + 标题下方正文 */
 .card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy .li-content { justify-content:flex-start; padding:60px 88px 72px; display:flex; flex-direction:column; }
 .card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy .card-body { flex:0 1 auto; display:block; }
 .card[data-theme="kinfolk"].role-cover.cv-kinfolk-airy .card-body h1 { margin:0 0 32px; font-size:88px; font-weight:400; letter-spacing:1px; line-height:1.16; }
