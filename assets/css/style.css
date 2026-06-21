@@ -163,6 +163,9 @@ body {
 .card-body ol li { counter-increment: item; }
 .card-body ol li::before { content: counter(item, decimal-leading-zero); position: absolute; left: 0; top: 2px; font-family: var(--font-serif); font-size: 28px; color: var(--card-accent); }
 .card-body blockquote { font-family: var(--font-serif); font-style: italic; font-size: 44px; line-height: 1.4; margin: 32px 0; padding-left: 32px; border-left: 4px solid var(--card-accent); color: var(--card-dim); }
+/* 列表紧接引用时：列表底端→引用顶端的间距 = 列表上方文字→列表的间距（26px） */
+.card-body ul:has(+ blockquote), .card-body ol:has(+ blockquote) { margin-bottom: 0; }
+.card-body ul + blockquote, .card-body ol + blockquote { margin-top: 26px; }
 .card-body figure { margin: 0 0 28px; }
 .card-body img { width: 100%; border-radius: 8px; display: block; }
 .card-foot {
