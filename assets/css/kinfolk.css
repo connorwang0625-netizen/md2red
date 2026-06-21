@@ -16,7 +16,7 @@
 .cv-kinfolk-square .card-eyebrow { justify-content:center; }
 .cv-kinfolk-square .card-eyebrow, .cv-kinfolk-square .card-body { text-align:center; }
 /* half 左右半幅 */
-.cv-kinfolk-half.layout-split .card-media { width:48%; }
+.cv-kinfolk-half.layout-split .card-media { width:33%; }
 .cv-kinfolk-half.layout-split .li-content { padding:120px 76px; }
 .card.cv-kinfolk-half .li-content { justify-content:center; }
 
