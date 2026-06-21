@@ -330,4 +330,22 @@
 
 /* ====================================================================
    COVER FLOW (C) — 封面动线：栏目(顶) → 标题(中) → 导语(底)
-   仅 Kinfolk 封面
+   仅 Kinfolk 封面启用；纯排版节奏，无装饰元素
+   栏目留在顶部，标题下沉至版心，末段作导语沉底，形成纵向动线
+   ==================================================================== */
+
+/* 无图封面：标题下沉至版心中部（拉开与栏目间距），末段导语沉底 */
+.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body { justify-content:flex-start; }
+.card[data-theme="kinfolk"].role-cover:not(.has-img) .card-body h1 { margin-top:240px; }
+
+/* 有图封面（airy 顶图）：标题与顶图拉开间距，导语沉底消费下方留白 */
+.card[data-theme="kinfolk"].role-cover.has-img .li-content { display:flex; flex-direction:column; }
+.card[data-theme="kinfolk"].role-cover.has-img .card-body { flex:1 1 auto; display:flex; flex-direction:column; }
+.card[data-theme="kinfolk"].role-cover.has-img .card-body h1 { margin-top:80px; }
+
+/* 末段作导语：沉底、弱化、限定宽度，形成收束节奏 */
+.card[data-theme="kinfolk"].role-cover .card-body p:last-child {
+  margin-top:auto; margin-bottom:6px; max-width:82%;
+  font-size:29px; font-weight:300; line-height:1.7; letter-spacing:0.5px;
+  color:var(--card-dim);
+}
