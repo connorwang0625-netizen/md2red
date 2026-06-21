@@ -191,6 +191,26 @@
 .card[data-theme="glass"].role-body .card-foot .page-no { color:#1c2233; }
 
 /* ====================================================================
+   COVER CONTENT HIERARCHY — 封面内容层级（主标题 / 副标题 / 描述）
+   让各版式封面更“像封面”：无图时内容竖向居中；
+   h2 作副标题中号；p 作描述弱化小号
+   ==================================================================== */
+/* 无图封面：内容竖向居中，更有封面构图感 */
+.card.role-cover:not(.has-img) .card-body { display:flex; flex-direction:column; justify-content:center; }
+
+/* h2 作副标题 / kicker */
+.card.role-cover .card-body h2 {
+  font-size:42px; font-weight:500; line-height:1.28;
+  margin:0 0 30px; color:var(--card-dim); letter-spacing:0;
+}
+/* p 作描述，弱化 */
+.card.role-cover .card-body p {
+  font-size:33px; line-height:1.55; color:var(--card-dim); margin:0 0 18px;
+}
+.card.role-cover .card-body h1 { margin-bottom:26px; }
+.card.role-cover .card-body blockquote { font-size:38px; }
+
+/* ====================================================================
    PER-VARIANT TYPOGRAPHY — 各封面方案专属文字排列/字号/竖向位置
    ==================================================================== */
 
