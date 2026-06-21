@@ -309,3 +309,21 @@
 .card[data-theme="kinfolk"].role-end .card-body h2 { font-size:34px; font-weight:300; letter-spacing:1px; line-height:1.4; margin:0 0 34px; }
 .card[data-theme="kinfolk"].role-end .card-body p { font-size:30px; font-weight:300; line-height:1.8; margin:0 0 16px; }
 .card[data-theme="kinfolk"].role-end .card-body blockquote { font-size:31px; font-weight:300; font-style:italic; margin:34px 0 0; }
+
+/* ====================================================================
+   BODY WHITESPACE — 正文留白处理（自动规则）
+   有图 → .bf：末尾通栏图沉底出血，撑满下方
+   无图 → .card-anchor：浅色巨大序号沉右下，主动消费留白
+   判断逻辑在 app.js（hasBodyFig）
+   ==================================================================== */
+.card.role-body .card-body { position:relative; z-index:1; }
+.card-anchor {
+  position:absolute; right:78px; bottom:148px; z-index:0;
+  font-family:var(--font-serif); font-weight:700; font-style:normal;
+  font-size:300px; line-height:0.78; letter-spacing:-4px;
+  color:var(--card-accent); opacity:0.10; pointer-events:none; user-select:none;
+}
+.card.role-body.bf::before { display:none; }
+.card.role-body.bf .card-body { display:flex; flex-direction:column; }
+.card.role-body.bf .card-body figure.card-fig.fig-band:last-child { margin:auto -88px 0; flex:none; }
+.card.role-body.bf .card-body figure.card-fig.fig-band:last-child img { height:540px; object-fit:cover; border-radius:0; box-shadow:none; }
