@@ -99,6 +99,14 @@
     y2k: "bars", anti: "arrows",
   };
 
+  // 各风格所属设计体系的列网格数（构图参考）
+  const GRID_COLS = {
+    swiss: 12, bauhaus: 12, mondrian: 12,
+    editorial: 8, artdeco: 8, glass: 8,
+    gallery: 6, kinfolk: 6, wabi: 6, aero: 6, riso: 6, cyberpunk: 6,
+    memphis: 4, vaporwave: 4, acid: 4, y2k: 4, anti: 4, brutalism: 4,
+  };
+
   // 示例：首页=封面（主标题/副标题/描述），中间=正文，末页=尾页（收尾/行动号召）
   const SAMPLE = `# 少吃一口糖，身体会谢谢你\n## 21 天温和减糖计划\n不靠硬扛，而是重新认识食物。三个不费力的小改变，从今天开始。\n\n---\n\n## 三个温柔的开始\n\n- 把含糖饮料换成**气泡水 + 柠檬**\n- 主食里掺一半**糙米与豆类**\n- 嘴馋时先喝一杯水，==等十分钟==\n\n---\n\n## 为什么有效\n\n血糖平稳了，*情绪和精力*也会跟着稳。\n\n1. 减少胰岛素的剧烈波动\n2. 延长饱腹感，自然少吃\n3. 让味觉慢慢变得敏锐\n\n> 改变不必剧烈，坚持才会发光。\n\n---\n\n# 从今天开始\n## 给身体多一点温柔\n少吃一口糖，不是剥夺，而是更懂得照顾自己。\n\n如果这份计划帮到你，点亮**收藏**，明天接着看。\n\n> 关注 · 一起慢慢变好`;
 
@@ -168,6 +176,21 @@
       marks += `<span class="pg${on}">${glyph}</span>`;
     }
     return `<div class="card-progress kind-${kind}">${marks}</div>`;
+  }
+
+  // 构图/网格参考层：按风格决定列数，叠加三分构图线（仅编辑可见）
+  function buildGrid(theme, base) {
+    const cols = GRID_COLS[theme] || 6;
+    const gap = cols >= 12 ? 12 : cols >= 8 ? 18 : 24;
+    let spans = "";
+    for (let i = 0; i < cols; i++) spans += "<span></span>";
+    const baseLabel = base === "none" ? "纯文字" : base.toUpperCase();
+    return `<div class="card-grid" aria-hidden="true">` +
+      `<div class="cg-thirds"></div>` +
+      `<div class="cg-margin"></div>` +
+      `<div class="cg-cols" style="gap:${gap}px">${spans}</div>` +
+      `<div class="cg-label">${theme.toUpperCase()} · ${cols} COL · ${baseLabel}</div>` +
+      `</div>`;
   }
 
   /* ---------- 颜色工具 ---------- */
@@ -293,6 +316,7 @@
     const isEnd = total > 1 && index === total - 1;
     const isBody = !isCover && !isEnd;
     const noImg = $("noImage").checked;
+    const showGrid = $("showGrid").checked;
 
     const list = variantsFor(theme);
     const variantId = $("imageLayout").value;
@@ -309,6 +333,7 @@
     else if (isEnd) cls.push("role-body", "role-end");
     else cls.push("role-body");
     if (useImg) { cls.push("has-img", "layout-" + base, "cv-" + theme + "-" + variantId); }
+    if (showGrid) cls.push("grid-on");
     card.className = cls.join(" ");
     card.setAttribute("data-theme", theme);
 
@@ -347,7 +372,7 @@
     } else {
       inner = media + `<div class="li-content">${headHtml}${bodyHtml}${footHtml}</div>`;
     }
-    card.innerHTML = inner;
+    card.innerHTML = inner + buildGrid(theme, base);
     applyColorsToCard();
 
     counter.textContent = `${no} / ${tot}`;
@@ -384,7 +409,9 @@
     await (document.fonts ? document.fonts.ready : Promise.resolve());
     const prev = card.style.transform;
     card.style.transform = "none";
+    card.classList.add("exporting"); // 导出时隐藏网格参考层
     const canvas = await html2canvas(card, { scale: 2, useCORS: true, backgroundColor: null, logging: false });
+    card.classList.remove("exporting");
     card.style.transform = prev;
     fit();
     return canvas;
@@ -425,6 +452,7 @@
   $("noImage").addEventListener("change", () => renderPage(index));
   $("imageUrl").addEventListener("input", () => refresh());
   $("autoColor").addEventListener("change", () => refresh());
+  $("showGrid").addEventListener("change", () => renderPage(index));
   $("eyebrow").addEventListener("input", () => renderPage(index));
   $("brand").addEventListener("input", () => renderPage(index));
   $("prev").addEventListener("click", () => renderPage(index - 1));
