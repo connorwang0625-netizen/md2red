@@ -12,6 +12,21 @@
   <link rel="stylesheet" href="assets/css/themes.css" />
   <link rel="stylesheet" href="assets/css/covers.css" />
   <link rel="stylesheet" href="assets/css/kinfolk.css" />
+  <style>
+    /* 导出 PDF：浏览器原生打印，矢量输出，每张卡片占一页（与卡片同比 1080×1440） */
+    #print-root { display: none; }
+    @media print {
+      @page { size: 1080px 1440px; margin: 0; }
+      html, body { height: auto; overflow: visible; background: #fff; }
+      body > *:not(#print-root) { display: none !important; }
+      #print-root { display: block !important; }
+      .print-page { width: 1080px; height: 1440px; overflow: hidden; break-after: page; page-break-after: always; }
+      .print-page:last-child { break-after: auto; page-break-after: auto; }
+      .print-page .card { transform: none !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
+      .card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card-grid { display: none !important; }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -72,8 +87,8 @@
         <span>品牌</span>
         <input id="brand" type="text" value="@津玉不良言" />
       </label>
-      <button id="exportOne" class="btn">导出本页</button>
-      <button id="exportAll" class="btn btn-primary">导出全部</button>
+      <button id="exportOne" class="btn">导出本页 PDF</button>
+      <button id="exportAll" class="btn btn-primary">导出 PDF</button>
     </div>
   </header>
 
@@ -84,7 +99,7 @@
         <button id="loadSample" class="btn btn-ghost">载入示例</button>
       </div>
       <textarea id="input" spellcheck="false" placeholder="在这里粘贴 Markdown，用 --- 分页"></textarea>
-      <p class="hint">用单独一行的 <code>---</code> 分页 · 首页为封面、末页为尾页，中间为正文 · 支持 # 标题、**加粗**、*斜体*、&gt; 引用、- 列表、==高亮== · 封面方案随风格切换（仅作用于首页） · 勾选“无图”生成纯文字封面 · 勾选“图片取色”按图片主色生成 6:3:1 配色 · 勾选“网格”显示构图/网格参考（导出不含）</p>
+      <p class="hint">用单独一行的 <code>---</code> 分页 · 首页为封面、末页为尾页，中间为正文 · 支持 # 标题、**加粗**、*斜体*、&gt; 引用、- 列表、==高亮== · 封面方案随风格切换（仅作用于首页） · 勾选“无图”生成纯文字封面 · 勾选“图片取色”按图片主色生成 6:3:1 配色 · 勾选“网格”显示构图/网格参考（导出不含） · 导出为 PDF：在打印对话框选“另存为 PDF”，边距选“无”</p>
     </section>
 
     <section class="preview-pane">
@@ -101,7 +116,6 @@
     </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="assets/js/markdown.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
