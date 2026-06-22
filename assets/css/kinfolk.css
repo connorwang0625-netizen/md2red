@@ -42,12 +42,18 @@
 
 /* -------------------- 封面：各方案专属排版 --------------------
    统一用 .card.role-cover.cv-kinfolk-<方案> 形式，特异度 (0,4,x) > covers 通用层 (0,3,x)。 */
-/* airy：大标题 + 标题下方正文 */
+/* airy：大标题 + kicker 副标题 + 弱化描述 */
 .card.role-cover.cv-kinfolk-airy .li-content { justify-content:flex-start; padding:60px 88px 72px; display:flex; flex-direction:column; }
 .card.role-cover.cv-kinfolk-airy .card-body { flex:0 1 auto; display:block; }
 .card.role-cover.cv-kinfolk-airy .card-body h1 { margin:0 0 32px; font-size:88px; font-weight:400; letter-spacing:1px; line-height:1.16; }
+/* 标题内斜体字（如序号）→ 放大、ink 10% 淡色，作装饰性大字 */
+.card.role-cover.cv-kinfolk-airy .card-body h1 em { font-size:1.5em; font-weight:400; color:color-mix(in srgb, var(--card-ink) 10%, transparent); }
+/* （备用）h2 作副标题 */
 .card.role-cover.cv-kinfolk-airy .card-body h2 { margin:0 0 26px; font-size:42px; font-weight:300; line-height:1.3; color:var(--card-dim); }
-.card.role-cover.cv-kinfolk-airy .card-body p { margin:0 0 16px; max-width:100%; font-size:32px; font-weight:300; line-height:1.7; color:var(--card-dim); }
+/* 副标题（引用改写）：去掉左侧竖线，改为强调色 kicker 形式 */
+.card.role-cover.cv-kinfolk-airy .card-body blockquote { margin:0 0 24px; padding:0; border:none; font-style:normal; font-weight:400; font-size:34px; line-height:1.45; letter-spacing:2px; color:var(--card-accent); }
+/* 描述：弱化，更小更淡，降低存在感 */
+.card.role-cover.cv-kinfolk-airy .card-body p { margin:0 0 14px; max-width:100%; font-size:27px; font-weight:300; line-height:1.7; letter-spacing:0.3px; color:var(--card-dim); }
 /* square：居中排版 + 字号 */
 .card.role-cover.cv-kinfolk-square .card-body { text-align:center; }
 .card.role-cover.cv-kinfolk-square .card-body h1 { font-size:54px; font-weight:400; letter-spacing:2px; }
