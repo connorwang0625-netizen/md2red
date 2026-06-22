@@ -46,8 +46,8 @@
 .card.role-cover.cv-kinfolk-airy .li-content { justify-content:flex-start; padding:60px 88px 72px; display:flex; flex-direction:column; }
 .card.role-cover.cv-kinfolk-airy .card-body { flex:0 1 auto; display:block; }
 .card.role-cover.cv-kinfolk-airy .card-body h1 { margin:0 0 32px; font-size:88px; font-weight:400; letter-spacing:1px; line-height:1.16; }
-/* 标题内斜体字（如序号）→ 放大 1.8em、强调色实色，作装饰性大字 */
-.card.role-cover.cv-kinfolk-airy .card-body h1 em { font-size:1.8em; font-weight:400; color:var(--card-accent); }
+/* 标题内斜体字（如序号）→ 原字号（1em），仅斜体 + 强调色实色 */
+.card.role-cover.cv-kinfolk-airy .card-body h1 em { font-weight:400; color:var(--card-accent); }
 /* （备用）h2 作副标题 */
 .card.role-cover.cv-kinfolk-airy .card-body h2 { margin:0 0 26px; font-size:42px; font-weight:300; line-height:1.3; color:var(--card-dim); }
 /* 副标题（引用改写）：去掉左侧竖线，改为斜体 + 强调色 30% 档实色浅调（调和到底色，非透明度） */
